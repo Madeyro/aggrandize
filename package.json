@@ -1,0 +1,28 @@
+{
+  "name": "aggrandize",
+  "version": "0.0.1",
+  "description": "Referral platform",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/Madeyro/aggrandize.git"
+  },
+  "keywords": [
+    "aggrandize",
+    "referral",
+    "platform",
+    "bachelor"
+  ],
+  "author": "Maros Kopec",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/Madeyro/aggrandize/issues"
+  },
+  "homepage": "https://github.com/Madeyro/aggrandize#readme",
+  "dependencies": {
+    "nano": "^6.4.2"
+  }
+}
