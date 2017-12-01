@@ -23,6 +23,7 @@
   },
   "homepage": "https://github.com/Madeyro/aggrandize#readme",
   "dependencies": {
+    "koa": "^2.4.1",
     "nano": "^6.4.2"
   }
 }
