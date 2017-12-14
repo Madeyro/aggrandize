@@ -12,23 +12,23 @@ async function random(ctx, next) {
   }
 };
 
-async function backwards(ctx, next) {
-  if ('/backwards' == ctx.path) {
-    ctx.body = 'sdrawkcab';
+async function database(ctx, next) {
+  if ('/db' == ctx.path) {
+    ctx.body = 'You are accessing the database.';
   } else {
-    await next();
+    next();
   }
 }
 
-async function pi(ctx, next) {
-  if ('/pi' == ctx.path) {
-    ctx.body = String(Math.PI);
+async function home(ctx, next) {
+  if ('/' == ctx.path) {
+    ctx.body = 'Hello, world!';
   } else {
-    await next();
+    next();
   }
 }
 
-const all = compose([random, backwards, pi]);
+const all = compose([random, database, home]);
 
 app.use(all);
 app.listen(8080);
