@@ -5,9 +5,10 @@
 
 See [Use Cases file](./docs/USECASES.md) for more information
 
-## Technologies
+## Technologies used
 
 - Database: CouchDB
+  - [Database model](./docs/database_model.md)
 - Backend: Node.js
 - Middleware: Koa.js
 - Frontend: Vue.js
