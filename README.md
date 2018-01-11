@@ -3,7 +3,7 @@
 
 ## Use Cases
 
-See [Use Cases file](./docs/USECASES.md) for more information
+See [Use Cases file](./docs/use_cases.md) for more information
 
 ## Technologies used
 
