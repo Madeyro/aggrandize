@@ -1,10 +1,4 @@
-# Use cases
-
-## Diagram
-
-<img src="./pics/use_cases.png" width="70%">
-
-## Text version
+# Use Cases
 
 __User Roles:__ application, customer, administrator
 
