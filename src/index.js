@@ -1,4 +1,4 @@
-const credentials = require('./loginDB.ts');
+const credentials = require('./loginDB.js');
 
 const Koa = require('koa');
 const app = new Koa();
