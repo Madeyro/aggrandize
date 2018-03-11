@@ -12,15 +12,6 @@ var db = require('nano')(
 });
 
 
-function component() {
-  var element = document.createElement('div');
-
-  // Lodash, currently included via a script, is required for this line to work
-  element.innerHTML = _.join(['Hello', 'webpack'], ' ');
-
-  return element;
-}
-
 async function random(ctx, next) {
   if ('/random' == ctx.path) {
     ctx.body = Math.floor(Math.random() * 10);
@@ -39,7 +30,7 @@ async function database(ctx, next) {
 
 async function home(ctx, next) {
   if ('/' == ctx.path) {
-    document.body.appendChild(component());
+    ctx.body = 'Hello, world!'
   } else {
     next();
   }

@@ -23,7 +23,7 @@ See [Use Cases file](./docs/use_cases.md) for more information
 - Database: CouchDB
   - [Database model](./docs/database_model.md)
 - Backend: Node.js
-- Middleware: Koa.js
+- Middleware: Express (Koa.js)
 - Frontend: Vue.js
 - CSS Preprocessor: TypeScript
 - Dependencies: Yarn
