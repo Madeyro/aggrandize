@@ -8,8 +8,18 @@ const compose = require('koa-compose');
 var db_name = "aggrandize";
 var db = require('nano')(
   { "url"      : 'http://localhost:5984/' + db_name,
-    "cookie"   : 'AuthSession=' + credentials.cookie
-  });
+  "cookie"   : 'AuthSession=' + credentials.cookie
+});
+
+
+function component() {
+  var element = document.createElement('div');
+
+  // Lodash, currently included via a script, is required for this line to work
+  element.innerHTML = _.join(['Hello', 'webpack'], ' ');
+
+  return element;
+}
 
 async function random(ctx, next) {
   if ('/random' == ctx.path) {
@@ -29,7 +39,7 @@ async function database(ctx, next) {
 
 async function home(ctx, next) {
   if ('/' == ctx.path) {
-    ctx.body = 'Hello, world!';
+    document.body.appendChild(component());
   } else {
     next();
   }
@@ -49,6 +59,8 @@ async function get_users(ctx, next) {
     next();
   }
 }
+
+
 
 
 const all = compose([random, database, home, get_users]);
