@@ -14,10 +14,14 @@ pids
 *.seed
 *.pid.lock
 
-
 # Compiled binary addons (http://nodejs.org/api/addons.html)
 build/Release
 
 # Dependency directories
-node_modules/
+client/node_modules/
+server/node_modules/
 jspm_packages/
+
+# Silver Searcher
+# https://github.com/ggreer/the_silver_searcher/
+.ignore

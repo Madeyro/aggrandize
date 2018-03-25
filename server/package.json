@@ -1,0 +1,19 @@
+{
+  "name": "aggrandize-server",
+  "version": "1.0.0",
+  "description": "Referral platform",
+  "main": "src/app.js",
+  "scripts": {
+    "start": "node src/app.js",
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "keywords": [],
+  "author": "Maros Kopec",
+  "license": "MIT",
+  "devDependencies": {
+    "koa": "^2.5.0",
+    "koa-bodyparser": "^4.2.0",
+    "koa-router": "^7.4.0",
+    "nano": "^6.4.3"
+  }
+}
