@@ -1,5 +1,6 @@
 # <center>Aggrandize</center>
-<center>Grow with control</center>
+### <center>Grow with control</center>
+*<center>Referral Platform</center>*
 
 ## Build Setup
 
@@ -23,11 +24,9 @@ See [Use Cases file](./docs/use_cases.md) for more information
 - Database: CouchDB
   - [Database model](./docs/database_model.md)
 - Backend: Node.js
-- Middleware: Express (Koa.js)
+- Middleware: Koa.js
 - Frontend: Vue.js
-- CSS Preprocessor: TypeScript
 - Dependencies: Yarn
-- Testing: ?
 
 ## License
 
