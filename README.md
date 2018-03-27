@@ -28,6 +28,12 @@ See [Use Cases file](./docs/use_cases.md) for more information
 - Frontend: Vue.js
 - Dependencies: Yarn
 
+## Front-end
+
+Template: Vue Light Bootstrap Dashboard
+- [GitHub repo](https://github.com/cristijora/vue-light-bootstrap-dashboard)
+- [Web Page](https://www.creative-tim.com/product/vue-light-bootstrap-dashboard)
+
 ## License
 
 Under MIT License.  
