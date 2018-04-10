@@ -2,7 +2,7 @@
   <table class="table">
     <thead>
       <slot name="columns">
-        <th v-for="column in columns">{{column}}</th>
+        <th v-for="heading in headings">{{heading}}</th>
       </slot>
     </thead>
     <tbody>
@@ -19,7 +19,8 @@
     name: 'l-table',
     props: {
       columns: Array,
-      data: Array
+      data: Array,
+      headings: Array
     },
     methods: {
       hasValue (item, column) {

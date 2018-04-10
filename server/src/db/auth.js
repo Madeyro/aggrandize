@@ -1,6 +1,7 @@
-var nano = require('nano')('http://localhost:5984')
+const userpass = process.env.COUCHDB_PASS;
+const username = process.env.COUCHDB_USER;
+
 var cookie = {};
-// exports.cookie = cookie;
 
 var db_name = "aggrandize";
 var db = require('nano')(
@@ -8,14 +9,11 @@ var db = require('nano')(
     "cookie"   : 'AuthSession=' + cookie
 });
 
-const userpass = process.env.COUCHDB_PASS;
-const username = process.env.COUCHDB_USER;
 
 
-nano.auth(username, userpass, function (err, body, headers) {
+db.auth(username, userpass, function (err, body, headers) {
   if (err) {
-    console.log(err.message);
-    console.log("Check env variables COUCHDB_USER and COUCHDB_PASS");
+    console.log("\nERROR: \n" + err.message + "\n");
     process.exit(1);
   }
 

@@ -10,24 +10,9 @@
             </template>
             <div class="table-responsive">
               <l-table class="table-hover table-striped"
-                       :columns="table1.columns"
-                       :data="table1.data">
-              </l-table>
-            </div>
-          </card>
-
-        </div>
-
-        <div class="col-12">
-          <card class="card-plain">
-            <template slot="header">
-              <h4 class="card-title">Table on Plain Background</h4>
-              <p class="card-category">Here is a subtitle for this table</p>
-            </template>
-            <div class="table-responsive">
-              <l-table class="table-hover"
-                       :columns="table2.columns"
-                       :data="table2.data">
+                       :columns="table.columns"
+                       :data="table.data"
+                       :headings="table.headings">
               </l-table>
             </div>
           </card>
@@ -40,60 +25,37 @@
 <script>
   import LTable from 'src/components/UIComponents/Table.vue'
   import Card from 'src/components/UIComponents/Cards/Card.vue'
-  const tableColumns = ['Id', 'Name', 'Salary', 'Country', 'City']
-  const tableData = [{
-    id: 1,
-    name: 'Dakota Rice',
-    salary: '$36.738',
-    country: 'Niger',
-    city: 'Oud-Turnhout'
-  },
-  {
-    id: 2,
-    name: 'Minerva Hooper',
-    salary: '$23,789',
-    country: 'Curaçao',
-    city: 'Sinaai-Waas'
-  },
-  {
-    id: 3,
-    name: 'Sage Rodriguez',
-    salary: '$56,142',
-    country: 'Netherlands',
-    city: 'Baileux'
-  },
-  {
-    id: 4,
-    name: 'Philip Chaney',
-    salary: '$38,735',
-    country: 'Korea, South',
-    city: 'Overland Park'
-  },
-  {
-    id: 5,
-    name: 'Doris Greene',
-    salary: '$63,542',
-    country: 'Malawi',
-    city: 'Feldkirchen in Kärnten'
-  }]
+  import axios from 'axios'
+
   export default {
     components: {
       LTable,
       Card
     },
+    // Fetches users
+    async created() {
+      try {
+        const response = await axios.get(`http://localhost:8080/api/0/users`)
+        this.table.data = response.data.rows[0].value
+        this.table.columns = Object.keys(response.data.rows[0].value[0])
+      } catch (e) {
+        this.errors.push(e)
+      }
+    },
     data () {
       return {
-        table1: {
-          columns: [...tableColumns],
-          data: [...tableData]
-        },
-        table2: {
-          columns: [...tableColumns],
-          data: [...tableData]
+        table: {
+          columns: [],
+          data: [],
+          headings: [...tableHeadings],
+          keys: []
         }
       }
     }
   }
+
+  const tableHeadings = ['Mail', 'Used Invitations' , 'Free Invitations']
+
 </script>
 <style>
 </style>
