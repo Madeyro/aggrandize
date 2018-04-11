@@ -1,7 +1,7 @@
 const Router = require('koa-router');
-const router = new Router({prefix: "/api/0/"});
+const router = new Router({prefix: "/api/0"});
 
-router.get('/', async (ctx) => {
+router.get('/:a', async (ctx) => {
   ctx.body = {
     status: 'success',
     message: 'This is API'
