@@ -4,7 +4,7 @@ const username = process.env.COUCHDB_USER;
 var cookie = {};
 
 var db_name = "aggrandize";
-var db = require('nano')(
+var db = require('nano-blue')(
   { "url"      : 'http://localhost:5984/' + db_name,
     "cookie"   : 'AuthSession=' + cookie
 });
