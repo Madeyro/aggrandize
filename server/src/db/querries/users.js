@@ -1,22 +1,22 @@
 const db = require('../auth')
 // const apps = require('./apps')
 
-async function getAll (app) {
-  const users = await db.view('views', 'all_users', { keys: [`${app}`] })
+async function getAll (appId) {
+  const users = await db.view('views', 'all_users', { keys: [`${appId}`] })
   return users[0].rows
 }
 
-async function getUser (user) {
-  const doc = await db.get(user)
+async function getUser (userId) {
+  const doc = await db.get(userId)
   return doc[0] // cut off couchdb metadata
 }
 
-async function addUser (data) {
-  const doc = await db.insert(data)
+async function addUser (jsonData) {
+  const doc = await db.insert(jsonData)
   return doc[0] // cut off couchdb metadata
 }
 
-async function grantUserAccess (mail, invs, app) {
+async function grantUserAccess (mail, invs, appId) {
   var userJson
   var freeInvs = invs
   if (freeInvs == null) {
@@ -25,27 +25,27 @@ async function grantUserAccess (mail, invs, app) {
   try {
     userJson = await getUser(mail)
     for (var key in userJson.apps) {
-      if (userJson.apps[key].id === app) {
+      if (userJson.apps[key].id === appId) {
         // already has access to app -> skip
         return null
       }
     }
     // user exits but does not have access to app
     userJson.apps[userJson.apps.length] = {
-      'id': `${app}`,
-      'used_inv': '0',
-      'free_inv': `${invs}`
+      id: appId,
+      used_inv: '0',
+      free_inv: invs
     }
   } catch (err) {
     // missing -> create new one
     userJson = {
-      '_id': `${mail}`,
-      'type': 'user',
-      'apps': [
+      _id: mail,
+      type: 'user',
+      apps: [
         {
-          'id': `${app}`,
-          'used_inv': '0',
-          'free_inv': `${invs}`
+          id: appId,
+          used_inv: 0,
+          free_inv: invs
         }
       ]
     }
@@ -57,16 +57,17 @@ async function grantUserAccess (mail, invs, app) {
   }
 }
 
-async function addUserBulk (data) {
-  return db.bulk(data)
+async function addUserBulk (jsonData) {
+  return db.bulk(jsonData)
 }
 
-async function resizeInv (user, app, newSize) {
-  var doc = await getUser(user)
+async function resizeInv (userId, appId, newSize) {
+  var doc = await getUser(userId)
   // create new JSON
   for (var index in doc.apps) {
-    if (doc.apps[index].id === app) {
+    if (doc.apps[index].id === appId) {
       doc.apps[index].free_inv = newSize
+      break
     }
   }
   return addUser(doc)
@@ -78,15 +79,16 @@ async function deleteUser (user, appId) {
   for (var app in json) {
     if (json[app].id === appId) {
       json.splice(app, 1)
+      break
     }
   }
   if (json.length) {
     // build updated version
     var update = {
-      '_id': `${user._id}`,
-      '_rev': `${user._rev}`,
-      'type': 'user',
-      'apps': json
+      _id: user._id,
+      _rev: user._rev,
+      type: 'user',
+      apps: json
     }
     return db.insert(update)
   } else {

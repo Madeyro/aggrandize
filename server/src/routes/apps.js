@@ -34,26 +34,26 @@ router.put('/', async ctx => {
     }
   } catch (err) {
     // continue to creation
-  }
-  try {
-    var appJson = {
-      '_id': `${ctx.request.body.id}`,
-      'type': 'app',
-      'admin': `${ctx.request.body.admin}`
-    }
+    try {
+      var appJson = {
+        _id: ctx.request.body.id,
+        type: 'app',
+        admin: ctx.request.body.admin
+      }
 
-    const app = await appQuery.addApp(appJson)
+      const app = await appQuery.addApp(appJson)
 
-    ctx.status = 201
-    ctx.body = {
-      status: 'success',
-      data: app
-    }
-  } catch (err) {
-    ctx.status = 400
-    ctx.body = {
-      status: 'error',
-      message: err.message || 'Sorry, an error has occurred.'
+      ctx.status = 201
+      ctx.body = {
+        status: 'success',
+        data: app
+      }
+    } catch (err) {
+      ctx.status = 400
+      ctx.body = {
+        status: 'error',
+        message: err.message || 'Sorry, an error has occurred.'
+      }
     }
   }
 })
@@ -88,11 +88,7 @@ router.put('/:app/users', async ctx => {
       message: 'User already has access to app.'
     }
   } else if (res instanceof Error) {
-    ctx.status = 400
-    ctx.body = {
-      status: 'error',
-      message: res.message || 'Sorry, an error has occurred.'
-    }
+    throw res
   } else {
     ctx.status = 201
     ctx.body = {
@@ -219,11 +215,7 @@ router.put('/:app/waitlist/acceptall', async ctx => {
           message: 'User already has access to app.'
         }
       } else if (res instanceof Error) {
-        ctx.status = 400
-        ctx.body = {
-          status: 'error',
-          message: res.message || 'Sorry, an error has occurred.'
-        }
+        throw res
       } else {
         ctx.status = 201
         ctx.body = {
@@ -232,7 +224,43 @@ router.put('/:app/waitlist/acceptall', async ctx => {
         }
       }
     }
+
     await appQuery.clearList(ctx.params.app)
+  } catch (err) {
+    ctx.status = 400
+    ctx.body = {
+      status: 'error',
+      message: err.message || 'Sorry, an error has occurred.'
+    }
+  }
+})
+
+router.put('/:app/waitlist/:mail', async ctx => {
+  try {
+    var listDoc = await appQuery.getListDoc(ctx.params.app)
+
+    listDoc = listDoc.value // cut off unused data
+    const maxSize = await appQuery.getListSize(ctx.params.app)
+
+    if (listDoc.users.length >= maxSize) {
+      // waitlist is full, user can not apply to it
+      throw Error('Waiting list is full. User can not apply to it.')
+    }
+
+    for (var index in listDoc.users) {
+      if (listDoc.users[index] === ctx.params.mail) {
+        throw Error('User already is in waiting list.')
+      }
+    }
+
+    listDoc.users[listDoc.users.length] = ctx.params.mail
+    const res = await appQuery.addList(listDoc)
+
+    ctx.status = 200
+    ctx.body = {
+      status: 'success',
+      data: res
+    }
   } catch (err) {
     ctx.status = 400
     ctx.body = {

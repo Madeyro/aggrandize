@@ -1,36 +1,43 @@
 const db = require('../auth')
-const nano = require('nano-blue')
 
-async function getApp (app) {
-  const doc = await db.get(app)
+async function getApp (appId) {
+  const doc = await db.get(appId)
   return doc[0] // cut off couchdb metadata
 }
 
-async function getRev (app) {
-  const doc = await db.view('views', 'revisions', { keys: [`${app}`] })
+async function getRev (appId) {
+  const doc = await db.view('views', 'revisions', { keys: [`${appId}`] })
   return doc[0].rows[0].value // cut off metadata
 }
 
-async function getList (app) {
-  const doc = await db.view('views', 'wait_lists', { keys: [`${app}`] })
+async function getList (appId) {
+  const doc = await db.view('views', 'waitlist_users', { keys: [`${appId}`] })
   return doc[0].rows[0] // cut off metadata
 }
 
-async function resizeList (app, newSize) {
-  var doc = await getApp(app)
-  // create new JSON
-  doc = doc[0] // cut information about response
-  doc.listsize = newSize
-  return addApp(doc)
+async function getListDoc (appId) {
+  const doc = await db.view('views', 'waitlist_docs', { keys: [`${appId}`] })
+  return doc[0].rows[0] // cut off metadata
 }
 
-async function clearList (app) {
-  var doc = await getList(app)
+async function getListSize (appId) {
+  const doc = await getApp(appId)
+  return doc.listsize // cut off metadata
+}
+
+async function resizeList (appId, newSize) {
+  var doc = await getApp(appId)
+  doc.listsize = newSize
+  return updateApp(doc)
+}
+
+async function clearList (appId) {
+  var doc = await getList(appId)
 
   // create new clear waitlist
   var newDoc = {
     _id: doc.id,
-    _rev: doc.rev,
+    _rev: doc.value.rev,
     type: 'waitlist',
     app: doc.key,
     users: []
@@ -40,22 +47,32 @@ async function clearList (app) {
   return res[0]
 }
 
-async function addApp (data) {
-  const res = await db.insert(data)
+async function addList (jsonData) {
+  const res = await db.insert(jsonData)
+  return res[0]
+}
+
+async function addApp (jsonData) {
+  const res = await db.insert(jsonData)
 
   // create also waitlist
   var waitlist = {
     type: 'waitlist',
-    app: data._id,
+    app: jsonData._id,
     users: []
   }
 
-  const res2 = await db.insert(waitlist)
-  return [res[0], res2[0]] // cut off couchdb metadata
+  const res2 = await addList(waitlist)
+  return [res[0], res2] // cut off couchdb metadata
 }
 
-async function deleteApp (app, rev) {
-  const doc = await db.destroy(app, rev)
+async function updateApp (jsonData) {
+  const res = await db.insert(jsonData)
+  return res[0]
+}
+
+async function deleteApp (appId, rev) {
+  const doc = await db.destroy(appId, rev)
   return doc[0] // cut off couchdb metadata
 }
 
@@ -64,7 +81,11 @@ module.exports = {
   getRev,
   getList,
   clearList,
+  getListDoc,
+  getListSize,
   resizeList,
+  addList,
   addApp,
+  updateApp,
   deleteApp
 }

@@ -1,0 +1,491 @@
+{
+	"info": {
+		"name": "aggrandize",
+		"_postman_id": "707c267a-e370-1dd7-eef3-35b1758a065a",
+		"description": "",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
+	},
+	"item": [
+		{
+			"name": "App manipulation",
+			"description": "",
+			"item": [
+				{
+					"name": "Get App",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"body": {},
+						"url": {
+							"raw": "http://localhost:8080/api/0/apps/App Two/",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8080",
+							"path": [
+								"api",
+								"0",
+								"apps",
+								"App Two",
+								""
+							]
+						},
+						"description": ""
+					},
+					"response": []
+				},
+				{
+					"name": "Add App",
+					"request": {
+						"method": "PUT",
+						"header": [
+							{
+								"key": "Content-Type",
+								"value": "application/x-www-form-urlencoded"
+							}
+						],
+						"body": {
+							"mode": "urlencoded",
+							"urlencoded": [
+								{
+									"key": "app",
+									"value": "Test App",
+									"description": "",
+									"type": "text",
+									"disabled": true
+								},
+								{
+									"key": "mail",
+									"value": "eric@gmail.com",
+									"description": "",
+									"type": "text",
+									"disabled": true
+								},
+								{
+									"key": "id",
+									"value": "Gamma",
+									"description": "",
+									"type": "text"
+								},
+								{
+									"key": "admin",
+									"value": "admin@gamma.com",
+									"description": "",
+									"type": "text"
+								}
+							]
+						},
+						"url": {
+							"raw": "http://localhost:8080/api/0/apps/",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8080",
+							"path": [
+								"api",
+								"0",
+								"apps",
+								""
+							]
+						},
+						"description": ""
+					},
+					"response": []
+				},
+				{
+					"name": "Delete App",
+					"request": {
+						"method": "DELETE",
+						"header": [],
+						"body": {},
+						"url": {
+							"raw": "http://localhost:8080/api/0/apps/Alpha",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8080",
+							"path": [
+								"api",
+								"0",
+								"apps",
+								"Alpha"
+							]
+						},
+						"description": ""
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "User manipulation",
+			"description": "",
+			"item": [
+				{
+					"name": "Delete User From App",
+					"request": {
+						"method": "DELETE",
+						"header": [
+							{
+								"key": "Content-Type",
+								"value": "application/x-www-form-urlencoded",
+								"disabled": true
+							}
+						],
+						"body": {},
+						"url": {
+							"raw": "http://localhost:8080/api/0/apps/Test App/users/mahbub@yahoo.com",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8080",
+							"path": [
+								"api",
+								"0",
+								"apps",
+								"Test App",
+								"users",
+								"mahbub@yahoo.com"
+							]
+						},
+						"description": ""
+					},
+					"response": []
+				},
+				{
+					"name": "Add User to App",
+					"request": {
+						"method": "PUT",
+						"header": [
+							{
+								"key": "Content-Type",
+								"value": "application/x-www-form-urlencoded"
+							}
+						],
+						"body": {
+							"mode": "urlencoded",
+							"urlencoded": [
+								{
+									"key": "mail",
+									"value": "eric@gmail.com",
+									"description": "",
+									"type": "text"
+								}
+							]
+						},
+						"url": {
+							"raw": "http://localhost:8080/api/0/apps/App One/users",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8080",
+							"path": [
+								"api",
+								"0",
+								"apps",
+								"App One",
+								"users"
+							]
+						},
+						"description": ""
+					},
+					"response": []
+				},
+				{
+					"name": "Get User",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"body": {},
+						"url": {
+							"raw": "http://localhost:8080/api/0/users/laura@gmail.com",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8080",
+							"path": [
+								"api",
+								"0",
+								"users",
+								"laura@gmail.com"
+							]
+						},
+						"description": ""
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "Wailist",
+			"description": "",
+			"item": [
+				{
+					"name": "Get App Waitlist",
+					"request": {
+						"method": "GET",
+						"header": [
+							{
+								"key": "Content-Type",
+								"value": "application/x-www-form-urlencoded"
+							}
+						],
+						"body": {
+							"mode": "urlencoded",
+							"urlencoded": [
+								{
+									"key": "invs",
+									"value": "\"5\"",
+									"description": "",
+									"type": "text"
+								}
+							]
+						},
+						"url": {
+							"raw": "http://localhost:8080/api/0/apps/Test App/waitlist/",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8080",
+							"path": [
+								"api",
+								"0",
+								"apps",
+								"Test App",
+								"waitlist",
+								""
+							]
+						},
+						"description": ""
+					},
+					"response": []
+				},
+				{
+					"name": "Accept all from waitlist",
+					"request": {
+						"method": "PUT",
+						"header": [
+							{
+								"key": "Content-Type",
+								"value": "application/x-www-form-urlencoded"
+							}
+						],
+						"body": {
+							"mode": "urlencoded",
+							"urlencoded": [
+								{
+									"key": "invs",
+									"value": "12",
+									"description": "",
+									"type": "text"
+								}
+							]
+						},
+						"url": {
+							"raw": "http://localhost:8080/api/0/apps/Gamma/waitlist/acceptall",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8080",
+							"path": [
+								"api",
+								"0",
+								"apps",
+								"Gamma",
+								"waitlist",
+								"acceptall"
+							]
+						},
+						"description": ""
+					},
+					"response": []
+				},
+				{
+					"name": "Apply to waitlist",
+					"request": {
+						"method": "PUT",
+						"header": [
+							{
+								"key": "Content-Type",
+								"value": "application/x-www-form-urlencoded"
+							}
+						],
+						"body": {
+							"mode": "urlencoded",
+							"urlencoded": [
+								{
+									"key": "invs",
+									"value": "\"5\"",
+									"description": "",
+									"type": "text"
+								}
+							]
+						},
+						"url": {
+							"raw": "http://localhost:8080/api/0/apps/Gamma/waitlist/rachel@green.com",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8080",
+							"path": [
+								"api",
+								"0",
+								"apps",
+								"Gamma",
+								"waitlist",
+								"rachel@green.com"
+							]
+						},
+						"description": ""
+					},
+					"response": []
+				},
+				{
+					"name": "Resize waitlist",
+					"request": {
+						"method": "PUT",
+						"header": [],
+						"body": {},
+						"url": {
+							"raw": "http://localhost:8080/api/0/apps/Gamma/waitlist/newsize/5",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8080",
+							"path": [
+								"api",
+								"0",
+								"apps",
+								"Gamma",
+								"waitlist",
+								"newsize",
+								"5"
+							]
+						},
+						"description": ""
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "Invs manipulation",
+			"description": "",
+			"item": [
+				{
+					"name": "Send inv",
+					"request": {
+						"method": "PUT",
+						"header": [],
+						"body": {},
+						"url": {
+							"raw": "http://localhost:8080/api/0/users/eric@gmail.com/Test App/sendinv/drstrange@marvel.com",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8080",
+							"path": [
+								"api",
+								"0",
+								"users",
+								"eric@gmail.com",
+								"Test App",
+								"sendinv",
+								"drstrange@marvel.com"
+							]
+						},
+						"description": ""
+					},
+					"response": []
+				},
+				{
+					"name": "Edit # of invs",
+					"request": {
+						"method": "PUT",
+						"header": [],
+						"body": {},
+						"url": {
+							"raw": "http://localhost:8080/api/0/apps/Alpha/users/laura@gmail.com/newinvs/8",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8080",
+							"path": [
+								"api",
+								"0",
+								"apps",
+								"Alpha",
+								"users",
+								"laura@gmail.com",
+								"newinvs",
+								"8"
+							]
+						},
+						"description": ""
+					},
+					"response": []
+				},
+				{
+					"name": "Decline inv",
+					"request": {
+						"method": "DELETE",
+						"header": [],
+						"body": {},
+						"url": {
+							"raw": "http://localhost:8080/api/0/inv/41294633b867364eae933dfa4e038780",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8080",
+							"path": [
+								"api",
+								"0",
+								"inv",
+								"41294633b867364eae933dfa4e038780"
+							]
+						},
+						"description": ""
+					},
+					"response": []
+				},
+				{
+					"name": "Accept inv",
+					"request": {
+						"method": "PUT",
+						"header": [],
+						"body": {},
+						"url": {
+							"raw": "http://localhost:8080/api/0/inv/41294633b867364eae933dfa4e038780",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8080",
+							"path": [
+								"api",
+								"0",
+								"inv",
+								"41294633b867364eae933dfa4e038780"
+							]
+						},
+						"description": ""
+					},
+					"response": []
+				}
+			]
+		}
+	]
+}
