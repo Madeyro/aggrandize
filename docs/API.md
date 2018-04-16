@@ -20,9 +20,11 @@ The API is prefixed with : `/api/{version}`
 #### Add app (start new program)
 `PUT /apps/`  
 Specify attributes in body  
-`id: Name,  
-admin: Mail  
-listsize: Size of waiting list`
+`
+id: Name,
+admin: Mail,
+listsize: Size of waiting list
+`
 
 #### Delete app (cancel program)
 `DELETE /apps/{APP}`
