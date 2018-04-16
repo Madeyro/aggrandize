@@ -38,7 +38,8 @@ router.put('/', async ctx => {
       var appJson = {
         _id: ctx.request.body.id,
         type: 'app',
-        admin: ctx.request.body.admin
+        admin: ctx.request.body.admin,
+        listsize: ctx.request.body.listsize
       }
 
       const app = await appQuery.addApp(appJson)
@@ -79,8 +80,8 @@ router.delete('/:app', async ctx => {
 })
 
 // add user to app
-router.put('/:app/users', async ctx => {
-  const res = await userQuery.grantUserAccess(ctx.request.body.mail, ctx.request.body.invs, ctx.params.app)
+router.put('/:app/users/:user', async ctx => {
+  const res = await userQuery.grantUserAccess(ctx.params.user, ctx.request.body.invs, ctx.params.app)
   if (res == null) {
     ctx.status = 400
     ctx.body = {
@@ -235,6 +236,7 @@ router.put('/:app/waitlist/acceptall', async ctx => {
   }
 })
 
+// Apple for waiting list
 router.put('/:app/waitlist/:mail', async ctx => {
   try {
     var listDoc = await appQuery.getListDoc(ctx.params.app)

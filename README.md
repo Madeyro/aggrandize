@@ -19,6 +19,10 @@
 
 See [Use Cases file](./docs/use_cases.md) for more information
 
+## API
+
+See [API docs](./docs/API.md)
+
 ## Technologies used
 
 - Database: CouchDB
