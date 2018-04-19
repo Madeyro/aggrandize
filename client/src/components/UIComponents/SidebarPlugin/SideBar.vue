@@ -5,7 +5,7 @@
        :data-image="backgroundImage">
     <div class="sidebar-wrapper">
       <div class="logo">
-        <a href="#" class="simple-text">
+        <a href="/" class="simple-text">
             <div class="logo-img">
                 <img src="/static/img/vue-logo.png" alt="">
             </div>
@@ -52,7 +52,7 @@
       },
       backgroundImage: {
         type: String,
-        default: 'static/img/sidebar-5.jpg'
+        default: 'static/img/sidebar.jpg'
       },
       activeColor: {
         type: String,

@@ -1,7 +1,7 @@
 <template>
   <nav class="navbar navbar-expand-lg">
     <div class="container-fluid">
-      <a class="navbar-brand" href="#">Test App 1</a>
+      <a class="navbar-brand" href="/">Test App 1</a>
       <button type="button"
               class="navbar-toggler navbar-toggler-right"
               :class="{toggled: $sidebar.showSidebar}"
@@ -21,10 +21,10 @@
               <b class="caret"></b>
               <span class="notification selector">4</span>
             </template>
-            <a class="dropdown-item" href="#">Test App 1</a>
-            <a class="dropdown-item" href="#">App 2</a>
-            <a class="dropdown-item" href="#">Application 3</a>
-            <a class="dropdown-item" href="#">Teste App 4</a>
+            <a class="dropdown-item" href="/">Test App 1</a>
+            <a class="dropdown-item" href="/">App 2</a>
+            <a class="dropdown-item" href="/">Application 3</a>
+            <a class="dropdown-item" href="/">Teste App 4</a>
           </drop-down>
           <drop-down tag="li">
             <template slot="title">
@@ -32,41 +32,28 @@
               <b class="caret"></b>
               <span class="notification">5</span>
             </template>
-            <a class="dropdown-item" href="#">Notification 1</a>
-            <a class="dropdown-item" href="#">Notification 2</a>
-            <a class="dropdown-item" href="#">Notification 3</a>
-            <a class="dropdown-item" href="#">Notification 4</a>
-            <a class="dropdown-item" href="#">Another notification</a>
+            <a class="dropdown-item" href="/">Notification 1</a>
+            <a class="dropdown-item" href="/">Notification 2</a>
+            <a class="dropdown-item" href="/">Notification 3</a>
+            <a class="dropdown-item" href="/">Notification 4</a>
+            <a class="dropdown-item" href="/">Another notification</a>
           </drop-down>
         </ul>
         <ul class="navbar-nav ml-auto">
-          <li class="nav-item">
-            <a class="nav-link" href="#">
-              Account
-            </a>
-          </li>
-          <drop-down title="Dropdown">
-            <a class="dropdown-item" href="#">Action</a>
-            <a class="dropdown-item" href="#">Another action</a>
-            <a class="dropdown-item" href="#">Something</a>
-            <a class="dropdown-item" href="#">Another action</a>
-            <a class="dropdown-item" href="#">Something</a>
-            <div class="divider"></div>
-            <a class="dropdown-item" href="#">Separated link</a>
+          <drop-down :title="currentUser.mail">
+            <a class="dropdown-item" @click="logout" href="javascript:;">Log out</a>
           </drop-down>
-          <li class="nav-item">
-            <a href="#" class="nav-link">
-              Log out
-            </a>
-          </li>
         </ul>
       </div>
     </div>
   </nav>
 </template>
 <script>
+  import { mapGetters } from 'vuex'
+
   export default {
     computed: {
+      ...mapGetters({ currentUser: 'currentUser' }),
       routeName () {
         const {name} = this.$route
         return this.capitalizeFirstLetter(name)
@@ -92,11 +79,15 @@
       },
       hideSidebar () {
         this.$sidebar.displaySidebar(false)
+      },
+      logout() {
+        delete localStorage.token
+        this.$store.dispatch('logout')
+        this.$router.push('/login')
       }
     }
   }
 
 </script>
 <style>
-
 </style>

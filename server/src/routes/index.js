@@ -1,11 +1,11 @@
-const Router = require('koa-router');
-const router = new Router({prefix: "/api/0"});
+const Router = require('koa-router')
+const router = new Router({prefix: '/api/0'})
 
-router.get('/:a', async (ctx) => {
+router.get('/', async (ctx) => {
   ctx.body = {
     status: 'success',
-    message: 'This is API'
-  };
+    message: 'This is API. See DOCS for allowed calls.'
+  }
 })
 
-module.exports = router;
+module.exports = router

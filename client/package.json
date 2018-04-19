@@ -33,13 +33,15 @@
     "chartist": "^0.11.0",
     "es6-promise": "^4.1.1",
     "google-maps": "^3.2.1",
+    "jwt-decode": "^2.2.0",
     "v-tooltip": "^2.0.0-rc.1",
     "vue": "^2.5.2",
-    "vue-api-query": "^0.4.1",
+    "vue-axios": "^2.1.1",
     "vue-clickaway": "^2.1.0",
     "vue-notifyjs": "^0.2.0",
     "vue-router": "^3.0.1",
-    "vue2-google-maps": "^0.8.4"
+    "vue2-google-maps": "^0.8.4",
+    "vuex": "^3.0.1"
   },
   "devDependencies": {
     "autoprefixer": "^7.1.2",

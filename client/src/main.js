@@ -2,6 +2,11 @@ import Vue from 'vue'
 import VueRouter from 'vue-router'
 import App from './App.vue'
 
+import store from './store'
+
+// Axios for making API calls
+import axios from './backend/vue-axios'
+
 // LightBootstrap plugin
 import LightBootstrap from './light-bootstrap-main'
 
@@ -13,6 +18,7 @@ Vue.use(LightBootstrap)
 
 // configure router
 const router = new VueRouter({
+  mode: 'history',
   routes, // short for routes: routes
   linkActiveClass: 'nav-item active'
 })
@@ -21,5 +27,7 @@ const router = new VueRouter({
 new Vue({
   el: '#app',
   render: h => h(App),
-  router
+  router,
+  axios,
+  store
 })

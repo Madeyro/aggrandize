@@ -6,7 +6,26 @@
 </template>
 
 <script>
-  export default {}
+  import { mapGetters } from 'vuex'
+
+  export default {
+    computed: {
+    ...mapGetters({ currentUser: 'currentUser' })
+    },
+    created () {
+      this.checkCurrentLogin()
+    },
+    updated () {
+      this.checkCurrentLogin()
+    },
+    methods: {
+      checkCurrentLogin () {
+        if (!this.currentUser && this.$route.path !== '/' && this.$route.path !== '/register') {
+          this.$router.push('/login')
+        }
+      }
+    }
+  }
 </script>
 <style lang="scss">
   .vue-notifyjs.notifications{

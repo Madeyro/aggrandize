@@ -25,7 +25,6 @@
 <script>
   import LTable from 'src/components/UIComponents/Table.vue'
   import Card from 'src/components/UIComponents/Cards/Card.vue'
-  import axios from 'axios'
 
   export default {
     components: {
@@ -35,9 +34,13 @@
     // Fetches users
     async created() {
       try {
-        const response = await axios.get(`http://localhost:8080/api/0/users`)
-        this.table.data = response.data.rows[0].value
-        this.table.columns = Object.keys(response.data.rows[0].value[0])
+        const response = await this.$http.get(`http://localhost:8080/api/0/apps/Test%20App/users`)
+        var data = []
+        for (var i in response.data.data) {
+          data[data.length] = response.data.data[i].value
+        }
+        this.table.data = data
+        this.table.columns = Object.keys(data[0])
       } catch (e) {
         this.errors.push(e)
       }
@@ -55,6 +58,26 @@
   }
 
   const tableHeadings = ['Mail', 'Used Invitations' , 'Free Invitations']
+
+
+  // import userService from '@/services/userService'
+  // export default {
+  //   name: 'posts',
+  //   data () {
+  //     return {
+  //       posts: []
+  //     }
+  //   },
+  //   mounted () {
+  //     this.getUsers()
+  //   },
+  //   methods: {
+  //     async getUsers () {
+  //       const response = await userService.fetchUsers()
+  //       this.posts = response.data.data
+  //     }
+  //   }
+  // }
 
 </script>
 <style>

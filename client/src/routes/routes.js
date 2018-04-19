@@ -1,6 +1,8 @@
 import DashboardLayout from '../components/Dashboard/Layout/DashboardLayout.vue'
 // GeneralViews
 import NotFound from '../components/GeneralViews/NotFoundPage.vue'
+import Login from '../components/GeneralViews/Login.vue'
+import Register from '../components/GeneralViews/Register.vue'
 
 // Admin pages
 import Overview from 'src/components/Dashboard/Views/Overview.vue'
@@ -41,6 +43,8 @@ const routes = [
       }
     ]
   },
+  { path: '/login', component: Login },
+  { path: '/register', component: Register},
   { path: '*', component: NotFound }
 ]
 

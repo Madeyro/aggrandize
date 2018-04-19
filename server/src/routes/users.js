@@ -23,6 +23,22 @@ router.get('/:user', async ctx => {
   }
 })
 
+router.post('/register', async ctx => {
+  try {
+    ctx.body = await userQuery.addUser({
+      _id: ctx.request.body.mail,
+      type: 'user',
+      password: ctx.request.body.password
+    })
+  } catch (err) {
+    ctx.status = 400
+    ctx.body = {
+      status: 'error',
+      message: err.message || 'Sorry, an error has occurred.'
+    }
+  }
+})
+
 router.put('/:user/:app/sendinv/:invited', async ctx => {
   try {
     var invitator = await userQuery.getUser(ctx.params.user)
