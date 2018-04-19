@@ -27,8 +27,8 @@ var esLintRule = {
   }
 }
 
-if(process.env.ENABLE_ESLINT && process.env.ENABLE_ESLINT === 'true'){
-  webpackConfig.module.rules.unshift(esLintRule) //add eslint
+if (process.env.ENABLE_ESLINT && process.env.ENABLE_ESLINT === 'true') {
+  webpackConfig.module.rules.unshift(esLintRule) // add eslint
 }
 
 module.exports = webpackConfig

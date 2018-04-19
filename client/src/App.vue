@@ -10,7 +10,7 @@
 
   export default {
     computed: {
-    ...mapGetters({ currentUser: 'currentUser' })
+      ...mapGetters({ currentUser: 'currentUser' })
     },
     created () {
       this.checkCurrentLogin()

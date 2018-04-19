@@ -51,7 +51,7 @@
       this.checkCurrentLogin()
     },
     computed: {
-    ...mapGetters({ currentUser: 'currentUser' })
+      ...mapGetters({ currentUser: 'currentUser' })
     },
     methods: {
       checkCurrentLogin () {

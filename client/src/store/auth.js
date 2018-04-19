@@ -8,25 +8,24 @@ const state = {
 }
 
 const mutations = {
-    [MutationTypes.LOGIN] (state) {
-      state.user = User.from(localStorage.token)
-    },
-    [MutationTypes.LOGOUT] (state) {
-      state.user = null
-    }
+  [MutationTypes.LOGIN] (state) {
+    state.user = User.from(localStorage.token)
+  },
+  [MutationTypes.LOGOUT] (state) {
+    state.user = null
   }
+}
 
 const getters = {
-    currentUser (state) {
-      return state.user
-    }
+  currentUser (state) {
+    return state.user
   }
+}
 
 const actions = {
   login ({ commit }) {
     commit(MutationTypes.LOGIN)
   },
-
   logout ({ commit }) {
     commit(MutationTypes.LOGOUT)
   }

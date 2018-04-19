@@ -10,7 +10,7 @@ export default class User {
     }
   }
 
-  constructor ({ mail, admin}) {
+  constructor ({mail, admin}) {
     this.mail = mail
     this.admin = admin
   }

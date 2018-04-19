@@ -17,7 +17,6 @@
             </div>
           </card>
         </div>
-
       </div>
     </div>
   </div>
@@ -36,8 +35,8 @@
       try {
         const response = await this.$http.get(`http://localhost:8080/api/0/apps/Test%20App/users`)
         var data = []
-        for (var i in response.data.data) {
-          data[data.length] = response.data.data[i].value
+        for (var i in response.data) {
+          data[data.length] = response.data[i].value
         }
         this.table.data = data
         this.table.columns = Object.keys(data[0])
@@ -57,28 +56,7 @@
     }
   }
 
-  const tableHeadings = ['Mail', 'Used Invitations' , 'Free Invitations']
-
-
-  // import userService from '@/services/userService'
-  // export default {
-  //   name: 'posts',
-  //   data () {
-  //     return {
-  //       posts: []
-  //     }
-  //   },
-  //   mounted () {
-  //     this.getUsers()
-  //   },
-  //   methods: {
-  //     async getUsers () {
-  //       const response = await userService.fetchUsers()
-  //       this.posts = response.data.data
-  //     }
-  //   }
-  // }
-
+  const tableHeadings = ['Mail', 'Used Invitations' ,'Free Invitations']
 </script>
 <style>
 </style>
