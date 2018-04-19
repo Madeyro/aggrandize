@@ -52,10 +52,7 @@ router.put('/:id', async ctx => {
     invQuery.accept(invDoc)
 
     ctx.status = 200
-    ctx.body = {
-      status: 'success',
-      data: res
-    }
+    ctx.body = res
   } catch (err) {
     ctx.status = 400
     ctx.body = {
@@ -71,10 +68,7 @@ router.delete('/:id', async ctx => {
     const res = await invQuery.declineInv(ctx.params.id)
 
     ctx.status = 201
-    ctx.body = {
-      status: 'success',
-      data: res
-    }
+    ctx.body = res
   } catch (err) {
     ctx.status = 400
     ctx.body = {

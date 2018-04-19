@@ -5,15 +5,15 @@ const timeStamp = require('../utils/timestamp')
 const userQuery = require('../db/querries/users')
 const invQuery = require('../db/querries/invs')
 
+const bcrypt = require('bcrypt')
+const saltRounds = 10
+
 router.get('/:user', async ctx => {
   try {
     const user = await userQuery.getUser(ctx.params.user)
 
     ctx.status = 200
-    ctx.body = {
-      status: 'success',
-      data: user
-    }
+    ctx.body = user
   } catch (err) {
     ctx.status = 400
     ctx.body = {
@@ -25,10 +25,11 @@ router.get('/:user', async ctx => {
 
 router.post('/register', async ctx => {
   try {
+    var hash = await bcrypt.hash(ctx.request.body.password, saltRounds)
     ctx.body = await userQuery.addUser({
       _id: ctx.request.body.mail,
       type: 'user',
-      password: ctx.request.body.password
+      password: hash
     })
   } catch (err) {
     ctx.status = 400
@@ -69,10 +70,37 @@ router.put('/:user/:app/sendinv/:invited', async ctx => {
     res['url'] = Router.url('/api/0/inv/:id', {id: `${res.id}`})
 
     ctx.status = 201
+    ctx.body = res
+  } catch (err) {
+    ctx.status = 400
     ctx.body = {
-      status: 'success',
-      data: res
+      status: 'error',
+      message: err.message || 'Sorry, an error has occurred.'
     }
+  }
+})
+
+router.get('/:user/adminto', async ctx => {
+  try {
+    const res = await userQuery.adminApps(ctx.params.user)
+
+    ctx.status = 200
+    ctx.body = res
+  } catch (err) {
+    ctx.status = 400
+    ctx.body = {
+      status: 'error',
+      message: err.message || 'Sorry, an error has occurred.'
+    }
+  }
+})
+
+router.get('/:user/apps', async ctx => {
+  try {
+    const res = await userQuery.userApps(ctx.params.user)
+
+    ctx.status = 200
+    ctx.body = res
   } catch (err) {
     ctx.status = 400
     ctx.body = {

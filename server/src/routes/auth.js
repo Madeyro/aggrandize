@@ -1,21 +1,28 @@
 const Router = require('koa-router')
 const router = new Router({prefix: '/api/0/auth'})
 
+const bcrypt = require('bcrypt')
 const jwt = require('jsonwebtoken')
+
 const userQuery = require('../db/querries/users')
 
 router.post('/', async ctx => {
   try {
     const user = await userQuery.getUser(ctx.request.body.mail)
-    console.log(user)
 
-    if (user.password !== ctx.request.body.password) {
-      throw Error('Password does not match')
-    }
+    bcrypt.compare(ctx.request.body.password, user.password).then(function (res) {
+      if (!res) {
+        throw Error('Password does not match')
+      }
+    })
+
+    const adminApps = await userQuery.adminApps(user._id)
+    const userApps = await userQuery.userApps(user._id)
 
     var token = jwt.sign({
-      admin: true,
       mail: ctx.request.body.mail,
+      apps: userApps.value,
+      admin: adminApps,
       aud: ctx.request.body.mail,
       iss: 'https://aggrandize.io/'
     }, 'secret', { expiresIn: '1h' })
@@ -29,14 +36,14 @@ router.post('/', async ctx => {
   }
 })
 
-// router.post('/token', async ctx => {
-//   try {
-//     const token = ctx.request.header.authorization.split(' ')[1]
-//     const decoded = jwt.verify(token, 'secret')
-//     ctx.body = decoded
-//   } catch (err) {
-//     ctx.body = err.message
-//   }
-// })
+router.post('/token', async ctx => {
+  try {
+    const token = ctx.request.header.authorization.split(' ')[1]
+    const decoded = jwt.verify(token, 'secret')
+    ctx.body = decoded
+  } catch (err) {
+    ctx.body = err.message
+  }
+})
 
 module.exports = router

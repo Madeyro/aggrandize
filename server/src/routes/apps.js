@@ -9,10 +9,7 @@ router.get('/:app', async ctx => {
   try {
     var app = await appQuery.getApp(ctx.params.app)
     ctx.status = 200
-    ctx.body = {
-      status: 'success',
-      data: app
-    }
+    ctx.body = app
   } catch (err) {
     ctx.status = 400
     ctx.body = {
@@ -45,10 +42,7 @@ router.put('/', async ctx => {
       const app = await appQuery.addApp(appJson)
 
       ctx.status = 201
-      ctx.body = {
-        status: 'success',
-        data: app
-      }
+      ctx.body = app
     } catch (err) {
       ctx.status = 400
       ctx.body = {
@@ -66,10 +60,7 @@ router.delete('/:app', async ctx => {
     const res = await appQuery.deleteApp(ctx.params.app, appRev)
 
     ctx.status = 200
-    ctx.body = {
-      status: 'success',
-      data: res
-    }
+    ctx.body = res
   } catch (err) {
     ctx.status = 400
     ctx.body = {
@@ -92,10 +83,7 @@ router.put('/:app/users/:user', async ctx => {
     throw res
   } else {
     ctx.status = 201
-    ctx.body = {
-      status: 'success',
-      data: res
-    }
+    ctx.body = res
   }
 })
 
@@ -106,10 +94,7 @@ router.delete('/:app/users/:user', async ctx => {
     const res = await userQuery.deleteUser(userDoc, ctx.params.app)
 
     ctx.status = 200
-    ctx.body = {
-      status: 'success',
-      data: res
-    }
+    ctx.body = res
   } catch (err) {
     ctx.status = 400
     ctx.body = {
@@ -125,10 +110,7 @@ router.get('/:app/users', async ctx => {
     const users = await userQuery.getAll(ctx.params.app)
 
     ctx.status = 200
-    ctx.body = {
-      status: 'success',
-      data: users
-    }
+    ctx.body = users
   } catch (err) {
     ctx.status = 400
     ctx.body = {
@@ -144,10 +126,7 @@ router.get('/:app/waitlist', async ctx => {
     const users = await appQuery.getList(ctx.params.app)
 
     ctx.status = 200
-    ctx.body = {
-      status: 'success',
-      data: users
-    }
+    ctx.body = users
   } catch (err) {
     ctx.status = 400
     ctx.body = {
@@ -163,10 +142,7 @@ router.put('/:app/waitlist/newsize/:size', async ctx => {
     const res = await appQuery.resizeList(ctx.params.app, ctx.params.size)
 
     ctx.status = 200
-    ctx.body = {
-      status: 'success',
-      data: res
-    }
+    ctx.body = res
   } catch (err) {
     ctx.status = 400
     ctx.body = {
@@ -182,10 +158,7 @@ router.put('/:app/users/:user/newinvs/:size', async ctx => {
     const res = await userQuery.resizeInv(ctx.params.user, ctx.params.app, ctx.params.size)
 
     ctx.status = 200
-    ctx.body = {
-      status: 'success',
-      data: res
-    }
+    ctx.body = res
   } catch (err) {
     ctx.status = 400
     ctx.body = {
@@ -219,10 +192,7 @@ router.put('/:app/waitlist/acceptall', async ctx => {
         throw res
       } else {
         ctx.status = 201
-        ctx.body = {
-          status: 'success',
-          data: res // only the last one is in body
-        }
+        ctx.body = res // only the last one is in body
       }
     }
 
@@ -259,10 +229,7 @@ router.put('/:app/waitlist/:mail', async ctx => {
     const res = await appQuery.addList(listDoc)
 
     ctx.status = 200
-    ctx.body = {
-      status: 'success',
-      data: res
-    }
+    ctx.body = res
   } catch (err) {
     ctx.status = 400
     ctx.body = {
