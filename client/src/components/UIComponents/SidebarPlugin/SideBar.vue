@@ -1,8 +1,6 @@
 <template>
   <div class="sidebar"
-       :style="sidebarStyle"
-       :data-color="backgroundColor"
-       :data-image="backgroundImage">
+       :data-color="backgroundColor">
     <div class="sidebar-wrapper">
       <div class="logo">
         <a href="/" class="simple-text">
@@ -12,7 +10,6 @@
           {{title}}
         </a>
       </div>
-
       <slot name="content"></slot>
       <ul class="nav">
         <!--By default vue-router adds an active class to each route link. This way the links are colored when clicked-->
@@ -39,20 +36,11 @@
     },
     props: {
       title: {
-        type: String,
-        default: 'Aggrandize'
+        type: String
       },
       backgroundColor: {
         type: String,
-        default: 'black',
-        validator: (value) => {
-          let acceptedValues = ['', 'blue', 'azure', 'green', 'orange', 'red', 'purple', 'black']
-          return acceptedValues.indexOf(value) !== -1
-        }
-      },
-      backgroundImage: {
-        type: String,
-        default: '/static/img/sidebar.jpg'
+        default: 'black'
       },
       activeColor: {
         type: String,
@@ -77,15 +65,12 @@
       }
     },
     computed: {
-      sidebarStyle () {
-        return {
-          backgroundImage: `url(${this.backgroundImage})`
-        }
-      }
     }
   }
 
 </script>
 <style>
-
+  .boardType {
+    align-items: center
+  }
 </style>

@@ -1,7 +1,7 @@
 <template>
   <nav class="navbar navbar-expand-lg">
     <div class="container-fluid">
-      <a class="navbar-brand" href="/">Test App 1</a>
+      <a class="navbar-brand" href="/">{{ currentApp }}</a>
       <button type="button"
               class="navbar-toggler navbar-toggler-right"
               :class="{toggled: $sidebar.showSidebar}"
@@ -19,29 +19,18 @@
             <template slot="title">
               <i class="nc-icon nc-app"></i>
               <b class="caret"></b>
-              <span class="notification selector">4</span>
+              <span class="notification selector">{{ Apps.length }}</span>
             </template>
-            <a class="dropdown-item" href="/">Test App 1</a>
-            <a class="dropdown-item" href="/">App 2</a>
-            <a class="dropdown-item" href="/">Application 3</a>
-            <a class="dropdown-item" href="/">Teste App 4</a>
-          </drop-down>
-          <drop-down tag="li">
-            <template slot="title">
-              <i class="nc-icon nc-bell-55"></i>
-              <b class="caret"></b>
-              <span class="notification">5</span>
+            <template v-for="app in Apps">
+              <a class="dropdown-item"  v-on:click="switchApp(app)" href="javascript:;" v-bind:key="app">{{ app }}</a>
             </template>
-            <a class="dropdown-item" href="/">Notification 1</a>
-            <a class="dropdown-item" href="/">Notification 2</a>
-            <a class="dropdown-item" href="/">Notification 3</a>
-            <a class="dropdown-item" href="/">Notification 4</a>
-            <a class="dropdown-item" href="/">Another notification</a>
           </drop-down>
         </ul>
         <ul class="navbar-nav ml-auto">
           <drop-down :title="currentUser.mail">
-            <a class="dropdown-item" @click="logout" href="javascript:;">Log out</a>
+            <a class="dropdown-item" @click="switchAdminBoard" href="javascript:;" v-if="isAdmin">Admin Dashboard</a>
+            <a class="dropdown-item" @click="switchUserBoard" href="javascript:;" v-if="isUser">User Dashboard</a>
+            <a class="dropdown-item" @click="logout" href="javascript:;" >Log out</a>
           </drop-down>
         </ul>
       </div>
@@ -53,16 +42,28 @@
 
   export default {
     computed: {
-      ...mapGetters({ currentUser: 'currentUser' }),
-      routeName () {
-        const {name} = this.$route
-        return this.capitalizeFirstLetter(name)
-      }
+      ...mapGetters([
+        'currentUser',
+        'isAdmin',
+        'isUser',
+        'adminApps',
+        'userApps',
+        'currentApp',
+        'isAdminBoard'
+      ])
     },
     data () {
       return {
-        activeNotifications: false
+        activeNotifications: false,
+        Apps: [],
+        CurrentApp: "It"
       }
+    },
+    created () {
+      this.getApps()
+    },
+    updated () {
+      this.getApps()
     },
     methods: {
       capitalizeFirstLetter (string) {
@@ -83,7 +84,40 @@
       logout() {
         delete localStorage.token
         this.$store.dispatch('logout')
-        this.$router.push('/login')
+        .then (
+          this.$router.push('/login')
+        )
+      },
+      switchAdminBoard () {
+        this.$store.dispatch('setAdminBoard')
+        .then (
+          this.$store.dispatch('changeApp', this.adminApps[0])
+        )
+        .then (
+          this.$router.push('/admin')
+        )
+      },
+      switchUserBoard () {
+        this.$store.dispatch('setUserBoard')
+        .then (
+          this.$store.dispatch('changeApp', this.userApps[0])
+        )
+        .then (
+          this.$router.push('/user')
+        )
+      },
+      getApps () {
+        if (this.isAdminBoard) {
+          this.Apps = this.adminApps
+        } else {
+          this.Apps = this.userApps
+        }
+      },
+      switchApp (app) {
+        this.$store.dispatch('changeApp', app)
+        .then(
+          this.currentApp
+        )
       }
     }
   }

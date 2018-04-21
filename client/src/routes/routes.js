@@ -1,24 +1,35 @@
-import DashboardLayout from '../components/Dashboard/Layout/DashboardLayout.vue'
+// Dashboard Layouts
+import AdminDashboardLayout from '../components/Dashboard/Layout/AdminDashboardLayout.vue'
+import UserDashboardLayout from 'src/components/Dashboard/Layout/UserDashboardLayout.vue'
+
 // GeneralViews
 import NotFound from '../components/GeneralViews/NotFoundPage.vue'
 import Login from '../components/GeneralViews/Login.vue'
 import Register from '../components/GeneralViews/Register.vue'
 
 // Admin pages
-import Overview from 'src/components/Dashboard/Views/Overview.vue'
-import Feedback from 'src/components/Dashboard/Views/Feedback.vue'
-import UserList from 'src/components/Dashboard/Views/UserList.vue'
-import Settings from 'src/components/Dashboard/Views/Settings.vue'
+import Overview from 'src/components/Dashboard/Views/AdminViews/Overview.vue'
+import AdminFeedback from 'src/components/Dashboard/Views/AdminViews/Feedback.vue'
+import UserList from 'src/components/Dashboard/Views/AdminViews/UserList.vue'
+import Settings from 'src/components/Dashboard/Views/AdminViews/Settings.vue'
+
+// User pages
+import Apps from 'src/components/Dashboard/Views/UserViews/Apps.vue'
+import UserFeedback from 'src/components/Dashboard/Views/UserViews/Feedback.vue'
+import Waitlist from 'src/components/Dashboard/Views/UserViews/Waitlist.vue'
+import Invite from 'src/components/Dashboard/Views/UserViews/Invite.vue'
+
+// Root page for redirecting
+import Root from 'src/components/GeneralViews/Root.vue'
 
 const routes = [
   {
-    path: '/',
-    component: DashboardLayout,
-    redirect: '/admin/overview'
+    path: '/', // redirect to Admin or User dashboard
+    component: Root
   },
   {
     path: '/admin',
-    component: DashboardLayout,
+    component: AdminDashboardLayout,
     redirect: '/admin/overview',
     children: [
       {
@@ -37,9 +48,36 @@ const routes = [
         component: Settings
       },
       {
-        path: 'Feedback',
-        name: 'feedback',
-        component: Feedback
+        path: 'feedback',
+        name: 'See Feedback',
+        component: AdminFeedback
+      }
+    ]
+  },
+  {
+    component: UserDashboardLayout,
+    path: '/user',
+    redirect: '/user/apps',
+    children: [
+      {
+        path: 'apps',
+        name: 'My Apps',
+        component: Apps
+      },
+      {
+        path: 'waitlists',
+        name: 'Waiting Lists',
+        component: Waitlist
+      },
+      {
+        path: 'invites',
+        name: 'Invites',
+        component: Invite
+      },
+      {
+        path: 'feedback',
+        name: 'Give Feedback',
+        component: UserFeedback
       }
     ]
   },

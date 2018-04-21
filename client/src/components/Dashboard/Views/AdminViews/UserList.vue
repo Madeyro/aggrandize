@@ -5,8 +5,8 @@
         <div class="col-12">
           <card>
             <template slot="header">
-              <h4 class="card-title">Striped Table with Hover</h4>
-              <p class="card-category">Here is a subtitle for this table</p>
+              <h4 class="card-title">Users</h4>
+              <p class="card-category">Currecntly using your application.</p>
             </template>
             <div class="table-responsive">
               <l-table class="table-hover table-striped"
@@ -24,25 +24,17 @@
 <script>
   import LTable from 'src/components/UIComponents/Table.vue'
   import Card from 'src/components/UIComponents/Cards/Card.vue'
+  import { mapGetters } from 'vuex'
 
   export default {
     components: {
       LTable,
       Card
     },
-    // Fetches users
-    async created() {
-      try {
-        const response = await this.$http.get(`http://localhost:8080/api/0/apps/Test%20App/users`)
-        var data = []
-        for (var i in response.data) {
-          data[data.length] = response.data[i].value
-        }
-        this.table.data = data
-        this.table.columns = Object.keys(data[0])
-      } catch (e) {
-        this.errors.push(e)
-      }
+    computed: {
+      ...mapGetters([
+        'currentApp'
+      ])
     },
     data () {
       return {
@@ -51,6 +43,32 @@
           data: [],
           headings: [...tableHeadings],
           keys: []
+        }
+      }
+    },
+    created() {
+      this.fetchUsers()
+    },
+    updated() {
+      this.fetchUsers()
+    },
+    methods: {
+      async fetchUsers() {
+        try {
+          var appId = await this.currentApp
+          var url = 'http://localhost:8080/api/0/apps/' + encodeURIComponent(appId) +'/users'
+
+          const response = await this.$http.get(url)
+          var data = []
+          for (var i in response.data) {
+            data[data.length] = response.data[i].value
+          }
+          this.table.data = data
+          this.table.columns = Object.keys(data[0])
+        } catch (e) {
+          // this.errors.push(e)
+          console.log(e)
+
         }
       }
     }

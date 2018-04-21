@@ -51,11 +51,13 @@
       this.checkCurrentLogin()
     },
     computed: {
-      ...mapGetters({ currentUser: 'currentUser' })
+      ...mapGetters([
+        'currentUser'
+      ])
     },
     methods: {
       checkCurrentLogin () {
-        if (localStorage.currentUser) {
+        if (this.currentUser) {
           this.$router.replace(this.$route.query.redirect || '/')
         }
       },

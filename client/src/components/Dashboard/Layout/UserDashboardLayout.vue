@@ -1,20 +1,20 @@
 <template>
   <div class="wrapper">
-    <side-bar>
+    <side-bar title="User">
       <mobile-menu slot="content"></mobile-menu>
-      <sidebar-link to="/admin/overview">
-        <i class="nc-icon nc-chart-pie-35"></i>
-        <p>Dashboard</p>
+      <sidebar-link to="/user/apps">
+        <i class="nc-icon nc-grid-45"></i>
+        <p>My Apps</p>
       </sidebar-link>
-      <sidebar-link to="/admin/users">
-        <i class="nc-icon nc-single-02"></i>
-        <p>Users</p>
+      <sidebar-link to="/user/waitlists">
+        <i class="nc-icon nc-notes"></i>
+        <p>Waiting lists</p>
       </sidebar-link>
-      <sidebar-link to="/admin/settings">
-        <i class="nc-icon nc-preferences-circle-rotate"></i>
-        <p>Settings</p>
+      <sidebar-link to="/user/invites">
+        <i class="nc-icon nc-email-83"></i>
+        <p>Invites</p>
       </sidebar-link>
-      <sidebar-link to="/admin/feedback">
+      <sidebar-link to="/user/feedback">
         <i class="nc-icon nc-satisfied"></i>
         <p>Feedback</p>
       </sidebar-link>
@@ -30,28 +30,29 @@
     </div>
   </div>
 </template>
-<style lang="scss">
-
-</style>
 <script>
   import TopNavbar from './TopNavbar.vue'
   import ContentFooter from './ContentFooter.vue'
   import DashboardContent from './Content.vue'
   import MobileMenu from './MobileMenu.vue'
   export default {
-    components: {
-      TopNavbar,
+      components: {
+          TopNavbar,
       ContentFooter,
       DashboardContent,
       MobileMenu
     },
     methods: {
-      toggleSidebar () {
-        if (this.$sidebar.showSidebar) {
-          this.$sidebar.displaySidebar(false)
+        toggleSidebar () {
+            if (this.$sidebar.showSidebar) {
+                this.$sidebar.displaySidebar(false)
         }
       }
     }
   }
 
 </script>
+
+<style lang="scss">
+
+</style>

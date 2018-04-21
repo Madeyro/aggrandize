@@ -29,7 +29,8 @@ router.post('/register', async ctx => {
     ctx.body = await userQuery.addUser({
       _id: ctx.request.body.mail,
       type: 'user',
-      password: hash
+      password: hash,
+      apps: []
     })
   } catch (err) {
     ctx.status = 400

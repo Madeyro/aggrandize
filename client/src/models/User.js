@@ -10,12 +10,13 @@ export default class User {
     }
   }
 
-  constructor ({mail, admin}) {
+  constructor ({mail, admin, apps}) {
     this.mail = mail
     this.admin = admin
+    this.apps = apps
   }
 
   get isAdmin () {
-    return this.admin
+    return this.admin.length
   }
 }

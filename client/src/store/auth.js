@@ -2,6 +2,7 @@
 
 import User from '@/models/User'
 import * as MutationTypes from './mutationTypes'
+import app from './app'
 
 const state = {
   user: User.from(localStorage.token)
@@ -19,6 +20,18 @@ const mutations = {
 const getters = {
   currentUser (state) {
     return state.user
+  },
+  isAdmin (state) {
+    return state.user.admin.length
+  },
+  isUser (state) {
+    return state.user.apps.length
+  },
+  adminApps (state) {
+    return state.user.admin
+  },
+  userApps (state) {
+    return state.user.apps
   }
 }
 
@@ -35,5 +48,8 @@ export default {
   state,
   mutations,
   getters,
-  actions
+  actions,
+  modules: {
+    app
+  }
 }

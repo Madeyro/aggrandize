@@ -1,5 +1,5 @@
 import {mount, createLocalVue} from 'vue-test-utils'
-import Overview from 'src/components/Dashboard/Views/Overview.vue'
+import Overview from 'src/components/Dashboard/AdminViews/Overview.vue'
 import VTooltip from 'v-tooltip'
 
 let localVue = createLocalVue()
