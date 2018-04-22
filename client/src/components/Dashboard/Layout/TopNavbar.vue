@@ -55,8 +55,7 @@
     data () {
       return {
         activeNotifications: false,
-        Apps: [],
-        CurrentApp: "It"
+        Apps: []
       }
     },
     created () {
@@ -115,7 +114,7 @@
       },
       switchApp (app) {
         this.$store.dispatch('changeApp', app)
-        .then(
+        .then (
           this.currentApp
         )
       }

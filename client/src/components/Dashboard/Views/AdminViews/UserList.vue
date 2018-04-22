@@ -41,16 +41,17 @@
         table: {
           columns: [],
           data: [],
-          headings: [...tableHeadings],
-          keys: []
+          headings: [...tableHeadings]
         }
       }
     },
     created() {
       this.fetchUsers()
-    },
-    updated() {
-      this.fetchUsers()
+      this.$store.subscribe( (mutation, state) => {
+        if (mutation.type === 'CHANGEAPP') {
+          this.fetchUsers()
+        }
+      })
     },
     methods: {
       async fetchUsers() {
@@ -63,16 +64,17 @@
           for (var i in response.data) {
             data[data.length] = response.data[i].value
           }
-          this.table.data = data
+          this.table.data = data,
           this.table.columns = Object.keys(data[0])
         } catch (e) {
-          // this.errors.push(e)
-          console.log(e)
+          this.errors.push(e)
+          // console.log(e)
 
         }
       }
     }
   }
+
 
   const tableHeadings = ['Mail', 'Used Invitations' ,'Free Invitations']
 </script>
