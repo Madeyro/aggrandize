@@ -83,27 +83,17 @@
       logout() {
         delete localStorage.token
         this.$store.dispatch('logout')
-        .then (
-          this.$router.push('/login')
-        )
+        .then (this.$router.push('/login'))
       },
       switchAdminBoard () {
         this.$store.dispatch('setAdminBoard')
-        .then (
-          this.$store.dispatch('changeApp', this.adminApps[0])
-        )
-        .then (
-          this.$router.push('/admin')
-        )
+        .then (this.$store.dispatch('changeApp', this.adminApps[0]))
+        .then (this.$router.push('/admin'))
       },
       switchUserBoard () {
         this.$store.dispatch('setUserBoard')
-        .then (
-          this.$store.dispatch('changeApp', this.userApps[0])
-        )
-        .then (
-          this.$router.push('/user')
-        )
+        .then (this.$store.dispatch('changeApp', this.userApps[0]))
+        .then (this.$router.push('/user'))
       },
       getApps () {
         if (this.isAdminBoard) {
@@ -114,9 +104,7 @@
       },
       switchApp (app) {
         this.$store.dispatch('changeApp', app)
-        .then (
-          this.currentApp
-        )
+        .then (this.currentApp)
       }
     }
   }
