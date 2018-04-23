@@ -14,10 +14,6 @@
         <i class="nc-icon nc-email-83"></i>
         <p>Invites</p>
       </sidebar-link>
-      <sidebar-link to="/user/feedback">
-        <i class="nc-icon nc-satisfied"></i>
-        <p>Feedback</p>
-      </sidebar-link>
     </side-bar>
     <div class="main-panel">
       <top-navbar></top-navbar>

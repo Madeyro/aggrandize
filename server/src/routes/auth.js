@@ -10,11 +10,10 @@ router.post('/', async ctx => {
   try {
     const user = await userQuery.getUser(ctx.request.body.mail)
 
-    bcrypt.compare(ctx.request.body.password, user.password).then(function (res) {
-      if (!res) {
-        throw Error('Password does not match')
-      }
-    })
+    var doesMatch = await bcrypt.compare(ctx.request.body.password, user.password)
+    if (!doesMatch) {
+      throw Error('Password does not match')
+    }
 
     const adminApps = await userQuery.adminApps(user._id)
     const userApps = await userQuery.userApps(user._id)

@@ -4,6 +4,13 @@
   import { mapGetters } from 'vuex'
 
   export default {
+    computed: {
+      ... mapGetters ([
+        'currentUser',
+        'isAdmin',
+        'currentApp'
+      ])
+    },
     created () {
       this.chooseBoard()
     },
@@ -13,17 +20,10 @@
     activated () {
       this.chooseBoard()
     },
-    computed: {
-      ... mapGetters ([
-        'currentUser',
-        'isAdmin',
-        'currentApp'
-      ])
-    },
     methods: {
       chooseBoard () {
         if (!this.currentUser) {
-          this.$router.replace(this.$route.query.redirect || '.login')
+          this.$router.replace(this.$route.query.redirect || '/login')
         }
         if (this.isAdmin) {
           this.$store.dispatch('changeApp', this.currentUser.admin[0])

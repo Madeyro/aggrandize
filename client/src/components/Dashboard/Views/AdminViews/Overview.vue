@@ -150,7 +150,7 @@
               </h4>
             </div>
             <!-- form -->
-            <fg-input class="col-sm-6 col-12" v-model="userForm.mail" label="Email" placeholder="Email" value="" type="mail" aria-describedby="mailHelpInline">
+            <fg-input class="col-sm-6 col-12" v-model="userForm.mail" label="Email" placeholder="Email" value="" type="mail">
             </fg-input>
             <fg-input class="col-sm-6 col-12" v-model="userForm.invs" label="Available invitations" placeholder="Number of invitations" value="10" type="number" aria-describedby="invHelpInline">
               <small id="invHelpInline" class="text-muted">
@@ -187,7 +187,8 @@
     computed: {
       ...mapGetters([
         'currentApp',
-        'currentUser'
+        'currentUser',
+        'adminBoard'
       ])
     },
     data () {
@@ -274,6 +275,8 @@
           const res = await this.$http.get(url)
           this.userCount = res.data
         } catch (err) {
+          console.log(err)
+
           alert(err.message)
         }
       },
@@ -287,6 +290,8 @@
           const res = await this.$http.get(url)
           this.sentInvs = res.data
         } catch (err) {
+          console.log(err)
+
           alert(err.message)
         }
       },
@@ -300,6 +305,8 @@
           const res = await this.$http.get(url)
           this.freeInvs = res.data
         } catch (err) {
+          console.log(err)
+
           alert(err.message)
         }
       },
@@ -309,17 +316,24 @@
           var baseUrl = 'http://localhost:8080/api/0/apps/'
                     + encodeURIComponent(appId)
                     +'/waitlist/'
+          console.log(baseUrl)
 
           var occupied = await this.$http.get(baseUrl + 'occupied')
           var size = await this.$http.get(baseUrl + 'size')
-          this.waitlistOccupied = +((occupied.data * 100) / size.data).toFixed(2) + ' %'
+          if (occupied === 0) {
+            this.waitlistOccupied = 0
+          } else {
+            this.waitlistOccupied = +((occupied.data * 100) / size.data).toFixed(2) + ' %'
+          }
         } catch (err) {
+          console.log(err)
+
           alert(err.message)
         }
       },
       async addApp () {
         try {
-          var appId = this.currentApp
+          var appId = await this.currentApp
           var user = this.currentUser
           var url = 'http://localhost:8080/api/0/apps/'
 
@@ -331,6 +345,8 @@
           this.notifyVue('App was successfully added.')
           this.clearAppForm()
         } catch (err) {
+          console.log(err)
+
           alert(err.message)
         }
       },
@@ -340,7 +356,7 @@
       },
       async addUser () {
                 try {
-          var appId = this.currentApp
+          var appId = await this.currentApp
           var url = 'http://localhost:8080/api/0/apps/'
                     + encodeURIComponent(appId)
                     + '/users/'
@@ -352,6 +368,8 @@
         this.notifyVue('User was successfully added.')
         this.clearUserForm()
         } catch (err) {
+          console.log(err)
+
           alert(err.message)
         }
       },

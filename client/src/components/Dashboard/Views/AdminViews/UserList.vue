@@ -113,6 +113,8 @@
           })
           this.table.data = data
         } catch (e) {
+          console.log(e)
+
           alert(e.message)
         }
       },
@@ -135,6 +137,8 @@
             .then(this.fetchUsers())
             .then(this.notifyVue('You successfully deleted user(s).'))
         } catch (e) {
+          console.log(e)
+
           alert(e.message)
         }
       },
@@ -162,6 +166,8 @@
             .then(this.fetchUsers())
             .then(this.notifyVue('Number of invitations was updated.'))
         } catch (e) {
+          console.log(e)
+
           alert(e.message)
         }
       },

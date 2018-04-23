@@ -14,10 +14,6 @@
         <i class="nc-icon nc-preferences-circle-rotate"></i>
         <p>Settings</p>
       </sidebar-link>
-      <sidebar-link to="/admin/feedback">
-        <i class="nc-icon nc-satisfied"></i>
-        <p>Feedback</p>
-      </sidebar-link>
     </side-bar>
     <div class="main-panel">
       <top-navbar></top-navbar>

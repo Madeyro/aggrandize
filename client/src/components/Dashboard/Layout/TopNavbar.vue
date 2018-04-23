@@ -29,6 +29,7 @@
         <ul class="navbar-nav ml-auto">
           <drop-down :title="currentUser.mail">
             <a class="dropdown-item" @click="switchAdminBoard" href="javascript:;" v-if="isAdmin">Admin Dashboard</a>
+            <a class="dropdown-item" @click="firstApp" href="javascript:;" v-if="!isAdmin">Admin Dashboard</a>
             <a class="dropdown-item" @click="switchUserBoard" href="javascript:;" v-if="isUser">User Dashboard</a>
             <a class="dropdown-item" @click="logout" href="javascript:;" >Log out</a>
           </drop-down>
@@ -80,19 +81,19 @@
       hideSidebar () {
         this.$sidebar.displaySidebar(false)
       },
-      logout() {
+      async logout() {
         delete localStorage.token
         this.$store.dispatch('logout')
         .then (this.$router.push('/login'))
       },
-      switchAdminBoard () {
-        this.$store.dispatch('setAdminBoard')
-        .then (this.$store.dispatch('changeApp', this.adminApps[0]))
+      async switchAdminBoard () {
+        this.$store.dispatch('changeApp', this.adminApps[0])
+        .then (this.$store.dispatch('setAdminBoard'))
         .then (this.$router.push('/admin'))
       },
-      switchUserBoard () {
-        this.$store.dispatch('setUserBoard')
-        .then (this.$store.dispatch('changeApp', this.userApps[0]))
+      async switchUserBoard () {
+        await this.$store.dispatch('changeApp', this.userApps[0])
+        .then (this.$store.dispatch('setUserBoard'))
         .then (this.$router.push('/user'))
       },
       getApps () {
@@ -102,9 +103,12 @@
           this.Apps = this.userApps
         }
       },
-      switchApp (app) {
+      async switchApp (app) {
         this.$store.dispatch('changeApp', app)
         .then (this.currentApp)
+      },
+      firstApp () {
+        this.$router.push('/user/firstapp')
       }
     }
   }

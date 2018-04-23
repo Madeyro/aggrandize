@@ -6,6 +6,7 @@ export default class User {
       let obj = JwtDecode(token)
       return new User(obj)
     } catch (err) {
+      console.log(err)
       return null
     }
   }

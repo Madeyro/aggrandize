@@ -27,7 +27,11 @@ async function getListSize (appId) {
 
 async function getListOccupation (appId) {
   const res = await db.view('views', 'waitlist_occupied', { key: `${appId}` })
-  return res[0].rows[0].value
+  if (res[0].rows.length) {
+    return res[0].rows[0].value
+  } else {
+    return 0
+  }
 }
 
 async function resizeList (appId, newSize) {
@@ -66,9 +70,12 @@ async function addApp (jsonData) {
     app: jsonData._id,
     users: []
   }
-
-  const res2 = await addList(waitlist)
-  return [res[0], res2] // cut off couchdb metadata
+  try {
+    await getListDoc(jsonData._id)
+  } catch (err) {
+    await addList(waitlist)
+  }
+  return res[0] // cut off couchdb metadata
 }
 
 async function updateApp (jsonData) {

@@ -9,13 +9,12 @@ import Register from '../components/GeneralViews/Register.vue'
 
 // Admin pages
 import Overview from 'src/components/Dashboard/Views/AdminViews/Overview.vue'
-import AdminFeedback from 'src/components/Dashboard/Views/AdminViews/Feedback.vue'
 import UserList from 'src/components/Dashboard/Views/AdminViews/UserList.vue'
 import Settings from 'src/components/Dashboard/Views/AdminViews/Settings.vue'
+import FirstApp from 'src/components/Dashboard/Views/AdminViews/FirstApp.vue'
 
 // User pages
 import Apps from 'src/components/Dashboard/Views/UserViews/Apps.vue'
-import UserFeedback from 'src/components/Dashboard/Views/UserViews/Feedback.vue'
 import Waitlist from 'src/components/Dashboard/Views/UserViews/Waitlist.vue'
 import Invite from 'src/components/Dashboard/Views/UserViews/Invite.vue'
 
@@ -46,11 +45,6 @@ const routes = [
         path: 'settings',
         name: 'Settings',
         component: Settings
-      },
-      {
-        path: 'feedback',
-        name: 'See Feedback',
-        component: AdminFeedback
       }
     ]
   },
@@ -75,9 +69,9 @@ const routes = [
         component: Invite
       },
       {
-        path: 'feedback',
-        name: 'Give Feedback',
-        component: UserFeedback
+        path: 'firstapp',
+        name: 'First App',
+        component: FirstApp
       }
     ]
   },
