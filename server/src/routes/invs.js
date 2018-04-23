@@ -19,11 +19,11 @@ router.put('/:id', async ctx => {
           throw Error('User already has access to app.')
         }
       }
-      newUser.apps[newUser.apps.length] = {
+      newUser.apps.push({
         id: invDoc.app,
         used_inv: 0,
         free_inv: 5
-      }
+      })
     } catch (err) {
       newUser = {
         _id: invDoc.to,

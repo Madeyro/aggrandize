@@ -5,6 +5,15 @@ async function getAll (appId) {
   return users[0].rows
 }
 
+async function getAllCount (appId) {
+  const users = await db.view('views', 'user_count', { key: `${appId}` })
+  if (users[0].rows.length) {
+    return users[0].rows[0].value
+  } else {
+    return 0
+  }
+}
+
 async function getUser (userId) {
   const doc = await db.get(userId)
   return doc[0] // cut off couchdb metadata
@@ -17,9 +26,11 @@ async function addUser (jsonData) {
 
 async function grantUserAccess (mail, invs, appId) {
   var userJson
-  var freeInvs = invs
-  if (freeInvs == null) {
-    invs = 10 // default value
+  var freeInvs
+  if (invs == null) {
+    freeInvs = 10 // default value
+  } else {
+    freeInvs = Number(invs)
   }
   try {
     userJson = await getUser(mail)
@@ -30,11 +41,11 @@ async function grantUserAccess (mail, invs, appId) {
       }
     }
     // user exits but does not have access to app
-    userJson.apps[userJson.apps.length] = {
+    userJson.apps.push({
       id: appId,
-      used_inv: '0',
-      free_inv: invs
-    }
+      used_inv: 0,
+      free_inv: freeInvs
+    })
   } catch (err) {
     // missing -> create new one
     userJson = {
@@ -44,7 +55,7 @@ async function grantUserAccess (mail, invs, appId) {
         {
           id: appId,
           used_inv: 0,
-          free_inv: invs
+          free_inv: freeInvs
         }
       ]
     }
@@ -65,7 +76,7 @@ async function resizeInv (userId, appId, newSize) {
   // create new JSON
   for (var index in doc.apps) {
     if (doc.apps[index].id === appId) {
-      doc.apps[index].free_inv = newSize
+      doc.apps[index].free_inv = Number(newSize)
       break
     }
   }
@@ -89,9 +100,11 @@ async function deleteUser (user, appId) {
       type: 'user',
       apps: json
     }
-    return db.insert(update)
+    let res = await db.insert(update)
+    return res[0]
   } else {
-    return db.destroy(user._id, user._rev)
+    let res = await db.destroy(user._id, user._rev)
+    return res[0]
   }
 }
 
@@ -100,9 +113,9 @@ async function adminApps (user) {
   apps = apps[0].rows
 
   var list = []
-  for (var index in apps) {
-    list.push(apps[index].id)
-  }
+  apps.forEach(app => {
+    list.push(app.id)
+  })
 
   return list
 }
@@ -114,6 +127,7 @@ async function userApps (user) {
 
 module.exports = {
   getAll,
+  getAllCount,
   getUser,
   addUser,
   grantUserAccess,

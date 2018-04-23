@@ -1,18 +1,35 @@
 <template>
   <div class="content">
+    <notifications></notifications>
     <div class="container-fluid">
+
       <div class="row">
         <div class="col-xl-3 col-md-6">
           <stats-card>
-            <div slot="header" class="icon-warning">
-              <i class="nc-icon nc-chart text-warning"></i>
+            <div slot="header" class="icon-primary">
+              <i class="nc-icon nc-single-02 text-primary"></i>
             </div>
             <div slot="content">
-              <p class="card-category">Capacity</p>
-              <h4 class="card-title">105GB</h4>
+              <p class="card-category">Users</p>
+              <h4 class="card-title">{{ userCount }}</h4>
             </div>
             <div slot="footer">
-              <i class="fa fa-refresh"></i>Updated now
+              <i class="fa fa-history"></i> Updated 3 minutes ago
+            </div>
+          </stats-card>
+        </div>
+
+        <div class="col-xl-3 col-md-6">
+          <stats-card>
+            <div slot="header" class="icon-warning">
+              <i class="nc-icon nc-send text-warning"></i>
+            </div>
+            <div slot="content">
+              <p class="card-category">Sent invites</p>
+              <h4 class="card-title">{{ sentInvs }}</h4>
+            </div>
+            <div slot="footer">
+              <i class="fa fa-history"></i> Updated 3 minutes ago
             </div>
           </stats-card>
         </div>
@@ -20,14 +37,14 @@
         <div class="col-xl-3 col-md-6">
           <stats-card>
             <div slot="header" class="icon-success">
-              <i class="nc-icon nc-light-3 text-success"></i>
+              <i class="nc-icon nc-email-83 text-success"></i>
             </div>
             <div slot="content">
-              <p class="card-category">Revenue</p>
-              <h4 class="card-title">$1,345</h4>
+              <p class="card-category">Available invites</p>
+              <h4 class="card-title">{{ freeInvs }}</h4>
             </div>
             <div slot="footer">
-              <i class="fa fa-calendar-o"></i>Last day
+              <i class="fa fa-history"></i> Updated 3 minutes ago
             </div>
           </stats-card>
         </div>
@@ -35,36 +52,21 @@
         <div class="col-xl-3 col-md-6">
           <stats-card>
             <div slot="header" class="icon-danger">
-              <i class="nc-icon nc-vector text-danger"></i>
+              <i class="nc-icon nc-watch-time text-danger"></i>
             </div>
             <div slot="content">
-              <p class="card-category">Errors</p>
-              <h4 class="card-title">23</h4>
+              <p class="card-category">Waitling list occupation</p>
+              <h4 class="card-title">{{ waitlistOccupied }}</h4>
             </div>
             <div slot="footer">
-              <i class="fa fa-clock-o"></i>Last day
+              <i class="fa fa-history"></i> Updated 3 minutes ago
             </div>
           </stats-card>
         </div>
-
-        <div class="col-xl-3 col-md-6">
-          <stats-card>
-            <div slot="header" class="icon-info">
-              <i class="nc-icon nc-favourite-28 text-primary"></i>
-            </div>
-            <div slot="content">
-              <p class="card-category">Followers</p>
-              <h4 class="card-title">+45</h4>
-            </div>
-            <div slot="footer">
-              <i class="fa fa-refresh"></i>Updated now
-            </div>
-          </stats-card>
-        </div>
-
       </div>
+
       <div class="row">
-        <div class="col-md-8">
+        <div class="col-md-7">
           <chart-card :chart-data="lineChart.data"
                       :chart-options="lineChart.options"
                       :responsive-options="lineChart.responsiveOptions">
@@ -86,7 +88,7 @@
           </chart-card>
         </div>
 
-        <div class="col-md-4">
+        <div class="col-md-5">
           <chart-card :chart-data="pieChart.data" chart-type="Pie">
             <template slot="header">
               <h4 class="card-title">Email Statistics</h4>
@@ -107,64 +109,65 @@
         </div>
       </div>
 
+
+
       <div class="row">
         <div class="col-md-6">
-          <chart-card
-            :chart-data="barChart.data"
-            :chart-options="barChart.options"
-            :chart-responsive-options="barChart.responsiveOptions"
-            chart-type="Bar">
-            <template slot="header">
-              <h4 class="card-title">2014 Sales</h4>
-              <p class="card-category">All products including Taxes</p>
-            </template>
-            <template slot="footer">
-              <div class="legend">
-                <i class="fa fa-circle text-info"></i> Tesla Model S
-                <i class="fa fa-circle text-danger"></i> BMW 5 Series
-              </div>
+          <card>
+            <div slot="header" class="icon-info">
+              <h4 class="title">
+                <i class="nc-icon nc-app text-info"></i>
+                &nbsp;Start new program
+              </h4>
+            </div>
+            <!-- form -->
+            <fg-input class="col-sm-6 col-12" v-model="appForm.name" label="Name" placeholder="Name" value="" type="text" aria-describedby="nameHelpInline">
+              <small id="nameHelpInline" class="text-muted">
+                Must be unique.
+              </small>
+            </fg-input>
+            <fg-input class="col-sm-6 col-12" v-model="appForm.listSize" label="Waitling list size" placeholder="List size" value="50" type="number" aria-describedby="listHelpInline">
+              <small id="listHelpInline" class="text-muted">
+                Must specify. If left blank it will be set to 0.
+              </small>
+            </fg-input>
+            <div class="footer">
               <hr>
-              <div class="stats">
-                <i class="fa fa-check"></i> Data information certified
+              <div style="float: right;">
+                <button class="btn btn-primary" @click="addApp">Submit</button>
+                <button class="btn btn-reset" @click="clearAppForm">Clear</button>
               </div>
-            </template>
-          </chart-card>
+            </div>
+          </card>
         </div>
 
         <div class="col-md-6">
           <card>
-            <template slot="header">
-              <h5 class="title">Tasks</h5>
-              <p class="category">Backend development</p>
-            </template>
-            <l-table :data="tableData.data"
-                     :columns="tableData.columns">
-              <template slot="columns"></template>
-
-              <template slot-scope="{row}">
-                <td>
-                  <Checkbox v-model="row.checked"></Checkbox>
-                </td>
-                <td>{{row.title}}</td>
-                <td class="td-actions text-right">
-                  <button type="button" class="btn-simple btn btn-xs btn-info" v-tooltip.top-center="editTooltip">
-                    <i class="fa fa-edit"></i>
-                  </button>
-                  <button type="button" class="btn-simple btn btn-xs btn-danger" v-tooltip.top-center="deleteTooltip">
-                    <i class="fa fa-times"></i>
-                  </button>
-                </td>
-              </template>
-            </l-table>
+            <div slot="header" class="icon-danger">
+              <h4 class="title">
+                <i class="nc-icon nc-circle-09 text-danger"></i>
+                &nbsp;Add new user
+              </h4>
+            </div>
+            <!-- form -->
+            <fg-input class="col-sm-6 col-12" v-model="userForm.mail" label="Email" placeholder="Email" value="" type="mail" aria-describedby="mailHelpInline">
+            </fg-input>
+            <fg-input class="col-sm-6 col-12" v-model="userForm.invs" label="Available invitations" placeholder="Number of invitations" value="10" type="number" aria-describedby="invHelpInline">
+              <small id="invHelpInline" class="text-muted">
+                Optional.<br>If left blank it will be set to 0.
+              </small>
+            </fg-input>
             <div class="footer">
               <hr>
-              <div class="stats">
-                <i class="fa fa-history"></i> Updated 3 minutes ago
+              <div style="float: right;">
+                <button class="btn btn-primary" @click="addUser">Submit</button>
+                <button class="btn btn-reset" @click="clearUserForm">Clear</button>
               </div>
             </div>
           </card>
-
         </div>
+
+
       </div>
     </div>
   </div>
@@ -173,21 +176,22 @@
   import ChartCard from 'src/components/UIComponents/Cards/ChartCard.vue'
   import StatsCard from 'src/components/UIComponents/Cards/StatsCard.vue'
   import Card from 'src/components/UIComponents/Cards/Card.vue'
-  import LTable from 'src/components/UIComponents/Table.vue'
-  import Checkbox from 'src/components/UIComponents/Inputs/Checkbox.vue'
+  import { mapGetters } from 'vuex'
 
   export default {
     components: {
-      Checkbox,
       Card,
-      LTable,
       ChartCard,
       StatsCard
     },
+    computed: {
+      ...mapGetters([
+        'currentApp',
+        'currentUser'
+      ])
+    },
     data () {
       return {
-        editTooltip: 'Edit Task',
-        deleteTooltip: 'Remove',
         pieChart: {
           data: {
             labels: ['40%', '20%', '40%'],
@@ -229,45 +233,143 @@
             }]
           ]
         },
-        barChart: {
-          data: {
-            labels: ['Jan', 'Feb', 'Mar', 'Apr', 'Mai', 'Jun', 'Jul', 'Aug', 'Sep', 'Oct', 'Nov', 'Dec'],
-            series: [
-              [542, 443, 320, 780, 553, 453, 326, 434, 568, 610, 756, 895],
-              [412, 243, 280, 580, 453, 353, 300, 364, 368, 410, 636, 695]
-            ]
-          },
-          options: {
-            seriesBarDistance: 10,
-            axisX: {
-              showGrid: false
-            },
-            height: '245px'
-          },
-          responsiveOptions: [
-            ['screen and (max-width: 640px)', {
-              seriesBarDistance: 5,
-              axisX: {
-                labelInterpolationFnc (value) {
-                  return value[0]
-                }
-              }
-            }]
-          ]
+        userCount: 0,
+        sentInvs: 0,
+        freeInvs: 0,
+        waitlistOccupied: 0,
+        appForm: {
+          name: '',
+          listSize: 50
         },
-        tableData: {
-          data: [
-            {title: 'Sign contract for "What are conference organizers afraid of?"', checked: false},
-            {title: 'Lines From Great Russian Literature? Or E-mails From My Boss?', checked: true},
-            {
-              title: 'Flooded: One year later, assessing what was lost and what was found when a ravaging rain swept through metro Detroit',
-              checked: true
-            },
-            {title: 'Create 4 Invisible User Experiences you Never Knew About', checked: false},
-            {title: 'Read "Following makes Medium better"', checked: false},
-            {title: 'Unfollow 5 enemies from twitter', checked: false}
-          ]
+        userForm: {
+          mail: '',
+          invs: 10
         }
+      }
+    },
+    created () {
+      this.$store.subscribe( (mutation, state) => {
+        if (mutation.type === 'CHANGEAPP') {
+          this.fetchUserCount()
+          this.fetchSentInvs()
+          this.fetchFreeInvs()
+          this.fetchListOccupation()
+        }
+      })
+    },
+    mounted () {
+      this.fetchUserCount()
+      this.fetchSentInvs()
+      this.fetchFreeInvs()
+      this.fetchListOccupation()
+    },
+    methods: {
+      async fetchUserCount () {
+        try {
+          var appId = await this.currentApp
+          var url = 'http://localhost:8080/api/0/apps/'
+                    + encodeURIComponent(appId)
+                    +'/users/count'
+
+          const res = await this.$http.get(url)
+          this.userCount = res.data
+        } catch (err) {
+          alert(err.message)
+        }
+      },
+      async fetchSentInvs () {
+        try {
+          var appId = await this.currentApp
+          var url = 'http://localhost:8080/api/0/apps/'
+                    + encodeURIComponent(appId)
+                    +'/invs/sent'
+
+          const res = await this.$http.get(url)
+          this.sentInvs = res.data
+        } catch (err) {
+          alert(err.message)
+        }
+      },
+      async fetchFreeInvs () {
+        try {
+          var appId = await this.currentApp
+          var url = 'http://localhost:8080/api/0/apps/'
+                    + encodeURIComponent(appId)
+                    +'/invs/available'
+
+          const res = await this.$http.get(url)
+          this.freeInvs = res.data
+        } catch (err) {
+          alert(err.message)
+        }
+      },
+      async fetchListOccupation () {
+        try {
+          var appId = await this.currentApp
+          var baseUrl = 'http://localhost:8080/api/0/apps/'
+                    + encodeURIComponent(appId)
+                    +'/waitlist/'
+
+          var occupied = await this.$http.get(baseUrl + 'occupied')
+          var size = await this.$http.get(baseUrl + 'size')
+          this.waitlistOccupied = +((occupied.data * 100) / size.data).toFixed(2) + ' %'
+        } catch (err) {
+          alert(err.message)
+        }
+      },
+      async addApp () {
+        try {
+          var appId = this.currentApp
+          var user = this.currentUser
+          var url = 'http://localhost:8080/api/0/apps/'
+
+          var res = await this.$http.put(url, {
+            id: this.appForm.name,
+            admin: user.mail,
+            listsize: this.appForm.listSize
+          })
+          this.notifyVue('App was successfully added.')
+          this.clearAppForm()
+        } catch (err) {
+          alert(err.message)
+        }
+      },
+      clearAppForm () {
+        this.appForm.name = ''
+        this.appForm.listSize = 50
+      },
+      async addUser () {
+                try {
+          var appId = this.currentApp
+          var url = 'http://localhost:8080/api/0/apps/'
+                    + encodeURIComponent(appId)
+                    + '/users/'
+                    + this.userForm.mail
+
+        var res = await this.$http.put(url, {
+          listsize: this.appForm.listSize
+        })
+        this.notifyVue('User was successfully added.')
+        this.clearUserForm()
+        } catch (err) {
+          alert(err.message)
+        }
+      },
+      clearUserForm () {
+        this.userForm.mail = ''
+        this.userForm.invs = 10
+      },
+      notifyVue(msg) {
+        const notification = {
+          template: `<span>${msg}.</span>`
+        }
+        const color = Math.floor((Math.random() * 4) + 1)
+        this.$notify(
+          {
+            component: notification,
+            icon: 'nc-icon nc-check-2',
+            type: 'success'
+          })
       }
     }
   }

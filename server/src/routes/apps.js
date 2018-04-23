@@ -3,6 +3,7 @@ const router = new Router({prefix: '/api/0/apps'})
 
 const appQuery = require('../db/querries/apps')
 const userQuery = require('../db/querries/users')
+const invQuery = require('../db/querries/invs')
 
 // get app
 router.get('/:app', async ctx => {
@@ -36,7 +37,7 @@ router.put('/', async ctx => {
         _id: ctx.request.body.id,
         type: 'app',
         admin: ctx.request.body.admin,
-        listsize: ctx.request.body.listsize
+        listsize: Number(ctx.request.body.listsize)
       }
 
       const app = await appQuery.addApp(appJson)
@@ -120,6 +121,52 @@ router.get('/:app/users', async ctx => {
   }
 })
 
+// get number of app users
+router.get('/:app/users/count', async ctx => {
+  try {
+    const count = await userQuery.getAllCount(ctx.params.app)
+
+    ctx.status = 200
+    ctx.body = count
+  } catch (err) {
+    ctx.status = 400
+    ctx.body = {
+      status: 'error',
+      message: err.message || 'Sorry, an error has occurred.'
+    }
+  }
+})
+
+router.get('/:app/invs/sent', async ctx => {
+  try {
+    const count = await invQuery.getSentCount(ctx.params.app)
+
+    ctx.status = 200
+    ctx.body = count
+  } catch (err) {
+    ctx.status = 400
+    ctx.body = {
+      status: 'error',
+      message: err.message || 'Sorry, an error has occurred.'
+    }
+  }
+})
+
+router.get('/:app/invs/available', async ctx => {
+  try {
+    const count = await invQuery.getFreeCount(ctx.params.app)
+
+    ctx.status = 200
+    ctx.body = count
+  } catch (err) {
+    ctx.status = 400
+    ctx.body = {
+      status: 'error',
+      message: err.message || 'Sorry, an error has occurred.'
+    }
+  }
+})
+
 // get waiting list
 router.get('/:app/waitlist', async ctx => {
   try {
@@ -127,6 +174,38 @@ router.get('/:app/waitlist', async ctx => {
 
     ctx.status = 200
     ctx.body = users
+  } catch (err) {
+    ctx.status = 400
+    ctx.body = {
+      status: 'error',
+      message: err.message || 'Sorry, an error has occurred.'
+    }
+  }
+})
+
+// used slots in waitling list
+router.get('/:app/waitlist/occupied', async ctx => {
+  try {
+    const res = await appQuery.getListOccupation(ctx.params.app)
+
+    ctx.status = 200
+    ctx.body = res
+  } catch (err) {
+    ctx.status = 400
+    ctx.body = {
+      status: 'error',
+      message: err.message || 'Sorry, an error has occurred.'
+    }
+  }
+})
+
+// waitling list size
+router.get('/:app/waitlist/size', async ctx => {
+  try {
+    const res = await appQuery.getListSize(ctx.params.app)
+
+    ctx.status = 200
+    ctx.body = res
   } catch (err) {
     ctx.status = 400
     ctx.body = {
@@ -206,7 +285,7 @@ router.put('/:app/waitlist/acceptall', async ctx => {
   }
 })
 
-// Apple for waiting list
+// Apply for waiting list
 router.put('/:app/waitlist/:mail', async ctx => {
   try {
     var listDoc = await appQuery.getListDoc(ctx.params.app)

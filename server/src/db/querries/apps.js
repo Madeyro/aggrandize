@@ -25,6 +25,11 @@ async function getListSize (appId) {
   return doc.listsize // cut off metadata
 }
 
+async function getListOccupation (appId) {
+  const res = await db.view('views', 'waitlist_occupied', { key: `${appId}` })
+  return res[0].rows[0].value
+}
+
 async function resizeList (appId, newSize) {
   var doc = await getApp(appId)
   doc.listsize = newSize
@@ -83,6 +88,7 @@ module.exports = {
   clearList,
   getListDoc,
   getListSize,
+  getListOccupation,
   resizeList,
   addList,
   addApp,

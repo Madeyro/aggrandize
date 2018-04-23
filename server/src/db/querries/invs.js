@@ -11,6 +11,24 @@ async function getInv (invId) {
   return res[0]
 }
 
+async function getSentCount (appId) {
+  const res = await db.view('views', 'sent_invs', { key: `${appId}` })
+  if (res[0].rows.length) {
+    return res[0].rows[0].value
+  } else {
+    return 0
+  }
+}
+
+async function getFreeCount (appId) {
+  const res = await db.view('views', 'free_invs', { key: `${appId}` })
+  if (res[0].rows.length) {
+    return res[0].rows[0].value
+  } else {
+    return 0
+  }
+}
+
 async function declineInv (invId) {
   const invDoc = await getInv(invId)
   var invitator = await userQuery.getUser(invDoc.from)
@@ -35,6 +53,8 @@ async function accept (invDoc) {
 module.exports = {
   addInv,
   getInv,
+  getSentCount,
+  getFreeCount,
   declineInv,
   accept
 }
