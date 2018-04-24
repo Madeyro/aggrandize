@@ -59,7 +59,7 @@
       return {
         settings: {
           name: '',
-          listSize: 0,
+          listSize: 50,
           admin: '',
           cancel: ''
         }
@@ -78,25 +78,48 @@
       this.settings.admin = this.currentUser.mail
     },
     methods: {
-      saveSettings () {
+      async saveSettings () {
+        try {
+          var endpoint = 'apps/' + this.settings.name
 
+          var res = await this.$http.post(endpoint, {
+            admin: this.settings.admin,
+            listsize: this.settings.listSize
+          })
+          this.notifyVue('App was successfully updated.', 'success')
+        } catch (err) {
+          alert(err.message)
+        }
       },
       resetSettings () {
-
+        this.settings.listSize = 50
+        this.settings.cancel = ''
       },
-      removeApp () {
+      async removeApp () {
+        if (this.settings.name !== this.settings.cancel) {
+          this.notifyVue('Name does not match with current app.', 'danger')
+          this.resetSettings()
+          return
+        }
+        try {
+          var endpoint = 'apps/' + this.settings.name
 
+          var res = await this.$http.delete(endpoint)
+          this.notifyVue('App was successfully deleted. You have to log out and log in to take effect.', 'success')
+          this.resetSettings()
+        } catch (err) {
+          alert(err.message)
+        }
       },
-      notifyVue (msg) {
+      notifyVue(msg, colorType) {
         const notification = {
           template: `<span>${msg}.</span>`
         }
-        const color = Math.floor((Math.random() * 4) + 1)
         this.$notify(
           {
             component: notification,
             icon: 'nc-icon nc-check-2',
-            type: 'success'
+            type: colorType
           })
       }
     }

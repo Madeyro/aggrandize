@@ -187,8 +187,7 @@
     computed: {
       ...mapGetters([
         'currentApp',
-        'currentUser',
-        'adminBoard'
+        'currentUser'
       ])
     },
     data () {
@@ -249,13 +248,13 @@
       }
     },
     created () {
-      this.$store.subscribe( (mutation, state) => {
-        if (mutation.type === 'CHANGEAPP') {
+      this.$store.subscribe( async (mutation, state) => {
+        if (mutation.type === 'CHANGEAPP' || mutation.type === 'SETADMINBOARD') {
           this.fetchUserCount()
           this.fetchSentInvs()
           this.fetchFreeInvs()
           this.fetchListOccupation()
-        }
+          }
       })
     },
     mounted () {
@@ -268,58 +267,52 @@
       async fetchUserCount () {
         try {
           var appId = await this.currentApp
-          var url = 'http://localhost:8080/api/0/apps/'
+
+          var endpoint = 'apps/'
                     + encodeURIComponent(appId)
                     +'/users/count'
 
-          const res = await this.$http.get(url)
+          const res = await this.$http.get(endpoint)
           this.userCount = res.data
         } catch (err) {
           console.log(err)
-
-          alert(err.message)
         }
       },
       async fetchSentInvs () {
         try {
           var appId = await this.currentApp
-          var url = 'http://localhost:8080/api/0/apps/'
+          var endpoint = 'apps/'
                     + encodeURIComponent(appId)
                     +'/invs/sent'
 
-          const res = await this.$http.get(url)
+          const res = await this.$http.get(endpoint)
           this.sentInvs = res.data
         } catch (err) {
           console.log(err)
-
-          alert(err.message)
         }
       },
       async fetchFreeInvs () {
         try {
           var appId = await this.currentApp
-          var url = 'http://localhost:8080/api/0/apps/'
+          var endpoint = 'apps/'
                     + encodeURIComponent(appId)
                     +'/invs/available'
 
-          const res = await this.$http.get(url)
+          const res = await this.$http.get(endpoint)
           this.freeInvs = res.data
         } catch (err) {
           console.log(err)
-
-          alert(err.message)
         }
       },
       async fetchListOccupation () {
         try {
           var appId = await this.currentApp
-          var baseUrl = 'http://localhost:8080/api/0/apps/'
+          var endpoint = 'apps/'
                     + encodeURIComponent(appId)
                     +'/waitlist/'
-          console.log(baseUrl)
 
-          var occupied = await this.$http.get(baseUrl + 'occupied')
-          var size = await this.$http.get(baseUrl + 'size')
+          var occupied = await this.$http.get(endpoint + 'occupied')
+          var size = await this.$http.get(endpoint + 'size')
           if (occupied === 0) {
             this.waitlistOccupied = 0
           } else {
@@ -327,17 +320,15 @@
           }
         } catch (err) {
           console.log(err)
-
-          alert(err.message)
         }
       },
       async addApp () {
         try {
           var appId = await this.currentApp
           var user = this.currentUser
-          var url = 'http://localhost:8080/api/0/apps/'
+          var endpoint = 'apps/'
 
-          var res = await this.$http.put(url, {
+          var res = await this.$http.put(endpoint, {
             id: this.appForm.name,
             admin: user.mail,
             listsize: this.appForm.listSize
@@ -357,20 +348,18 @@
       async addUser () {
                 try {
           var appId = await this.currentApp
-          var url = 'http://localhost:8080/api/0/apps/'
+          var endpoint = 'apps/'
                     + encodeURIComponent(appId)
                     + '/users/'
                     + this.userForm.mail
 
-        var res = await this.$http.put(url, {
+        var res = await this.$http.put(endpoint, {
           listsize: this.appForm.listSize
         })
         this.notifyVue('User was successfully added.')
         this.clearUserForm()
         } catch (err) {
           console.log(err)
-
-          alert(err.message)
         }
       },
       clearUserForm () {
@@ -381,7 +370,6 @@
         const notification = {
           template: `<span>${msg}.</span>`
         }
-        const color = Math.floor((Math.random() * 4) + 1)
         this.$notify(
           {
             component: notification,

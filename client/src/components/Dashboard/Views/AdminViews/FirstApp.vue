@@ -80,7 +80,7 @@
       },
       async addApp () {
         try {
-          var url = 'http://localhost:8080/api/0/apps/'
+          var url = 'apps/'
 
           var res = await this.$http.put(url, {
             id: this.app.name,
@@ -102,7 +102,6 @@
         const notification = {
           template: `<span>${msg}.</span>`
         }
-        const color = Math.floor((Math.random() * 4) + 1)
         this.$notify(
           {
             component: notification,

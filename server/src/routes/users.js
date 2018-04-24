@@ -3,6 +3,7 @@ const router = new Router({prefix: '/api/0/users'})
 
 const timeStamp = require('../utils/timestamp')
 const userQuery = require('../db/querries/users')
+const appQuery = require('../db/querries/apps')
 const invQuery = require('../db/querries/invs')
 
 const bcrypt = require('bcrypt')
@@ -102,6 +103,41 @@ router.get('/:user/apps', async ctx => {
 
     ctx.status = 200
     ctx.body = res
+  } catch (err) {
+    ctx.status = 400
+    ctx.body = {
+      status: 'error',
+      message: err.message || 'Sorry, an error has occurred.'
+    }
+  }
+})
+
+// get all waitling lists
+router.get('/:user/waitlists', async ctx => {
+  try {
+    var occupiedView = await appQuery.getListOccupation(null)
+
+    var waitlists = []
+
+    for (let i in occupiedView) {
+      let listDoc = await appQuery.getListDoc(occupiedView[i].key)
+      let listSize = await appQuery.getListSize(occupiedView[i].key)
+
+      let applied = 'No'
+      listDoc.value.users.forEach(user => {
+        if (user === ctx.params.user) {
+          applied = 'Yes'
+        }
+      })
+      waitlists.push({
+        name: occupiedView[i].key,
+        freeSlots: Number(listSize) - Number(occupiedView[i].value),
+        applied: applied
+      })
+    }
+
+    ctx.status = 200
+    ctx.body = waitlists
   } catch (err) {
     ctx.status = 400
     ctx.body = {

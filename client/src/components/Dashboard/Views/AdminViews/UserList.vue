@@ -32,8 +32,12 @@
                     Nothing to show :(
                   </div>
                   <div slot="table-actions">
-                    <button class="btn btn-icon btn-info" @click="handleEdit"><i class="fa fa-edit"></i></button>
-                    <button class="btn btn-icon btn-danger" @click="handleDelete"><i class="fa fa-trash"></i></button>
+                    <button class="btn btn-icon btn-info" @click="handleEdit" data-toggle="tooltip" data-placement="top" title="Edit number of invitations">
+                      <i class="fa fa-edit"></i>
+                    </button>
+                    <button class="btn btn-icon btn-danger" @click="handleDelete" data-toggle="tooltip" data-placement="top" title="Remove user(s)">
+                      <i class="fa fa-trash">
+                    </i></button>
                   </div>
                 </vue-good-table>
               </div>
@@ -90,7 +94,7 @@
     },
     created() {
       this.$store.subscribe( (mutation, state) => {
-        if (mutation.type === 'CHANGEAPP') {
+        if (mutation.type === 'CHANGEAPP' || mutation === 'SETADMINBOARD') {
           this.fetchUsers()
         }
       })
@@ -102,11 +106,11 @@
       async fetchUsers() {
         try {
           var appId = await this.currentApp
-          var url = 'http://localhost:8080/api/0/apps/'
+          var endpoint = 'apps/'
                     + encodeURIComponent(appId)
                     +'/users'
 
-          const response = await this.$http.get(url)
+          const response = await this.$http.get(endpoint)
           var data = []
           response.data.forEach((user) => {
             data.push(user.value)
@@ -122,13 +126,13 @@
         try {
           var appId = await this.currentApp
           var users = this.getSelected()
-          var baseUrl = 'http://localhost:8080/api/0/apps/'
-            + encodeURIComponent(appId)
-            +'/users/'
+          var endpoint = 'apps/'
+                        + encodeURIComponent(appId)
+                        +'/users/'
 
           var promises = []
           users.forEach(user => {
-            let url = baseUrl + encodeURIComponent(user)
+            let url = endpoint + encodeURIComponent(user)
             let promise = this.$http.delete(url)
             promises.push(promise)
           })
@@ -148,14 +152,14 @@
           var users = this.getSelected()
 
           var newInvs = prompt('Enter new number of available invitations for user(s).')
-          var baseUrl = 'http://localhost:8080/api/0/apps/'
-            + encodeURIComponent(appId)
-            +'/users/'
+          var endpoint = 'apps/'
+                        + encodeURIComponent(appId)
+                        +'/users/'
           var urlTail = '/newinvs/' + newInvs
 
           var promises = []
           users.forEach(user => {
-            let url = baseUrl
+            let url = endpoint
                       + encodeURIComponent(user)
                       + urlTail
             let promise = this.$http.put(url)
@@ -182,7 +186,6 @@
         const notification = {
           template: `<span>${msg}.</span>`
         }
-        const color = Math.floor((Math.random() * 4) + 1)
         this.$notify(
           {
             component: notification,

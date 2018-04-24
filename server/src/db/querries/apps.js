@@ -26,11 +26,16 @@ async function getListSize (appId) {
 }
 
 async function getListOccupation (appId) {
-  const res = await db.view('views', 'waitlist_occupied', { key: `${appId}` })
-  if (res[0].rows.length) {
-    return res[0].rows[0].value
+  if (appId !== null) {
+    const resOne = await db.view('views', 'waitlist_occupied', { key: `${appId}` })
+    if (resOne[0].rows.length) {
+      return resOne[0].rows[0].value
+    } else {
+      return 0
+    }
   } else {
-    return 0
+    const resMany = await db.view('views', 'waitlist_occupied')
+    return resMany[0].rows
   }
 }
 
@@ -71,7 +76,9 @@ async function addApp (jsonData) {
     users: []
   }
   try {
-    await getListDoc(jsonData._id)
+    var waitList = await getListDoc(jsonData._id)
+    waitList.appDeleted = false
+    await addList(waitList)
   } catch (err) {
     await addList(waitlist)
   }

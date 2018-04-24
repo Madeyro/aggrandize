@@ -2,10 +2,6 @@
   <div class="wrapper">
     <side-bar title="User">
       <mobile-menu slot="content"></mobile-menu>
-      <sidebar-link to="/user/apps">
-        <i class="nc-icon nc-grid-45"></i>
-        <p>My Apps</p>
-      </sidebar-link>
       <sidebar-link to="/user/waitlists">
         <i class="nc-icon nc-notes"></i>
         <p>Waiting lists</p>

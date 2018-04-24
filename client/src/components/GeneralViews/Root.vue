@@ -8,6 +8,7 @@
       ... mapGetters ([
         'currentUser',
         'isAdmin',
+        'isUser',
         'currentApp'
       ])
     },
@@ -29,10 +30,12 @@
           this.$store.dispatch('changeApp', this.currentUser.admin[0])
           .then (this.$store.dispatch('setAdminBoard'))
           .then (this.$router.replace(this.$route.query.redirect || '/admin'))
-        } else {
+        } else  if (this.isUser){
           this.$store.dispatch('changeApp', this.currentUser.apps[0])
           .then (this.$store.dispatch('setUserBoard'))
           .then (this.$router.replace(this.$route.query.redirect || '/user'))
+        } else {
+          this.$router.replace(('/user/firstapp'))
         }
       }
     }

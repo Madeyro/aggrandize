@@ -14,7 +14,6 @@ import Settings from 'src/components/Dashboard/Views/AdminViews/Settings.vue'
 import FirstApp from 'src/components/Dashboard/Views/AdminViews/FirstApp.vue'
 
 // User pages
-import Apps from 'src/components/Dashboard/Views/UserViews/Apps.vue'
 import Waitlist from 'src/components/Dashboard/Views/UserViews/Waitlist.vue'
 import Invite from 'src/components/Dashboard/Views/UserViews/Invite.vue'
 
@@ -51,13 +50,8 @@ const routes = [
   {
     component: UserDashboardLayout,
     path: '/user',
-    redirect: '/user/apps',
+    redirect: '/user/waitlists',
     children: [
-      {
-        path: 'apps',
-        name: 'My Apps',
-        component: Apps
-      },
       {
         path: 'waitlists',
         name: 'Waiting Lists',

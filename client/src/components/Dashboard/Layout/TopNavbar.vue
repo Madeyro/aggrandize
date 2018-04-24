@@ -87,16 +87,21 @@
         .then (this.$router.push('/login'))
       },
       async switchAdminBoard () {
-        this.$store.dispatch('changeApp', this.adminApps[0])
-        .then (this.$store.dispatch('setAdminBoard'))
-        .then (this.$router.push('/admin'))
+        if (this.isAdmin) {
+          this.$store.dispatch('changeApp', this.adminApps[0])
+          .then (this.$store.dispatch('setAdminBoard'))
+          .then (this.$router.push('/admin'))
+        }
       },
       async switchUserBoard () {
-        await this.$store.dispatch('changeApp', this.userApps[0])
-        .then (this.$store.dispatch('setUserBoard'))
-        .then (this.$router.push('/user'))
+        if (this.isUser) {
+          await this.$store.dispatch('changeApp', this.userApps[0])
+          .then (this.$store.dispatch('setUserBoard'))
+          .then (this.$router.push('/user'))
+        }
       },
       getApps () {
+
         if (this.isAdminBoard) {
           this.Apps = this.adminApps
         } else {

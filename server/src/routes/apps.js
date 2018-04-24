@@ -60,7 +60,37 @@ router.delete('/:app', async ctx => {
     const appRev = await appQuery.getRev(ctx.params.app)
     const res = await appQuery.deleteApp(ctx.params.app, appRev)
 
+    const waitList = await appQuery.getListDoc(ctx.params.app)
+    waitList['appDeleted'] = true
+    await appQuery.addList(waitList)
+
     ctx.status = 200
+    ctx.body = res
+  } catch (err) {
+    ctx.status = 400
+    ctx.body = {
+      status: 'error',
+      message: err.message || 'Sorry, an error has occurred.'
+    }
+  }
+})
+
+// update app
+router.post('/:app', async ctx => {
+  try {
+    var updatedApp = await appQuery.getApp(ctx.params.app)
+
+    if (ctx.request.body.listsize) {
+      updatedApp.listsize = Number(ctx.request.body.listsize)
+    }
+
+    if (ctx.request.body.admin) {
+      updatedApp.admin = ctx.request.body.admin
+    }
+
+    const res = await appQuery.addApp(updatedApp)
+
+    ctx.status = 201
     ctx.body = res
   } catch (err) {
     ctx.status = 400
@@ -137,6 +167,7 @@ router.get('/:app/users/count', async ctx => {
   }
 })
 
+// all sent invitations
 router.get('/:app/invs/sent', async ctx => {
   try {
     const count = await invQuery.getSentCount(ctx.params.app)
@@ -152,6 +183,7 @@ router.get('/:app/invs/sent', async ctx => {
   }
 })
 
+// invitations which were not send but are available
 router.get('/:app/invs/available', async ctx => {
   try {
     const count = await invQuery.getFreeCount(ctx.params.app)
@@ -220,7 +252,7 @@ router.put('/:app/waitlist/newsize/:size', async ctx => {
   try {
     const res = await appQuery.resizeList(ctx.params.app, ctx.params.size)
 
-    ctx.status = 200
+    ctx.status = 201
     ctx.body = res
   } catch (err) {
     ctx.status = 400
@@ -236,7 +268,7 @@ router.put('/:app/users/:user/newinvs/:size', async ctx => {
   try {
     const res = await userQuery.resizeInv(ctx.params.user, ctx.params.app, ctx.params.size)
 
-    ctx.status = 200
+    ctx.status = 201
     ctx.body = res
   } catch (err) {
     ctx.status = 400
@@ -304,10 +336,30 @@ router.put('/:app/waitlist/:mail', async ctx => {
       }
     }
 
-    listDoc.users[listDoc.users.length] = ctx.params.mail
+    listDoc.users.push(ctx.params.mail)
     const res = await appQuery.addList(listDoc)
 
-    ctx.status = 200
+    ctx.status = 201
+    ctx.body = res
+  } catch (err) {
+    ctx.status = 400
+    ctx.body = {
+      status: 'error',
+      message: err.message || 'Sorry, an error has occurred.'
+    }
+  }
+})
+
+// Apply for waiting list
+router.delete('/:app/waitlist/:mail', async ctx => {
+  try {
+    var listDoc = await appQuery.getListDoc(ctx.params.app)
+    listDoc = listDoc.value // cut off unused data
+
+    listDoc.users.pop(ctx.params.mail)
+    const res = await appQuery.addList(listDoc)
+
+    ctx.status = 201
     ctx.body = res
   } catch (err) {
     ctx.status = 400
