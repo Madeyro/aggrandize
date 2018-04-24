@@ -20,7 +20,7 @@
             Set new size.<br>If left blank it will be set to 0.
           </small>
         </fg-input>
-        <fg-input class="col-sm-6 col-12" v-model="app.admin" label="Admin" placeholder="Admin email" value="app.admin" type="mail" aria-describedby="adminHelpInline">
+        <fg-input class="col-sm-6 col-12" v-model="app.admin" label="Admin" placeholder="Admin email" value="app.admin" type="email" aria-describedby="adminHelpInline">
           <small id="adminHelpInline" class="text-muted">
             You will log in with this email.
           </small>

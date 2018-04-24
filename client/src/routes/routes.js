@@ -8,14 +8,14 @@ import Login from '../components/GeneralViews/Login.vue'
 import Register from '../components/GeneralViews/Register.vue'
 
 // Admin pages
-import Overview from 'src/components/Dashboard/Views/AdminViews/Overview.vue'
+import AdminOverview from 'src/components/Dashboard/Views/AdminViews/Overview.vue'
 import UserList from 'src/components/Dashboard/Views/AdminViews/UserList.vue'
 import Settings from 'src/components/Dashboard/Views/AdminViews/Settings.vue'
 import FirstApp from 'src/components/Dashboard/Views/AdminViews/FirstApp.vue'
 
 // User pages
 import Waitlist from 'src/components/Dashboard/Views/UserViews/Waitlist.vue'
-import Invite from 'src/components/Dashboard/Views/UserViews/Invite.vue'
+import UserOverview from 'src/components/Dashboard/Views/UserViews/Overview.vue'
 
 // Root page for redirecting
 import Root from 'src/components/GeneralViews/Root.vue'
@@ -32,8 +32,8 @@ const routes = [
     children: [
       {
         path: 'overview',
-        name: 'Overview',
-        component: Overview
+        name: 'Admin Overview',
+        component: AdminOverview
       },
       {
         path: 'users',
@@ -50,7 +50,7 @@ const routes = [
   {
     component: UserDashboardLayout,
     path: '/user',
-    redirect: '/user/waitlists',
+    redirect: '/user/overview',
     children: [
       {
         path: 'waitlists',
@@ -58,9 +58,9 @@ const routes = [
         component: Waitlist
       },
       {
-        path: 'invites',
-        name: 'Invites',
-        component: Invite
+        path: 'overview',
+        name: 'User Overview',
+        component: UserOverview
       },
       {
         path: 'firstapp',

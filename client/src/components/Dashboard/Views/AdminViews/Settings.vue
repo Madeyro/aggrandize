@@ -19,7 +19,7 @@
             Set new size.<br>If left blank it will be set to 0.
           </small>
         </fg-input>
-        <fg-input class="col-sm-6 col-12" v-model="settings.admin" label="Admin" placeholder="Admin email" value="settings.admin" type="mail" aria-describedby="adminHelpInline">
+        <fg-input class="col-sm-6 col-12" v-model="settings.admin" label="Admin" placeholder="Admin email" value="settings.admin" type="email" aria-describedby="adminHelpInline">
           <small id="adminHelpInline" class="text-muted">
             New mail.
           </small>

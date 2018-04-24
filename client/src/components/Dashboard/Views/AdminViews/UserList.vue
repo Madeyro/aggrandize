@@ -32,10 +32,10 @@
                     Nothing to show :(
                   </div>
                   <div slot="table-actions">
-                    <button class="btn btn-icon btn-info" @click="handleEdit" data-toggle="tooltip" data-placement="top" title="Edit number of invitations">
+                    <button class="btn btn-icon btn-info" @click="handleEdit" data-toggle="tooltip" data-placement="top" title="Edit number of">
                       <i class="fa fa-edit"></i>
                     </button>
-                    <button class="btn btn-icon btn-danger" @click="handleDelete" data-toggle="tooltip" data-placement="top" title="Remove user(s)">
+                    <button class="btn btn-icon btn-danger" @click="handleDelete" data-toggle="tooltip" data-placement="top" title="Apply to waiting list">
                       <i class="fa fa-trash">
                     </i></button>
                   </div>
@@ -107,8 +107,8 @@
         try {
           var appId = await this.currentApp
           var endpoint = 'apps/'
-                    + encodeURIComponent(appId)
-                    +'/users'
+                        + encodeURIComponent(appId)
+                        +'/users'
 
           const response = await this.$http.get(endpoint)
           var data = []

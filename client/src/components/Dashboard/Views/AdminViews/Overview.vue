@@ -150,7 +150,7 @@
               </h4>
             </div>
             <!-- form -->
-            <fg-input class="col-sm-6 col-12" v-model="userForm.mail" label="Email" placeholder="Email" value="" type="mail">
+            <fg-input class="col-sm-6 col-12" v-model="userForm.mail" label="Email" placeholder="Email" value="" type="email">
             </fg-input>
             <fg-input class="col-sm-6 col-12" v-model="userForm.invs" label="Available invitations" placeholder="Number of invitations" value="10" type="number" aria-describedby="invHelpInline">
               <small id="invHelpInline" class="text-muted">

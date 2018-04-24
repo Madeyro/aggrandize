@@ -42,6 +42,7 @@ router.post('/register', async ctx => {
   }
 })
 
+// send invite
 router.put('/:user/:app/sendinv/:invited', async ctx => {
   try {
     var invitator = await userQuery.getUser(ctx.params.user)
@@ -138,6 +139,20 @@ router.get('/:user/waitlists', async ctx => {
 
     ctx.status = 200
     ctx.body = waitlists
+  } catch (err) {
+    ctx.status = 400
+    ctx.body = {
+      status: 'error',
+      message: err.message || 'Sorry, an error has occurred.'
+    }
+  }
+})
+
+// all sent invitations by user
+router.get('/:user/sentinvs', async ctx => {
+  try {
+    ctx.status = 200
+    ctx.body = await invQuery.sentByUser(ctx.params.user)
   } catch (err) {
     ctx.status = 400
     ctx.body = {

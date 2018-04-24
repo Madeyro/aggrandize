@@ -50,11 +50,17 @@ async function accept (invDoc) {
   return res[0]
 }
 
+async function sentByUser (userId) {
+  const res = await db.view('views', 'users_invs', { key: `${userId}` })
+  return res[0].rows
+}
+
 module.exports = {
   addInv,
   getInv,
   getSentCount,
   getFreeCount,
   declineInv,
-  accept
+  accept,
+  sentByUser
 }

@@ -2,13 +2,13 @@
   <div class="wrapper">
     <side-bar title="User">
       <mobile-menu slot="content"></mobile-menu>
+      <sidebar-link to="/user/overview">
+        <i class="nc-icon nc-chart-pie-35"></i>
+        <p>Dashboard</p>
+      </sidebar-link>
       <sidebar-link to="/user/waitlists">
         <i class="nc-icon nc-notes"></i>
         <p>Waiting lists</p>
-      </sidebar-link>
-      <sidebar-link to="/user/invites">
-        <i class="nc-icon nc-email-83"></i>
-        <p>Invites</p>
       </sidebar-link>
     </side-bar>
     <div class="main-panel">
