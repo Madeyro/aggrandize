@@ -7,7 +7,7 @@ const invQuery = require('../db/querries/invs')
 const timeStamp = require('../utils/timestamp')
 
 // accept invitation
-router.put('/:id', async ctx => {
+router.get('/:id', async ctx => {
   try {
     var invDoc = await invQuery.getInv(ctx.params.id)
     var newUser

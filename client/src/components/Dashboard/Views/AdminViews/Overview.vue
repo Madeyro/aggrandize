@@ -71,15 +71,10 @@
                       :chart-options="lineChart.options"
                       :responsive-options="lineChart.responsiveOptions">
             <template slot="header">
-              <h4 class="card-title">Users Behavior</h4>
+              <h4 class="card-title">Users Statistics</h4>
               <p class="card-category">24 Hours performance</p>
             </template>
             <template slot="footer">
-              <div class="legend">
-                <i class="fa fa-circle text-info"></i> Open
-                <i class="fa fa-circle text-danger"></i> Click
-                <i class="fa fa-circle text-warning"></i> Click Second Time
-              </div>
               <hr>
               <div class="stats">
                 <i class="fa fa-history"></i> Updated 3 minutes ago
@@ -91,18 +86,18 @@
         <div class="col-md-5">
           <chart-card :chart-data="pieChart.data" chart-type="Pie">
             <template slot="header">
-              <h4 class="card-title">Email Statistics</h4>
+              <h4 class="card-title">Country Statistics</h4>
               <p class="card-category">Last Campaign Performance</p>
             </template>
             <template slot="footer">
               <div class="legend">
-                <i class="fa fa-circle text-info"></i> Open
-                <i class="fa fa-circle text-danger"></i> Bounce
-                <i class="fa fa-circle text-warning"></i> Unsubscribe
+                <i class="fa fa-circle text-info"></i> Czechia
+                <i class="fa fa-circle text-danger"></i> Slovakia
+                <i class="fa fa-circle text-warning"></i> Poland
               </div>
               <hr>
               <div class="stats">
-                <i class="fa fa-clock-o"></i> Campaign sent 2 days ago
+                <i class="fa fa-clock-o"></i> Updated 3 minutes ago
               </div>
             </template>
           </chart-card>
@@ -203,8 +198,6 @@
             labels: ['9:00AM', '12:00AM', '3:00PM', '6:00PM', '9:00PM', '12:00PM', '3:00AM', '6:00AM'],
             series: [
               [287, 385, 490, 492, 554, 586, 698, 695],
-              [67, 152, 143, 240, 287, 335, 435, 437],
-              [23, 113, 67, 108, 190, 239, 307, 308]
             ]
           },
           options: {

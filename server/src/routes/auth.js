@@ -35,6 +35,25 @@ router.post('/', async ctx => {
   }
 })
 
+router.post('/apps/:id', async ctx => {
+  try {
+    var token = jwt.sign({
+      mail: ctx.request.body.mail,
+      app: ctx.params.id,
+      admin: true,
+      aud: ctx.request.body.mail,
+      iss: 'https://aggrandize.io/'
+    }, 'secret')
+    ctx.body = { 'token': token }
+  } catch (err) {
+    ctx.status = 400
+    ctx.body = {
+      status: 'error',
+      message: err.message || 'Sorry, an error has occurred.'
+    }
+  }
+})
+
 router.post('/token', async ctx => {
   try {
     const token = ctx.request.header.authorization.split(' ')[1]

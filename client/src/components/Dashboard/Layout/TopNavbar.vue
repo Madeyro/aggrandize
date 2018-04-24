@@ -31,6 +31,7 @@
             <a class="dropdown-item" @click="switchAdminBoard" href="javascript:;" v-if="isAdmin">Admin Dashboard</a>
             <a class="dropdown-item" @click="firstApp" href="javascript:;" v-if="!isAdmin">Admin Dashboard</a>
             <a class="dropdown-item" @click="switchUserBoard" href="javascript:;" v-if="isUser">User Dashboard</a>
+            <a class="dropdown-item" @click="getToken" href="javascript:;" v-if="isAdmin">API Token</a>
             <a class="dropdown-item" @click="logout" href="javascript:;" >Log out</a>
           </drop-down>
         </ul>
@@ -114,6 +115,13 @@
       },
       firstApp () {
         this.$router.push('/user/firstapp')
+      },
+      async getToken () {
+        var endpoint = 'auth/apps/' + this.currentApp
+        var res = await this.$http.post(endpoint, {
+          mail: this.currentUser.mail
+        })
+        alert(res.data.token)
       }
     }
   }
