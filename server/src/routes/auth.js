@@ -6,6 +6,7 @@ const jwt = require('jsonwebtoken')
 
 const userQuery = require('../db/querries/users')
 
+// Log in
 router.post('/', async ctx => {
   try {
     const user = await userQuery.getUser(ctx.request.body.mail)
@@ -25,9 +26,11 @@ router.post('/', async ctx => {
       aud: ctx.request.body.mail,
       iss: 'https://aggrandize.io/'
     }, 'secret', { expiresIn: '1h' })
+
+    ctx.status = 200
     ctx.body = { 'token': token }
   } catch (err) {
-    ctx.status = 400
+    ctx.status = 403
     ctx.body = {
       status: 'error',
       message: err.message || 'Sorry, an error has occurred.'
@@ -35,6 +38,7 @@ router.post('/', async ctx => {
   }
 })
 
+// generate admin API token
 router.post('/apps/:id', async ctx => {
   try {
     var token = jwt.sign({
@@ -44,6 +48,8 @@ router.post('/apps/:id', async ctx => {
       aud: ctx.request.body.mail,
       iss: 'https://aggrandize.io/'
     }, 'secret')
+
+    ctx.status = 200
     ctx.body = { 'token': token }
   } catch (err) {
     ctx.status = 400
@@ -54,13 +60,34 @@ router.post('/apps/:id', async ctx => {
   }
 })
 
-router.post('/token', async ctx => {
+// validate admin API token
+router.get('/apps', async ctx => {
   try {
     const token = ctx.request.header.authorization.split(' ')[1]
     const decoded = jwt.verify(token, 'secret')
-    ctx.body = decoded
+
+    if (decoded.admin && decoded.app === ctx.request.body.app && decoded.iss === 'https://aggrandize.io') {
+      throw Error('Access denied. Invalid token.')
+    }
+
+    var userDoc = await userQuery.getUser(ctx.request.body.user)
+
+    var access = false
+    for (let i in userDoc.apps) {
+      if (userDoc.apps[i].id === ctx.request.body.app) {
+        access = true
+      }
+    }
+
+    if (!access) {
+      throw Error('Access denied. User does not have access.')
+    }
+
+    ctx.status = 200
+    ctx.body = {access: 'granted'}
   } catch (err) {
-    ctx.body = err.message
+    ctx.status = 403
+    ctx.body = {access: 'denied', reason: err.message}
   }
 })
 
