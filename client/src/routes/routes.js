@@ -71,6 +71,7 @@ const routes = [
   },
   { path: '/login', component: Login },
   { path: '/register', component: Register },
+  { path: '/acceptinv/*', component: Register },
   { path: '*', component: NotFound }
 ]
 

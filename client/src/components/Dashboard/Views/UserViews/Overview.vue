@@ -147,6 +147,10 @@
         }
       })
     },
+    mounted () {
+      this.fetchUsers()
+      this.fetchInvStats()
+    },
     methods: {
       async fetchUsers () {
         try {

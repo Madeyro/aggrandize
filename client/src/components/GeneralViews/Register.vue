@@ -47,18 +47,29 @@
       register () {
         this.$http.post('/users/register', { mail: this.email, password: this.password })
           .then(request => this.registerSuccessful(request))
-          .catch(() => this.registerFailed())
+          .catch((err) => this.registerFailed(err))
       },
       registerSuccessful (req) {
         if (!req.data.ok) {
+          console.log(req.data)
           registerFailed()
         }
 
+        this.acceptInv()
         this.error = false
         this.$router.replace(this.$route.query.redirect || '/login')
       },
-      registerFailed () {
+      registerFailed (err) {
+        console.log(err)
         this.error = 'Email already in use.'
+      },
+      acceptInv () {
+
+        var path = this.$route.path.split('/')
+        if (path.length === 3 && path[1] === 'acceptinv') {
+          var inv = decodeURIComponent(path[path.length - 1])
+          this.$http.put('inv/' + inv)
+        }
       }
     }
   }

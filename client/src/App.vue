@@ -20,7 +20,7 @@
     },
     methods: {
       checkCurrentLogin () {
-        if (!this.currentUser && this.$route.path !== '/' && this.$route.path !== '/register') {
+        if (!this.currentUser && this.$route.path !== '/' && this.$route.path !== '/register' && !this.$route.path.match('/acceptinv/.*')) {
           this.$router.push('/login')
         }
       }

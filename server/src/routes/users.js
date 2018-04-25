@@ -70,7 +70,7 @@ router.put('/:user/:app/sendinv/:invited', async ctx => {
 
     var res = await invQuery.addInv(inv)
     await userQuery.addUser(invitator)
-    res['url'] = Router.url('/api/0/inv/:id', {id: `${res.id}`})
+    res['url'] = Router.url('localhost/acceptinv/:id', {id: `${res.id}`})
 
     ctx.status = 201
     ctx.body = res

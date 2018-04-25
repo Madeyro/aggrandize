@@ -7,7 +7,7 @@ const invQuery = require('../db/querries/invs')
 const timeStamp = require('../utils/timestamp')
 
 // accept invitation
-router.get('/:id', async ctx => {
+router.put('/:id', async ctx => {
   try {
     var invDoc = await invQuery.getInv(ctx.params.id)
     var newUser
@@ -51,7 +51,7 @@ router.get('/:id', async ctx => {
     }
     invQuery.accept(invDoc)
 
-    ctx.status = 200
+    ctx.status = 201
     ctx.body = res
   } catch (err) {
     ctx.status = 400
