@@ -9,7 +9,7 @@ The API is prefixed with : `/api/{version}`
 **Get user**  
 `GET /api/0/users/{USER}`
 
-**Register user**
+**Register user**  
 `POST /api/0/users/{USER}`  
 Specify attributes in body  
 ```
