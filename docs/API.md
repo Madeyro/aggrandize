@@ -12,12 +12,12 @@ The API is prefixed with : `/api/{version}`
 **Register user**
 `POST /api/0/users/{USER}`  
 Specify attributes in body  
-`
+```
 mail: Email,
 password: Password
-`
+```
 
-**Send invitation**
+**Send invitation**  
 `PUT /api/0/users/{USER}/{APP}/sendinv/{INVITED}`
 
 **List apps to which user is admin**  
@@ -41,11 +41,11 @@ password: Password
 **Add new app (start new program)**  
 `PUT /api/0/apps/`  
 Specify attributes in body  
-`
+```
 id: Name,
 admin: Mail,
 listsize: Size of waiting list
-`
+```
 
 **Delete app (cancel program)**  
 `DELETE /api/0/apps/{APP}`
@@ -53,11 +53,11 @@ listsize: Size of waiting list
 **Update app**  
 `POST /api/0/apps/{APP}`  
 Specify attributes in body  
-`
+```
 id: Name,
 admin: Mail,
 listsize: Size of waiting list
-`
+```
 
 **Add user to app (grant access)**  
 `PUT /api/0/apps/{APP}/users/{USER}`  
