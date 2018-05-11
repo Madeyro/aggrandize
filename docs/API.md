@@ -13,8 +13,10 @@ The API is prefixed with : `/api/{version}`
 `POST /api/0/users/{USER}`  
 Specify attributes in body  
 ```
-mail: Email,
-password: Password
+{
+  mail: Email,
+  password: Password
+}
 ```
 
 **Send invitation**  
@@ -42,9 +44,11 @@ password: Password
 `PUT /api/0/apps/`  
 Specify attributes in body  
 ```
-id: Name,
-admin: Mail,
-listsize: Size of waiting list
+{
+  id: Name,
+  admin: Mail,
+  listsize: Size of waiting list
+}
 ```
 
 **Delete app (cancel program)**  
@@ -54,9 +58,11 @@ listsize: Size of waiting list
 `POST /api/0/apps/{APP}`  
 Specify attributes in body  
 ```
-id: Name,
-admin: Mail,
-listsize: Size of waiting list
+{
+  id: Name,
+  admin: Mail,
+  listsize: Size of waiting list
+}
 ```
 
 **Add user to app (grant access)**  
