@@ -1,4 +1,4 @@
-# API (NEEDS UPDATE)
+# API
 
 The API is prefixed with : `/api/{version}`
 
@@ -6,19 +6,40 @@ The API is prefixed with : `/api/{version}`
 
 ### Users
 
-#### Get user
-`GET /users/{USER}`
+**Get user**  
+`GET /api/0/users/{USER}`
 
-#### Send invitation
-`PUT /users/{USER}/{APP}/sendinv/{INVITED}`
+**Register user**
+`POST /api/0/users/{USER}`  
+Specify attributes in body  
+`
+mail: Email,
+password: Password
+`
+
+**Send invitation**
+`PUT /api/0/users/{USER}/{APP}/sendinv/{INVITED}`
+
+**List apps to which user is admin**  
+`GET /api/0/users/{USER}/adminto`
+
+**List all apps user can access**  
+`GET /api/0/users/{USER}/apps`
+
+**List all waiting lists user is applied to**  
+`GET /api/0/users/{USER}/waitlists`
+
+**List all invitations which user sent**  
+`GET /api/0/users/{USER}/sentinvs`
+
 
 ### Apps
 
-#### Get app
-`GET /apps/{APP}`
+**Get app**  
+`GET /api/0/apps/{APP}`
 
-#### Add app (start new program)
-`PUT /apps/`  
+**Add new app (start new program)**  
+`PUT /api/0/apps/`  
 Specify attributes in body  
 `
 id: Name,
@@ -26,41 +47,68 @@ admin: Mail,
 listsize: Size of waiting list
 `
 
-#### Delete app (cancel program)
-`DELETE /apps/{APP}`
+**Delete app (cancel program)**  
+`DELETE /api/0/apps/{APP}`
 
-#### Add user to app (grant access)
-`PUT /apps/{APP}/users/{USER}`  
+**Update app**  
+`POST /api/0/apps/{APP}`  
+Specify attributes in body  
+`
+id: Name,
+admin: Mail,
+listsize: Size of waiting list
+`
+
+**Add user to app (grant access)**  
+`PUT /api/0/apps/{APP}/users/{USER}`  
 Specify number of invitations in body  
 `invs: #`
 
-#### Delete user (remove access)
-`DELETE /apps/{APP}/users/{USER}`
+**Delete user from app (remove access)**  
+`DELETE /api/0/apps/{APP}/users/{USER}`
 
-#### Get all users in app
-`GET /apps/{APP}/users`
+**Get all users in app**  
+`GET /api/0/apps/{APP}/users`
 
-#### Get users in waiting list
-`GET /apps/{APP}/waitlist`
+**Get number of users in app**  
+`GET /api/0/apps/{APP}/users/count`
 
-#### Resize waiting list
-`PUT /apps/{APP}/waitlist/newsize/{SIZE}`
+**Get all sent invitations to app**  
+`GET /api/0/apps/{APP}/ivs/sent`
 
-#### Change number of invitations for user
-`PUT /apps/{APP}/users/{USER}/newinvs/{SIZE}`
+**Get all available invitations froma ll users under app**  
+`GET /api/0/apps/{APP}/invs/available`
 
-#### Accept all from waiting list
+**Get users in waiting list**  
+`GET /api/0/apps/{APP}/waitlist`
+
+**Get used slots in waiting lists**  
+`GET /api/0/apps/{APP}/waitlist/occupied`
+
+**Resize waiting list**  
+`PUT /api/0/apps/{APP}/waitlist/newsize/{SIZE}`
+
+**Change number of invitations for user**  
+`PUT /api/0/apps/{APP}/users/{USER}/newinvs/{SIZE}`
+
+**Accept all from waiting list**  
 (Clear waiting list so other users can apply to it)  
-`PUT /apps/{APP}/waitlist/acceptall`
+`PUT /api/0/apps/{APP}/waitlist/acceptall`
 
-#### Apply for waiting list (as user)
-`PUT /apps/{APP}/waitlist/{MAIL}`
+**Apply for waiting list (as user)**  
+`PUT /api/0/apps/{APP}/waitlist/{MAIL}`
 
-#### Accept invitation
-`PUT /inv/{ID}`  
+**Cancel subscription to waiting list (as user)**  
+`DELETE /api/0/apps/{APP}/waitlist/{MAIL}`
+
+
+
+### Invs
+
+**Accept invitation**  
+`PUT /api/0/inv/{ID}`  
 It will be auto-generated link
 
-#### Decline invitation
+**Decline invitation**  
 `DELETE /inv/{ID}`  
 It will be auto-generated link
-
