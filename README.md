@@ -48,7 +48,7 @@ See [Use Cases file](./docs/use_cases.md) for more information
 
 ## API
 
-See [API docs](./docs/API.md)
+See [API docs](./docs/API.md) or generated [Postman docs](https://documenter.getpostman.com/view/4347332/aggrandize/RW81vD88)
 
 ## Technologies used
 
