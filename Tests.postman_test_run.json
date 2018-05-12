@@ -1,0 +1,1060 @@
+{
+	"id": "b4e0174a-f98b-4422-892e-4d7fbc22cd54",
+	"name": "Tests",
+	"allTests": [],
+	"timestamp": "2018-05-12T17:52:50.885Z",
+	"collection_id": "707c267a-e370-1dd7-eef3-35b1758a065a",
+	"folder_id": "610f3e3d-e2a5-3339-571a-96f3c45d7498",
+	"target_type": "folder",
+	"environment_id": "77eebf13-8f9a-e2ea-390d-512c7f5a4fa1",
+	"data": [],
+	"delay": "20",
+	"count": 1,
+	"collection": {
+		"id": "707c267a-e370-1dd7-eef3-35b1758a065a",
+		"name": "aggrandize",
+		"description": "",
+		"order": [],
+		"folders": [
+			{
+				"auth": null,
+				"collection": "707c267a-e370-1dd7-eef3-35b1758a065a",
+				"collectionId": "707c267a-e370-1dd7-eef3-35b1758a065a",
+				"collection_id": "707c267a-e370-1dd7-eef3-35b1758a065a",
+				"createdAt": 1523781525273,
+				"description": "",
+				"folders_order": [],
+				"id": "f08f0a83-036d-eaa8-dbbf-8c2ce9e8fac4",
+				"name": "App manipulation",
+				"order": [
+					"29ecc54d-8790-8f96-6a82-6019fee5d057",
+					"39d31d06-cf4f-4715-48bf-6206eb408d20",
+					"b8b042ac-3f99-ca42-15d8-b72fccebe92e",
+					"5809da14-691b-8101-e988-5d3ca97f8da4",
+					"538d737d-c093-788f-e356-3032f6b84d2b",
+					"ba9834cb-08d4-2364-a10a-3b49de06b32d",
+					"3e288625-6490-1857-6c5f-3ff62d456909",
+					"7f8d28ed-0902-b857-24ba-6eb70548696b",
+					"2c2af796-ef37-1374-99de-0a7eee16bfce",
+					"be266466-a708-065b-e3f2-7b4115cae25b",
+					"90c2d165-722e-69c7-d34c-786ca6273a24"
+				],
+				"owner": 0,
+				"updatedAt": 1523781525273
+			},
+			{
+				"collection": "707c267a-e370-1dd7-eef3-35b1758a065a",
+				"collectionId": "707c267a-e370-1dd7-eef3-35b1758a065a",
+				"collection_id": "707c267a-e370-1dd7-eef3-35b1758a065a",
+				"createdAt": 1523792730597,
+				"description": "",
+				"folders_order": [],
+				"id": "09ee2a51-823b-dee2-a4db-9e6a3730a9f1",
+				"name": "Invs manipulation",
+				"order": [
+					"0f942455-4005-9a5b-dacf-8f74298569e7",
+					"6760804b-abc7-22c3-c831-a1869becc75c",
+					"11580391-5854-948a-1d35-02b3dca8d008",
+					"e77112d1-0d86-8e72-f782-d7e321771493"
+				],
+				"owner": 0,
+				"updatedAt": 1523792730597
+			},
+			{
+				"auth": null,
+				"collection": "707c267a-e370-1dd7-eef3-35b1758a065a",
+				"collectionId": "707c267a-e370-1dd7-eef3-35b1758a065a",
+				"collection_id": "707c267a-e370-1dd7-eef3-35b1758a065a",
+				"createdAt": 1526130700726,
+				"description": "",
+				"folders_order": [],
+				"id": "610f3e3d-e2a5-3339-571a-96f3c45d7498",
+				"name": "Tests",
+				"order": [
+					"ba100123-6fe9-e6a0-805e-ddc6979664ad",
+					"5ea6e177-7ecd-0699-d3d0-f172d74cb3de",
+					"edd6b623-590d-3ef1-ce51-b904114b69b3",
+					"67107759-b751-96fe-9b99-73dd76ef009f",
+					"f67dd4db-4885-fbd0-c8db-becaf23be4fe",
+					"5d3c0aaf-b0ae-521f-121d-538672b48d6a",
+					"244023fb-f6b2-1f48-554a-e936cc204244",
+					"4d42c4a4-766f-7d5b-23ed-9226b02caba2",
+					"4d32ebe2-5796-8ac9-a66f-444c67f1b606",
+					"1b53923d-7e8c-3880-169e-ce23c6c7cdd6",
+					"7adb3e56-05fb-dc2e-81e9-1ef249c1628b",
+					"6061ba77-9554-4d81-baa3-fa7ec9dc690a",
+					"1aa08c69-abcc-1dbd-c336-4bbcb2cb6945",
+					"d1b32a69-5af8-1142-9b99-22403e7bd9d7",
+					"6498f364-dc6b-4a27-92d4-1429c8123d12",
+					"a1dda7fa-6271-287c-6b4d-e204b00e6126"
+				],
+				"owner": "4347332",
+				"updatedAt": 1526130700726
+			},
+			{
+				"auth": null,
+				"collection": "707c267a-e370-1dd7-eef3-35b1758a065a",
+				"collectionId": "707c267a-e370-1dd7-eef3-35b1758a065a",
+				"collection_id": "707c267a-e370-1dd7-eef3-35b1758a065a",
+				"createdAt": 1523781551654,
+				"description": "",
+				"folders_order": [],
+				"id": "8a6de16c-5a5d-eb32-8ec9-83ebc7641fe7",
+				"name": "User manipulation",
+				"order": [
+					"74e32292-7c40-4f28-216b-6289d97bd468",
+					"0337c2fc-1645-03e0-0abb-107ace74bf30",
+					"5c262a5a-db60-d1c5-b036-cc5584b37dc7",
+					"5ddb113e-7b52-a736-7567-30d6a46f42b3",
+					"ff44b062-cf54-1428-905e-f858022797d9",
+					"f3964538-12f2-c9a9-5b99-4e98f415beb9",
+					"9818b737-bf6c-1302-9810-c4815709547b"
+				],
+				"owner": 0,
+				"updatedAt": 1523781551654
+			},
+			{
+				"auth": null,
+				"collection": "707c267a-e370-1dd7-eef3-35b1758a065a",
+				"collectionId": "707c267a-e370-1dd7-eef3-35b1758a065a",
+				"collection_id": "707c267a-e370-1dd7-eef3-35b1758a065a",
+				"createdAt": 1523781571604,
+				"description": "",
+				"folders_order": [],
+				"id": "4f3bb8ff-a7b7-749a-2b83-92270bf09935",
+				"name": "Wailist",
+				"order": [
+					"4768a375-605d-de17-bb84-0aae3046defd",
+					"9fd3ad0c-1e35-4664-fb76-3d7b4c3241a4",
+					"66c7ac5c-6d6b-6cce-ef63-3ac033f06ae1",
+					"938c9572-abd9-4379-c86a-2539e49bf0fc",
+					"0a1c0923-382d-7c98-c21a-60b67ec5769f",
+					"e3c6eb45-3621-6596-02aa-51013f5202a9",
+					"95836cf0-3473-da9f-d8a0-e355a8e919e6",
+					"0752c959-ce74-dd4c-24b3-64c256d088d0",
+					"a452fbed-23d4-8c82-eb16-5203088e6c07"
+				],
+				"owner": 0,
+				"updatedAt": 1523781571604
+			}
+		],
+		"folders_order": [
+			"f08f0a83-036d-eaa8-dbbf-8c2ce9e8fac4",
+			"8a6de16c-5a5d-eb32-8ec9-83ebc7641fe7",
+			"4f3bb8ff-a7b7-749a-2b83-92270bf09935",
+			"09ee2a51-823b-dee2-a4db-9e6a3730a9f1",
+			"610f3e3d-e2a5-3339-571a-96f3c45d7498"
+		],
+		"timestamp": 1523725045485,
+		"synced": false,
+		"remote_id": 0,
+		"owner": "4347332",
+		"sharedWithTeam": false,
+		"subscribed": false,
+		"remoteLink": "",
+		"remoteLinkUpdatedAt": null,
+		"public": false,
+		"createdAt": 1523725045485,
+		"updatedAt": 1526143338467,
+		"write": true,
+		"published": false,
+		"favorite": true,
+		"permissions": {},
+		"syncedPermissions": {},
+		"events": [],
+		"variables": [],
+		"auth": null
+	},
+	"folder": {
+		"auth": null,
+		"collection": "707c267a-e370-1dd7-eef3-35b1758a065a",
+		"collectionId": "707c267a-e370-1dd7-eef3-35b1758a065a",
+		"collection_id": "707c267a-e370-1dd7-eef3-35b1758a065a",
+		"createdAt": 1526130700726,
+		"description": "",
+		"folders_order": [],
+		"id": "610f3e3d-e2a5-3339-571a-96f3c45d7498",
+		"name": "Tests",
+		"order": [
+			"ba100123-6fe9-e6a0-805e-ddc6979664ad",
+			"5ea6e177-7ecd-0699-d3d0-f172d74cb3de",
+			"edd6b623-590d-3ef1-ce51-b904114b69b3",
+			"67107759-b751-96fe-9b99-73dd76ef009f",
+			"f67dd4db-4885-fbd0-c8db-becaf23be4fe",
+			"5d3c0aaf-b0ae-521f-121d-538672b48d6a",
+			"244023fb-f6b2-1f48-554a-e936cc204244",
+			"4d42c4a4-766f-7d5b-23ed-9226b02caba2",
+			"4d32ebe2-5796-8ac9-a66f-444c67f1b606",
+			"1b53923d-7e8c-3880-169e-ce23c6c7cdd6",
+			"7adb3e56-05fb-dc2e-81e9-1ef249c1628b",
+			"6061ba77-9554-4d81-baa3-fa7ec9dc690a",
+			"1aa08c69-abcc-1dbd-c336-4bbcb2cb6945",
+			"d1b32a69-5af8-1142-9b99-22403e7bd9d7",
+			"6498f364-dc6b-4a27-92d4-1429c8123d12",
+			"a1dda7fa-6271-287c-6b4d-e204b00e6126"
+		],
+		"owner": "4347332",
+		"updatedAt": 1526130700726
+	},
+	"environment": null,
+	"globals": [],
+	"results": [
+		{
+			"name": "Register new admin",
+			"id": "ba100123-6fe9-e6a0-805e-ddc6979664ad",
+			"url": "http://localhost:8080/api/0/users/register",
+			"totalTime": 0,
+			"responseCode": {
+				"code": 201,
+				"name": "Created",
+				"detail": {
+					"name": "Created",
+					"detail": "The request has been fulfilled and resulted in a new resource being created."
+				}
+			},
+			"tests": {
+				"Status code is 201": true
+			},
+			"testPassFailCounts": {
+				"Status code is 201": {
+					"pass": 1,
+					"fail": 0
+				}
+			},
+			"times": [
+				"111"
+			],
+			"allTests": [
+				{
+					"Status code is 201": true
+				}
+			],
+			"time": "111",
+			"totalRequestTime": "111",
+			"iterationResults": {}
+		},
+		{
+			"name": "Get User",
+			"id": "5ea6e177-7ecd-0699-d3d0-f172d74cb3de",
+			"url": "http://localhost:8080/api/0/users/admin@postman.com",
+			"totalTime": 0,
+			"responseCode": {
+				"code": 200,
+				"name": "OK",
+				"detail": {
+					"name": "OK",
+					"detail": "Standard response for successful HTTP requests. The actual response will depend on the request method used. In a GET request, the response will contain an entity corresponding to the requested resource. In a POST request the response will contain an entity describing or containing the result of the action."
+				}
+			},
+			"tests": {
+				"Status code is 200": true
+			},
+			"testPassFailCounts": {
+				"Status code is 200": {
+					"pass": 1,
+					"fail": 0
+				}
+			},
+			"times": [
+				"12"
+			],
+			"allTests": [
+				{
+					"Status code is 200": true
+				}
+			],
+			"time": "12",
+			"totalRequestTime": "12",
+			"iterationResults": {}
+		},
+		{
+			"name": "Add app",
+			"id": "edd6b623-590d-3ef1-ce51-b904114b69b3",
+			"url": "http://localhost:8080/api/0/apps/",
+			"totalTime": 0,
+			"responseCode": {
+				"code": 201,
+				"name": "Created",
+				"detail": {
+					"name": "Created",
+					"detail": "The request has been fulfilled and resulted in a new resource being created."
+				}
+			},
+			"tests": {
+				"Status code is 201": true
+			},
+			"testPassFailCounts": {
+				"Status code is 201": {
+					"pass": 1,
+					"fail": 0
+				}
+			},
+			"times": [
+				"123"
+			],
+			"allTests": [
+				{
+					"Status code is 201": true
+				}
+			],
+			"time": "123",
+			"totalRequestTime": "123",
+			"iterationResults": {}
+		},
+		{
+			"name": "Get App",
+			"id": "67107759-b751-96fe-9b99-73dd76ef009f",
+			"url": "http://localhost:8080/api/0/apps/Postman",
+			"totalTime": 0,
+			"responseCode": {
+				"code": 200,
+				"name": "OK",
+				"detail": {
+					"name": "OK",
+					"detail": "Standard response for successful HTTP requests. The actual response will depend on the request method used. In a GET request, the response will contain an entity corresponding to the requested resource. In a POST request the response will contain an entity describing or containing the result of the action."
+				}
+			},
+			"tests": {
+				"Status code is 200": true
+			},
+			"testPassFailCounts": {
+				"Status code is 200": {
+					"pass": 1,
+					"fail": 0
+				}
+			},
+			"times": [
+				"16"
+			],
+			"allTests": [
+				{
+					"Status code is 200": true
+				}
+			],
+			"time": "16",
+			"totalRequestTime": "16",
+			"iterationResults": {}
+		},
+		{
+			"name": "Register new app user",
+			"id": "f67dd4db-4885-fbd0-c8db-becaf23be4fe",
+			"url": "http://localhost:8080/api/0/users/register",
+			"totalTime": 0,
+			"responseCode": {
+				"code": 201,
+				"name": "Created",
+				"detail": {
+					"name": "Created",
+					"detail": "The request has been fulfilled and resulted in a new resource being created."
+				}
+			},
+			"tests": {
+				"Status code is 201": true
+			},
+			"testPassFailCounts": {
+				"Status code is 201": {
+					"pass": 1,
+					"fail": 0
+				}
+			},
+			"times": [
+				"92"
+			],
+			"allTests": [
+				{
+					"Status code is 201": true
+				}
+			],
+			"time": "92",
+			"totalRequestTime": "92",
+			"iterationResults": {}
+		},
+		{
+			"name": "Add User to App",
+			"id": "5d3c0aaf-b0ae-521f-121d-538672b48d6a",
+			"url": "http://localhost:8080/api/0/apps/Postman/users/user@gmail.com",
+			"totalTime": 0,
+			"responseCode": {
+				"code": 201,
+				"name": "Created",
+				"detail": {
+					"name": "Created",
+					"detail": "The request has been fulfilled and resulted in a new resource being created."
+				}
+			},
+			"tests": {
+				"Status code is 201": true
+			},
+			"testPassFailCounts": {
+				"Status code is 201": {
+					"pass": 1,
+					"fail": 0
+				}
+			},
+			"times": [
+				"26"
+			],
+			"allTests": [
+				{
+					"Status code is 201": true
+				}
+			],
+			"time": "26",
+			"totalRequestTime": "26",
+			"iterationResults": {}
+		},
+		{
+			"name": "Get all users",
+			"id": "244023fb-f6b2-1f48-554a-e936cc204244",
+			"url": "http://localhost:8080/api/0/apps/Postman/users",
+			"totalTime": 0,
+			"responseCode": {
+				"code": 200,
+				"name": "OK",
+				"detail": {
+					"name": "OK",
+					"detail": "Standard response for successful HTTP requests. The actual response will depend on the request method used. In a GET request, the response will contain an entity corresponding to the requested resource. In a POST request the response will contain an entity describing or containing the result of the action."
+				}
+			},
+			"tests": {
+				"Status code is 200": true
+			},
+			"testPassFailCounts": {
+				"Status code is 200": {
+					"pass": 1,
+					"fail": 0
+				}
+			},
+			"times": [
+				"48"
+			],
+			"allTests": [
+				{
+					"Status code is 200": true
+				}
+			],
+			"time": "48",
+			"totalRequestTime": "48",
+			"iterationResults": {}
+		},
+		{
+			"name": "Edit number of invs",
+			"id": "4d42c4a4-766f-7d5b-23ed-9226b02caba2",
+			"url": "http://localhost:8080/api/0/apps/Postman/users/user@gmail.com/newinvs/20",
+			"totalTime": 0,
+			"responseCode": {
+				"code": 201,
+				"name": "Created",
+				"detail": {
+					"name": "Created",
+					"detail": "The request has been fulfilled and resulted in a new resource being created."
+				}
+			},
+			"tests": {
+				"Status code is 201": true
+			},
+			"testPassFailCounts": {
+				"Status code is 201": {
+					"pass": 1,
+					"fail": 0
+				}
+			},
+			"times": [
+				"17"
+			],
+			"allTests": [
+				{
+					"Status code is 201": true
+				}
+			],
+			"time": "17",
+			"totalRequestTime": "17",
+			"iterationResults": {}
+		},
+		{
+			"name": "Send inv",
+			"id": "4d32ebe2-5796-8ac9-a66f-444c67f1b606",
+			"url": "http://localhost:8080/api/0/users/user@gmail.com/Postman/sendinv/newuser@gmail.com",
+			"totalTime": 0,
+			"responseCode": {
+				"code": 201,
+				"name": "Created",
+				"detail": {
+					"name": "Created",
+					"detail": "The request has been fulfilled and resulted in a new resource being created."
+				}
+			},
+			"tests": {
+				"Status code is 201": true
+			},
+			"testPassFailCounts": {
+				"Status code is 201": {
+					"pass": 1,
+					"fail": 0
+				}
+			},
+			"times": [
+				"25"
+			],
+			"allTests": [
+				{
+					"Status code is 201": true
+				}
+			],
+			"time": "25",
+			"totalRequestTime": "25",
+			"iterationResults": {}
+		},
+		{
+			"name": "Get inv",
+			"id": "1b53923d-7e8c-3880-169e-ce23c6c7cdd6",
+			"url": "http://localhost:8080/api/0/inv/ee93c1ec6c4d0c1e1feb94ebe801530f",
+			"totalTime": 0,
+			"responseCode": {
+				"code": 200,
+				"name": "OK",
+				"detail": {
+					"name": "OK",
+					"detail": "Standard response for successful HTTP requests. The actual response will depend on the request method used. In a GET request, the response will contain an entity corresponding to the requested resource. In a POST request the response will contain an entity describing or containing the result of the action."
+				}
+			},
+			"tests": {
+				"Status code is 200": true
+			},
+			"testPassFailCounts": {
+				"Status code is 200": {
+					"pass": 1,
+					"fail": 0
+				}
+			},
+			"times": [
+				"14"
+			],
+			"allTests": [
+				{
+					"Status code is 200": true
+				}
+			],
+			"time": "14",
+			"totalRequestTime": "14",
+			"iterationResults": {}
+		},
+		{
+			"name": "Register new user",
+			"id": "7adb3e56-05fb-dc2e-81e9-1ef249c1628b",
+			"url": "http://localhost:8080/api/0/users/register",
+			"totalTime": 0,
+			"responseCode": {
+				"code": 201,
+				"name": "Created",
+				"detail": {
+					"name": "Created",
+					"detail": "The request has been fulfilled and resulted in a new resource being created."
+				}
+			},
+			"tests": {
+				"Status code is 201": true
+			},
+			"testPassFailCounts": {
+				"Status code is 201": {
+					"pass": 1,
+					"fail": 0
+				}
+			},
+			"times": [
+				"93"
+			],
+			"allTests": [
+				{
+					"Status code is 201": true
+				}
+			],
+			"time": "93",
+			"totalRequestTime": "93",
+			"iterationResults": {}
+		},
+		{
+			"name": "Apply to waitlist",
+			"id": "6061ba77-9554-4d81-baa3-fa7ec9dc690a",
+			"url": "http://localhost:8080/api/0/apps/Postman/waitlist/listUser@.com",
+			"totalTime": 0,
+			"responseCode": {
+				"code": 201,
+				"name": "Created",
+				"detail": {
+					"name": "Created",
+					"detail": "The request has been fulfilled and resulted in a new resource being created."
+				}
+			},
+			"tests": {
+				"Status code is 201": true
+			},
+			"testPassFailCounts": {
+				"Status code is 201": {
+					"pass": 1,
+					"fail": 0
+				}
+			},
+			"times": [
+				"66"
+			],
+			"allTests": [
+				{
+					"Status code is 201": true
+				}
+			],
+			"time": "66",
+			"totalRequestTime": "66",
+			"iterationResults": {}
+		},
+		{
+			"name": "Get App Waitlist",
+			"id": "1aa08c69-abcc-1dbd-c336-4bbcb2cb6945",
+			"url": "http://localhost:8080/api/0/apps/Postman/waitlist/",
+			"totalTime": 0,
+			"responseCode": {
+				"code": 200,
+				"name": "OK",
+				"detail": {
+					"name": "OK",
+					"detail": "Standard response for successful HTTP requests. The actual response will depend on the request method used. In a GET request, the response will contain an entity corresponding to the requested resource. In a POST request the response will contain an entity describing or containing the result of the action."
+				}
+			},
+			"tests": {
+				"Status code is 200": true
+			},
+			"testPassFailCounts": {
+				"Status code is 200": {
+					"pass": 1,
+					"fail": 0
+				}
+			},
+			"times": [
+				"30"
+			],
+			"allTests": [
+				{
+					"Status code is 200": true
+				}
+			],
+			"time": "30",
+			"totalRequestTime": "30",
+			"iterationResults": {}
+		},
+		{
+			"name": "Accept inv",
+			"id": "d1b32a69-5af8-1142-9b99-22403e7bd9d7",
+			"url": "http://localhost:8080/api/0/inv/ee93c1ec6c4d0c1e1feb94ebe801530f",
+			"totalTime": 0,
+			"responseCode": {
+				"code": 201,
+				"name": "Created",
+				"detail": {
+					"name": "Created",
+					"detail": "The request has been fulfilled and resulted in a new resource being created."
+				}
+			},
+			"tests": {
+				"Status code is 201": true
+			},
+			"testPassFailCounts": {
+				"Status code is 201": {
+					"pass": 1,
+					"fail": 0
+				}
+			},
+			"times": [
+				"229"
+			],
+			"allTests": [
+				{
+					"Status code is 201": true
+				}
+			],
+			"time": "229",
+			"totalRequestTime": "229",
+			"iterationResults": {}
+		},
+		{
+			"name": "Get all users after accepted from list",
+			"id": "6498f364-dc6b-4a27-92d4-1429c8123d12",
+			"url": "http://localhost:8080/api/0/apps/Postman/users",
+			"totalTime": 0,
+			"responseCode": {
+				"code": 200,
+				"name": "OK",
+				"detail": {
+					"name": "OK",
+					"detail": "Standard response for successful HTTP requests. The actual response will depend on the request method used. In a GET request, the response will contain an entity corresponding to the requested resource. In a POST request the response will contain an entity describing or containing the result of the action."
+				}
+			},
+			"tests": {
+				"Status code is 200": true
+			},
+			"testPassFailCounts": {
+				"Status code is 200": {
+					"pass": 1,
+					"fail": 0
+				}
+			},
+			"times": [
+				"42"
+			],
+			"allTests": [
+				{
+					"Status code is 200": true
+				}
+			],
+			"time": "42",
+			"totalRequestTime": "42",
+			"iterationResults": {}
+		},
+		{
+			"name": "Teardown",
+			"id": "a1dda7fa-6271-287c-6b4d-e204b00e6126",
+			"url": "http://localhost:8080/api/0/",
+			"totalTime": 0,
+			"responseCode": {
+				"code": 200,
+				"name": "OK",
+				"detail": {
+					"name": "OK",
+					"detail": "Standard response for successful HTTP requests. The actual response will depend on the request method used. In a GET request, the response will contain an entity corresponding to the requested resource. In a POST request the response will contain an entity describing or containing the result of the action."
+				}
+			},
+			"tests": {},
+			"testPassFailCounts": {},
+			"times": [
+				"9"
+			],
+			"allTests": [
+				{}
+			],
+			"time": "9",
+			"totalRequestTime": "9",
+			"iterationResults": {}
+		}
+	],
+	"totalPass": 15,
+	"totalFail": 0,
+	"totalTime": 953,
+	"lifecycle": "done",
+	"requests": [
+		{
+			"name": "Register new admin",
+			"id": "ba100123-6fe9-e6a0-805e-ddc6979664ad",
+			"url": "http://localhost:8080/api/0/users/register",
+			"time": "2018-05-12T17:52:50.885Z",
+			"responseCode": {
+				"code": 201,
+				"name": "Created",
+				"detail": {
+					"name": "Created",
+					"detail": "The request has been fulfilled and resulted in a new resource being created."
+				}
+			},
+			"testPassFailCounts": {
+				"Status code is 201": {
+					"pass": 1,
+					"fail": 0
+				}
+			}
+		},
+		{
+			"name": "Get User",
+			"id": "5ea6e177-7ecd-0699-d3d0-f172d74cb3de",
+			"url": "http://localhost:8080/api/0/users/admin@postman.com",
+			"time": "2018-05-12T17:52:50.885Z",
+			"responseCode": {
+				"code": 200,
+				"name": "OK",
+				"detail": {
+					"name": "OK",
+					"detail": "Standard response for successful HTTP requests. The actual response will depend on the request method used. In a GET request, the response will contain an entity corresponding to the requested resource. In a POST request the response will contain an entity describing or containing the result of the action."
+				}
+			},
+			"testPassFailCounts": {
+				"Status code is 200": {
+					"pass": 1,
+					"fail": 0
+				}
+			}
+		},
+		{
+			"name": "Add app",
+			"id": "edd6b623-590d-3ef1-ce51-b904114b69b3",
+			"url": "http://localhost:8080/api/0/apps/",
+			"time": "2018-05-12T17:52:50.885Z",
+			"responseCode": {
+				"code": 201,
+				"name": "Created",
+				"detail": {
+					"name": "Created",
+					"detail": "The request has been fulfilled and resulted in a new resource being created."
+				}
+			},
+			"testPassFailCounts": {
+				"Status code is 201": {
+					"pass": 1,
+					"fail": 0
+				}
+			}
+		},
+		{
+			"name": "Get App",
+			"id": "67107759-b751-96fe-9b99-73dd76ef009f",
+			"url": "http://localhost:8080/api/0/apps/Postman",
+			"time": "2018-05-12T17:52:50.885Z",
+			"responseCode": {
+				"code": 200,
+				"name": "OK",
+				"detail": {
+					"name": "OK",
+					"detail": "Standard response for successful HTTP requests. The actual response will depend on the request method used. In a GET request, the response will contain an entity corresponding to the requested resource. In a POST request the response will contain an entity describing or containing the result of the action."
+				}
+			},
+			"testPassFailCounts": {
+				"Status code is 200": {
+					"pass": 1,
+					"fail": 0
+				}
+			}
+		},
+		{
+			"name": "Register new app user",
+			"id": "f67dd4db-4885-fbd0-c8db-becaf23be4fe",
+			"url": "http://localhost:8080/api/0/users/register",
+			"time": "2018-05-12T17:52:50.885Z",
+			"responseCode": {
+				"code": 201,
+				"name": "Created",
+				"detail": {
+					"name": "Created",
+					"detail": "The request has been fulfilled and resulted in a new resource being created."
+				}
+			},
+			"testPassFailCounts": {
+				"Status code is 201": {
+					"pass": 1,
+					"fail": 0
+				}
+			}
+		},
+		{
+			"name": "Add User to App",
+			"id": "5d3c0aaf-b0ae-521f-121d-538672b48d6a",
+			"url": "http://localhost:8080/api/0/apps/Postman/users/user@gmail.com",
+			"time": "2018-05-12T17:52:50.885Z",
+			"responseCode": {
+				"code": 201,
+				"name": "Created",
+				"detail": {
+					"name": "Created",
+					"detail": "The request has been fulfilled and resulted in a new resource being created."
+				}
+			},
+			"testPassFailCounts": {
+				"Status code is 201": {
+					"pass": 1,
+					"fail": 0
+				}
+			}
+		},
+		{
+			"name": "Get all users",
+			"id": "244023fb-f6b2-1f48-554a-e936cc204244",
+			"url": "http://localhost:8080/api/0/apps/Postman/users",
+			"time": "2018-05-12T17:52:50.885Z",
+			"responseCode": {
+				"code": 200,
+				"name": "OK",
+				"detail": {
+					"name": "OK",
+					"detail": "Standard response for successful HTTP requests. The actual response will depend on the request method used. In a GET request, the response will contain an entity corresponding to the requested resource. In a POST request the response will contain an entity describing or containing the result of the action."
+				}
+			},
+			"testPassFailCounts": {
+				"Status code is 200": {
+					"pass": 1,
+					"fail": 0
+				}
+			}
+		},
+		{
+			"name": "Edit number of invs",
+			"id": "4d42c4a4-766f-7d5b-23ed-9226b02caba2",
+			"url": "http://localhost:8080/api/0/apps/Postman/users/user@gmail.com/newinvs/20",
+			"time": "2018-05-12T17:52:50.885Z",
+			"responseCode": {
+				"code": 201,
+				"name": "Created",
+				"detail": {
+					"name": "Created",
+					"detail": "The request has been fulfilled and resulted in a new resource being created."
+				}
+			},
+			"testPassFailCounts": {
+				"Status code is 201": {
+					"pass": 1,
+					"fail": 0
+				}
+			}
+		},
+		{
+			"name": "Send inv",
+			"id": "4d32ebe2-5796-8ac9-a66f-444c67f1b606",
+			"url": "http://localhost:8080/api/0/users/user@gmail.com/Postman/sendinv/newuser@gmail.com",
+			"time": "2018-05-12T17:52:50.885Z",
+			"responseCode": {
+				"code": 201,
+				"name": "Created",
+				"detail": {
+					"name": "Created",
+					"detail": "The request has been fulfilled and resulted in a new resource being created."
+				}
+			},
+			"testPassFailCounts": {
+				"Status code is 201": {
+					"pass": 1,
+					"fail": 0
+				}
+			}
+		},
+		{
+			"name": "Get inv",
+			"id": "1b53923d-7e8c-3880-169e-ce23c6c7cdd6",
+			"url": "http://localhost:8080/api/0/inv/ee93c1ec6c4d0c1e1feb94ebe801530f",
+			"time": "2018-05-12T17:52:50.885Z",
+			"responseCode": {
+				"code": 200,
+				"name": "OK",
+				"detail": {
+					"name": "OK",
+					"detail": "Standard response for successful HTTP requests. The actual response will depend on the request method used. In a GET request, the response will contain an entity corresponding to the requested resource. In a POST request the response will contain an entity describing or containing the result of the action."
+				}
+			},
+			"testPassFailCounts": {
+				"Status code is 200": {
+					"pass": 1,
+					"fail": 0
+				}
+			}
+		},
+		{
+			"name": "Register new user",
+			"id": "7adb3e56-05fb-dc2e-81e9-1ef249c1628b",
+			"url": "http://localhost:8080/api/0/users/register",
+			"time": "2018-05-12T17:52:50.885Z",
+			"responseCode": {
+				"code": 201,
+				"name": "Created",
+				"detail": {
+					"name": "Created",
+					"detail": "The request has been fulfilled and resulted in a new resource being created."
+				}
+			},
+			"testPassFailCounts": {
+				"Status code is 201": {
+					"pass": 1,
+					"fail": 0
+				}
+			}
+		},
+		{
+			"name": "Apply to waitlist",
+			"id": "6061ba77-9554-4d81-baa3-fa7ec9dc690a",
+			"url": "http://localhost:8080/api/0/apps/Postman/waitlist/listUser@.com",
+			"time": "2018-05-12T17:52:50.885Z",
+			"responseCode": {
+				"code": 201,
+				"name": "Created",
+				"detail": {
+					"name": "Created",
+					"detail": "The request has been fulfilled and resulted in a new resource being created."
+				}
+			},
+			"testPassFailCounts": {
+				"Status code is 201": {
+					"pass": 1,
+					"fail": 0
+				}
+			}
+		},
+		{
+			"name": "Get App Waitlist",
+			"id": "1aa08c69-abcc-1dbd-c336-4bbcb2cb6945",
+			"url": "http://localhost:8080/api/0/apps/Postman/waitlist/",
+			"time": "2018-05-12T17:52:50.885Z",
+			"responseCode": {
+				"code": 200,
+				"name": "OK",
+				"detail": {
+					"name": "OK",
+					"detail": "Standard response for successful HTTP requests. The actual response will depend on the request method used. In a GET request, the response will contain an entity corresponding to the requested resource. In a POST request the response will contain an entity describing or containing the result of the action."
+				}
+			},
+			"testPassFailCounts": {
+				"Status code is 200": {
+					"pass": 1,
+					"fail": 0
+				}
+			}
+		},
+		{
+			"name": "Accept inv",
+			"id": "d1b32a69-5af8-1142-9b99-22403e7bd9d7",
+			"url": "http://localhost:8080/api/0/inv/ee93c1ec6c4d0c1e1feb94ebe801530f",
+			"time": "2018-05-12T17:52:50.885Z",
+			"responseCode": {
+				"code": 201,
+				"name": "Created",
+				"detail": {
+					"name": "Created",
+					"detail": "The request has been fulfilled and resulted in a new resource being created."
+				}
+			},
+			"testPassFailCounts": {
+				"Status code is 201": {
+					"pass": 1,
+					"fail": 0
+				}
+			}
+		},
+		{
+			"name": "Get all users after accepted from list",
+			"id": "6498f364-dc6b-4a27-92d4-1429c8123d12",
+			"url": "http://localhost:8080/api/0/apps/Postman/users",
+			"time": "2018-05-12T17:52:50.885Z",
+			"responseCode": {
+				"code": 200,
+				"name": "OK",
+				"detail": {
+					"name": "OK",
+					"detail": "Standard response for successful HTTP requests. The actual response will depend on the request method used. In a GET request, the response will contain an entity corresponding to the requested resource. In a POST request the response will contain an entity describing or containing the result of the action."
+				}
+			},
+			"testPassFailCounts": {
+				"Status code is 200": {
+					"pass": 1,
+					"fail": 0
+				}
+			}
+		},
+		{
+			"name": "Teardown",
+			"id": "a1dda7fa-6271-287c-6b4d-e204b00e6126",
+			"url": "http://localhost:8080/api/0/",
+			"time": "2018-05-12T17:52:50.885Z",
+			"responseCode": {
+				"code": 200,
+				"name": "OK",
+				"detail": {
+					"name": "OK",
+					"detail": "Standard response for successful HTTP requests. The actual response will depend on the request method used. In a GET request, the response will contain an entity corresponding to the requested resource. In a POST request the response will contain an entity describing or containing the result of the action."
+				}
+			},
+			"testPassFailCounts": {}
+		}
+	],
+	"synced": false
+}

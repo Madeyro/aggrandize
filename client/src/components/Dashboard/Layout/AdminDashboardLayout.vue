@@ -10,6 +10,10 @@
         <i class="nc-icon nc-single-02"></i>
         <p>Users</p>
       </sidebar-link>
+      <sidebar-link to="/admin/waitlist">
+        <i class="nc-icon nc-notes"></i>
+        <p>Waiting list</p>
+      </sidebar-link>
       <sidebar-link to="/admin/settings">
         <i class="nc-icon nc-preferences-circle-rotate"></i>
         <p>Settings</p>

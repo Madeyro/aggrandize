@@ -27,6 +27,7 @@ router.get('/:user', async ctx => {
 router.post('/register', async ctx => {
   try {
     var hash = await bcrypt.hash(ctx.request.body.password, saltRounds)
+    ctx.status = 201
     ctx.body = await userQuery.addUser({
       _id: ctx.request.body.mail,
       type: 'user',

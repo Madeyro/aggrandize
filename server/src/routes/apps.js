@@ -317,6 +317,41 @@ router.put('/:app/waitlist/acceptall', async ctx => {
   }
 })
 
+// accept users from waiting list
+router.post('/:app/waitlist/acceptselected', async ctx => {
+  try {
+    var invs = ctx.request.body.invs
+    if (invs == null) {
+      invs = 10 // default value
+    }
+
+    // Can not use bulk because each user must be checked if he already exists
+    for (var index in ctx.request.body.users) {
+      const res = await userQuery.grantUserAccess(ctx.request.body.users[index], ctx.request.body.invs, ctx.params.app)
+      if (res == null) {
+        ctx.status = 400
+        ctx.body = {
+          status: 'error',
+          message: 'User already has access to app.'
+        }
+      } else if (res instanceof Error) {
+        throw res
+      } else {
+        ctx.status = 201
+        ctx.body = res // only the last one is in body
+      }
+    }
+
+    await appQuery.updateList(ctx.params.app, ctx.request.body.users)
+  } catch (err) {
+    ctx.status = 400
+    ctx.body = {
+      status: 'error',
+      message: err.message || 'Sorry, an error has occurred.'
+    }
+  }
+})
+
 // Apply for waiting list
 router.put('/:app/waitlist/:mail', async ctx => {
   try {

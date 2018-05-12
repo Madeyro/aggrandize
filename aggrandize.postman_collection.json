@@ -12,12 +12,24 @@
 			"item": [
 				{
 					"name": "Get App",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"id": "ce54f7e9-f59e-412e-ab2a-c1243ba36f78",
+								"type": "text/javascript",
+								"exec": [
+									""
+								]
+							}
+						}
+					],
 					"request": {
 						"method": "GET",
 						"header": [],
 						"body": {},
 						"url": {
-							"raw": "http://localhost:8080/api/0/apps/App Two/",
+							"raw": "http://localhost:8080/api/0/apps/App Two",
 							"protocol": "http",
 							"host": [
 								"localhost"
@@ -27,8 +39,7 @@
 								"api",
 								"0",
 								"apps",
-								"App Two",
-								""
+								"App Two"
 							]
 						},
 						"description": ""
@@ -101,7 +112,7 @@
 						"header": [],
 						"body": {},
 						"url": {
-							"raw": "http://localhost:8080/api/0/apps/Alpha",
+							"raw": "http://localhost:8080/api/0/apps/Postman",
 							"protocol": "http",
 							"host": [
 								"localhost"
@@ -111,19 +122,38 @@
 								"api",
 								"0",
 								"apps",
-								"Alpha"
+								"Postman"
 							]
 						},
 						"description": ""
 					},
 					"response": []
-				}
-			]
-		},
-		{
-			"name": "User manipulation",
-			"description": "",
-			"item": [
+				},
+				{
+					"name": "Get all users",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"body": {},
+						"url": {
+							"raw": "http://localhost:8080/api/0/apps/Test App/users",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8080",
+							"path": [
+								"api",
+								"0",
+								"apps",
+								"Test App",
+								"users"
+							]
+						},
+						"description": ""
+					},
+					"response": []
+				},
 				{
 					"name": "Delete User From App",
 					"request": {
@@ -137,7 +167,7 @@
 						],
 						"body": {},
 						"url": {
-							"raw": "http://localhost:8080/api/0/apps/Test App/users/mahbub@yahoo.com",
+							"raw": "http://localhost:8080/api/0/apps/Test App/users/cartman@park.com",
 							"protocol": "http",
 							"host": [
 								"localhost"
@@ -149,7 +179,7 @@
 								"apps",
 								"Test App",
 								"users",
-								"mahbub@yahoo.com"
+								"cartman@park.com"
 							]
 						},
 						"description": ""
@@ -163,22 +193,13 @@
 						"header": [
 							{
 								"key": "Content-Type",
-								"value": "application/x-www-form-urlencoded"
+								"value": "application/x-www-form-urlencoded",
+								"disabled": true
 							}
 						],
-						"body": {
-							"mode": "urlencoded",
-							"urlencoded": [
-								{
-									"key": "mail",
-									"value": "eric@gmail.com",
-									"description": "",
-									"type": "text"
-								}
-							]
-						},
+						"body": {},
 						"url": {
-							"raw": "http://localhost:8080/api/0/apps/App One/users",
+							"raw": "http://localhost:8080/api/0/apps/Test App/users/cartman@park.com",
 							"protocol": "http",
 							"host": [
 								"localhost"
@@ -188,14 +209,186 @@
 								"api",
 								"0",
 								"apps",
-								"App One",
-								"users"
+								"Test App",
+								"users",
+								"cartman@park.com"
 							]
 						},
 						"description": ""
 					},
 					"response": []
 				},
+				{
+					"name": "Get users count",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"body": {},
+						"url": {
+							"raw": "http://localhost:8080/api/0/apps/Test App/users/count",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8080",
+							"path": [
+								"api",
+								"0",
+								"apps",
+								"Test App",
+								"users",
+								"count"
+							]
+						},
+						"description": ""
+					},
+					"response": []
+				},
+				{
+					"name": "Get count of sent invs",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"body": {},
+						"url": {
+							"raw": "http://localhost:8080/api/0/apps/Test App/invs/sent",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8080",
+							"path": [
+								"api",
+								"0",
+								"apps",
+								"Test App",
+								"invs",
+								"sent"
+							]
+						},
+						"description": ""
+					},
+					"response": []
+				},
+				{
+					"name": "Get count of available invs",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"body": {},
+						"url": {
+							"raw": "http://localhost:8080/api/0/apps/Test App/invs/available",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8080",
+							"path": [
+								"api",
+								"0",
+								"apps",
+								"Test App",
+								"invs",
+								"available"
+							]
+						},
+						"description": ""
+					},
+					"response": []
+				},
+				{
+					"name": "Get admin API Token",
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "Content-Type",
+								"value": "application/json"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n\t\"mail\": \"eric@gmail.com\"\n}"
+						},
+						"url": {
+							"raw": "http://localhost:8080/api/0/auth/apps/Test App/",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8080",
+							"path": [
+								"api",
+								"0",
+								"auth",
+								"apps",
+								"Test App",
+								""
+							]
+						},
+						"description": ""
+					},
+					"response": []
+				},
+				{
+					"name": "Add app",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"id": "ef2aa6d1-4b50-4b4a-adbe-8a42f30a64c8",
+								"type": "text/javascript",
+								"exec": [
+									"const expected = {};",
+									"",
+									"pm.test(\"Get Test App\", function () {",
+									"    var jsonData = pm.response.json();",
+									"    pm.expect(jsonData.data).to.eql(expected);",
+									"});",
+									"",
+									"",
+									"postman.setNextRequest()",
+									""
+								]
+							}
+						}
+					],
+					"request": {
+						"method": "PUT",
+						"header": [
+							{
+								"key": "Content-Type",
+								"value": "application/json"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n  \"id\": \"Postman\",\n  \"admin\": \"admin@postman.com\",\n  \"listsize\": 10\n}"
+						},
+						"url": {
+							"raw": "http://localhost:8080/api/0/apps/",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8080",
+							"path": [
+								"api",
+								"0",
+								"apps",
+								""
+							]
+						},
+						"description": ""
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "User manipulation",
+			"description": "",
+			"item": [
 				{
 					"name": "Get User",
 					"request": {
@@ -219,6 +412,181 @@
 						"description": ""
 					},
 					"response": []
+				},
+				{
+					"name": "Log in",
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "Content-Type",
+								"value": "application/json"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n\t\"mail\": \"eric@gmail.com\",\n\t\"password\": \"eric\"\n}"
+						},
+						"url": {
+							"raw": "http://localhost:8080/api/0/auth",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8080",
+							"path": [
+								"api",
+								"0",
+								"auth"
+							]
+						},
+						"description": ""
+					},
+					"response": []
+				},
+				{
+					"name": "Register new user",
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "Content-Type",
+								"value": "application/json"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n\t\"mail\": \"dominka@gmail.com\",\n\t\"password\": \"dominka\"\n}"
+						},
+						"url": {
+							"raw": "http://localhost:8080/api/0/users/register",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8080",
+							"path": [
+								"api",
+								"0",
+								"users",
+								"register"
+							]
+						},
+						"description": ""
+					},
+					"response": []
+				},
+				{
+					"name": "Decode",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJtYWlsIjoiZXJpY0BnbWFpbC5jb20iLCJhcHBzIjpbIlRlc3QgQXBwIiwiQXBwT25lIiwiQXBwIE9uZSJdLCJhZG1pbiI6WyJBcHAgT25lIl0sImF1ZCI6ImVyaWNAZ21haWwuY29tIiwiaXNzIjoiaHR0cHM6Ly9hZ2dyYW5kaXplLmlvLyIsImlhdCI6MTUyNDIxMjgyOSwiZXhwIjoxNTI0MjE2NDI5fQ.zwpwABQL7lxHVRy23zuR0aYQwp5oaoQge7VEbmo2AAQ",
+									"type": "string"
+								}
+							]
+						},
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": ""
+						},
+						"url": {
+							"raw": "http://localhost:8080/api/0/auth/token",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8080",
+							"path": [
+								"api",
+								"0",
+								"auth",
+								"token"
+							]
+						},
+						"description": ""
+					},
+					"response": []
+				},
+				{
+					"name": "Admin to apps",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"body": {},
+						"url": {
+							"raw": "http://localhost:8080/api/0/users/admin@pivotal.com/adminto",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8080",
+							"path": [
+								"api",
+								"0",
+								"users",
+								"admin@pivotal.com",
+								"adminto"
+							]
+						},
+						"description": ""
+					},
+					"response": []
+				},
+				{
+					"name": "Apps per user",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"body": {},
+						"url": {
+							"raw": "http://localhost:8080/api/0/users/eric@gmail.com/apps",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8080",
+							"path": [
+								"api",
+								"0",
+								"users",
+								"eric@gmail.com",
+								"apps"
+							]
+						},
+						"description": ""
+					},
+					"response": []
+				},
+				{
+					"name": "User's sent invs",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"body": {},
+						"url": {
+							"raw": "http://localhost:8080/api/0/users/eric@gmail.com/sentinvs",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8080",
+							"path": [
+								"api",
+								"0",
+								"users",
+								"eric@gmail.com",
+								"sentinvs"
+							]
+						},
+						"description": ""
+					},
+					"response": []
 				}
 			]
 		},
@@ -228,14 +596,21 @@
 			"item": [
 				{
 					"name": "Get App Waitlist",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"id": "587d6ae9-0601-48db-aa7a-2d18c9e78d4f",
+								"type": "text/javascript",
+								"exec": [
+									""
+								]
+							}
+						}
+					],
 					"request": {
 						"method": "GET",
-						"header": [
-							{
-								"key": "Content-Type",
-								"value": "application/x-www-form-urlencoded"
-							}
-						],
+						"header": [],
 						"body": {
 							"mode": "urlencoded",
 							"urlencoded": [
@@ -268,7 +643,7 @@
 					"response": []
 				},
 				{
-					"name": "Accept all from waitlist",
+					"name": "Accept users from waitlist",
 					"request": {
 						"method": "PUT",
 						"header": [
@@ -312,12 +687,7 @@
 					"name": "Apply to waitlist",
 					"request": {
 						"method": "PUT",
-						"header": [
-							{
-								"key": "Content-Type",
-								"value": "application/x-www-form-urlencoded"
-							}
-						],
+						"header": [],
 						"body": {
 							"mode": "urlencoded",
 							"urlencoded": [
@@ -325,7 +695,8 @@
 									"key": "invs",
 									"value": "\"5\"",
 									"description": "",
-									"type": "text"
+									"type": "text",
+									"disabled": true
 								}
 							]
 						},
@@ -370,6 +741,197 @@
 								"waitlist",
 								"newsize",
 								"5"
+							]
+						},
+						"description": ""
+					},
+					"response": []
+				},
+				{
+					"name": "Get occupied slots in waiting list",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"body": {},
+						"url": {
+							"raw": "http://localhost:8080/api/0/apps/Test App/waitlist/occupied",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8080",
+							"path": [
+								"api",
+								"0",
+								"apps",
+								"Test App",
+								"waitlist",
+								"occupied"
+							]
+						},
+						"description": ""
+					},
+					"response": []
+				},
+				{
+					"name": "Get wait list size",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"body": {},
+						"url": {
+							"raw": "http://localhost:8080/api/0/apps/Test App/waitlist/size",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8080",
+							"path": [
+								"api",
+								"0",
+								"apps",
+								"Test App",
+								"waitlist",
+								"size"
+							]
+						},
+						"description": ""
+					},
+					"response": []
+				},
+				{
+					"name": "Get  all waiting lists",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"body": {},
+						"url": {
+							"raw": "http://localhost:8080/api/0/users/eric@gmail.com/waitlists",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8080",
+							"path": [
+								"api",
+								"0",
+								"users",
+								"eric@gmail.com",
+								"waitlists"
+							]
+						},
+						"description": ""
+					},
+					"response": []
+				},
+				{
+					"name": "Get App Waitlist Size",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"id": "9bfe9148-88f4-4990-a956-a8898b105d7b",
+								"type": "text/javascript",
+								"exec": [
+									"pm.test(\"Get Test App\", function () {",
+									"    var jsonData = pm.response.json();",
+									"    const expected = {",
+									"    \"id\": \"adf5ff8d7d02930c8a87b0808b0165c1\",",
+									"    \"key\": \"Test App\",",
+									"    \"value\": {",
+									"        \"rev\": \"1-0746fb73d08d6927f3ffd2e60c30a576\",",
+									"        \"users\": [",
+									"            \"debest@msn.com\",",
+									"            \"ingolfke@comcast.net\",",
+									"            \"stomv@gmail.com\",",
+									"            \"johnbob@hotmail.com\",",
+									"            \"ahuillet@icloud.com\",",
+									"            \"lbaxter@live.com\",",
+									"            \"ngedmond@hotmail.com\",",
+									"            \"chunzi@hotmail.com\",",
+									"            \"aardo@yahoo.com\",",
+									"            \"danneng@comcast.net\",",
+									"            \"fwiles@live.com\",",
+									"            \"scato@yahoo.com\",",
+									"            \"kayvonf@verizon.net\",",
+									"            \"jnolan@optonline.net\",",
+									"            \"aegreene@gmail.com\"",
+									"            ]",
+									"        }",
+									"    };",
+									"    pm.expect(jsonData.data).to.eql(expected);",
+									"});"
+								]
+							}
+						}
+					],
+					"request": {
+						"method": "GET",
+						"header": [
+							{
+								"key": "Content-Type",
+								"value": "application/x-www-form-urlencoded"
+							}
+						],
+						"body": {
+							"mode": "urlencoded",
+							"urlencoded": [
+								{
+									"key": "invs",
+									"value": "\"5\"",
+									"description": "",
+									"type": "text"
+								}
+							]
+						},
+						"url": {
+							"raw": "http://localhost:8080/api/0/apps/Test App/waitlist/size",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8080",
+							"path": [
+								"api",
+								"0",
+								"apps",
+								"Test App",
+								"waitlist",
+								"size"
+							]
+						},
+						"description": ""
+					},
+					"response": []
+				},
+				{
+					"name": "Accept users from waitlist",
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "Content-Type",
+								"value": "application/json"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n\t\"users\": [\n    \"chaffar@sbcglobal.net\"\n\t]\n}"
+						},
+						"url": {
+							"raw": "http://localhost:8080/api/0/apps/Test App/waitlist/acceptselected",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8080",
+							"path": [
+								"api",
+								"0",
+								"apps",
+								"Test App",
+								"waitlist",
+								"acceptselected"
 							]
 						},
 						"description": ""
@@ -479,6 +1041,743 @@
 								"0",
 								"inv",
 								"41294633b867364eae933dfa4e038780"
+							]
+						},
+						"description": ""
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "Tests",
+			"description": "",
+			"item": [
+				{
+					"name": "Register new admin",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"id": "7614970b-5bf6-42e1-85f5-4cd81e445df8",
+								"type": "text/javascript",
+								"exec": [
+									"pm.test(\"Status code is 201\", function () {",
+									"    pm.response.to.have.status(201);",
+									"});",
+									"",
+									"if (!pm.response.to.have.status(201)) {",
+									"    postman.setNextRequest(Teardown);   ",
+									"}"
+								]
+							}
+						}
+					],
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "Content-Type",
+								"value": "application/json"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n\t\"mail\": \"{{admin}}\",\n\t\"password\": \"{{adminPass}}\"\n}"
+						},
+						"url": {
+							"raw": "http://localhost:8080/api/0/users/register",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8080",
+							"path": [
+								"api",
+								"0",
+								"users",
+								"register"
+							]
+						},
+						"description": ""
+					},
+					"response": []
+				},
+				{
+					"name": "Get User",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"id": "b02ce6e4-cb46-4873-8b3f-604a44694290",
+								"type": "text/javascript",
+								"exec": [
+									"pm.test(\"Status code is 200\", function () {",
+									"    pm.response.to.have.status(200);",
+									"});",
+									"",
+									"if (!pm.response.to.have.status(200)) {",
+									"    postman.setNextRequest(Teardown);   ",
+									"}"
+								]
+							}
+						}
+					],
+					"request": {
+						"method": "GET",
+						"header": [],
+						"body": {},
+						"url": {
+							"raw": "http://localhost:8080/api/0/users/{{admin}}",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8080",
+							"path": [
+								"api",
+								"0",
+								"users",
+								"{{admin}}"
+							]
+						},
+						"description": ""
+					},
+					"response": []
+				},
+				{
+					"name": "Add app",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"id": "a001d71f-39b7-459e-8db9-6e075a652ea9",
+								"type": "text/javascript",
+								"exec": [
+									"pm.test(\"Status code is 201\", function () {",
+									"    pm.response.to.have.status(201);",
+									"});",
+									"",
+									"if (!pm.response.to.have.status(201)) {",
+									"    postman.setNextRequest(Teardown);   ",
+									"}"
+								]
+							}
+						}
+					],
+					"request": {
+						"method": "PUT",
+						"header": [
+							{
+								"key": "Content-Type",
+								"value": "application/json"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n  \"id\": \"{{app}}\",\n  \"admin\": \"{{admin}}\",\n  \"listsize\": \"{{listSize}}\"\n}"
+						},
+						"url": {
+							"raw": "http://localhost:8080/api/0/apps/",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8080",
+							"path": [
+								"api",
+								"0",
+								"apps",
+								""
+							]
+						},
+						"description": ""
+					},
+					"response": []
+				},
+				{
+					"name": "Get App",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"id": "2ff73aec-0c41-40fd-bd67-cf47128895d6",
+								"type": "text/javascript",
+								"exec": [
+									"pm.test(\"Status code is 200\", function () {",
+									"    pm.response.to.have.status(200);",
+									"});",
+									"",
+									"if (!pm.response.to.have.status(200)) {",
+									"    postman.setNextRequest(Teardown);   ",
+									"}",
+									""
+								]
+							}
+						}
+					],
+					"request": {
+						"method": "GET",
+						"header": [],
+						"body": {},
+						"url": {
+							"raw": "http://localhost:8080/api/0/apps/{{app}}",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8080",
+							"path": [
+								"api",
+								"0",
+								"apps",
+								"{{app}}"
+							]
+						},
+						"description": ""
+					},
+					"response": []
+				},
+				{
+					"name": "Register new app user",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"id": "a7fc4fc8-a0fc-49f7-b7db-e8e57996e3a2",
+								"type": "text/javascript",
+								"exec": [
+									"pm.test(\"Status code is 201\", function () {",
+									"    pm.response.to.have.status(201);",
+									"});",
+									"",
+									"if (!pm.response.to.have.status(201)) {",
+									"    postman.setNextRequest(Teardown);   ",
+									"}"
+								]
+							}
+						}
+					],
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "Content-Type",
+								"value": "application/json"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n\t\"mail\": \"{{user}}\",\n\t\"password\": \"{{userPass}}\"\n}"
+						},
+						"url": {
+							"raw": "http://localhost:8080/api/0/users/register",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8080",
+							"path": [
+								"api",
+								"0",
+								"users",
+								"register"
+							]
+						},
+						"description": ""
+					},
+					"response": []
+				},
+				{
+					"name": "Add User to App",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"id": "43fe40d6-b330-4aca-b9b9-535c591cfc67",
+								"type": "text/javascript",
+								"exec": [
+									"pm.test(\"Status code is 201\", function () {",
+									"    pm.response.to.have.status(201);",
+									"});",
+									"",
+									"if (!pm.response.to.have.status(201)) {",
+									"    postman.setNextRequest(Teardown);   ",
+									"}"
+								]
+							}
+						}
+					],
+					"request": {
+						"method": "PUT",
+						"header": [],
+						"body": {},
+						"url": {
+							"raw": "http://localhost:8080/api/0/apps/{{app}}/users/{{user}}",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8080",
+							"path": [
+								"api",
+								"0",
+								"apps",
+								"{{app}}",
+								"users",
+								"{{user}}"
+							]
+						},
+						"description": ""
+					},
+					"response": []
+				},
+				{
+					"name": "Get all users",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"id": "da431144-d7f7-4531-84ff-6575d4e5d577",
+								"type": "text/javascript",
+								"exec": [
+									"pm.test(\"Status code is 200\", function () {",
+									"    pm.response.to.have.status(200);",
+									"});",
+									"",
+									"if (!pm.response.to.have.status(200)) {",
+									"    postman.setNextRequest(Teardown);   ",
+									"}",
+									""
+								]
+							}
+						}
+					],
+					"request": {
+						"method": "GET",
+						"header": [],
+						"body": {},
+						"url": {
+							"raw": "http://localhost:8080/api/0/apps/{{app}}/users",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8080",
+							"path": [
+								"api",
+								"0",
+								"apps",
+								"{{app}}",
+								"users"
+							]
+						},
+						"description": ""
+					},
+					"response": []
+				},
+				{
+					"name": "Edit number of invs",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"id": "ea2c383a-8aab-419d-846f-9c92deaa8b89",
+								"type": "text/javascript",
+								"exec": [
+									"pm.test(\"Status code is 201\", function () {",
+									"    pm.response.to.have.status(201);",
+									"});",
+									"",
+									"if (!pm.response.to.have.status(201)) {",
+									"    postman.setNextRequest(Teardown);   ",
+									"}",
+									""
+								]
+							}
+						}
+					],
+					"request": {
+						"method": "PUT",
+						"header": [],
+						"body": {},
+						"url": {
+							"raw": "http://localhost:8080/api/0/apps/{{app}}/users/{{user}}/newinvs/{{newInvSize}}",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8080",
+							"path": [
+								"api",
+								"0",
+								"apps",
+								"{{app}}",
+								"users",
+								"{{user}}",
+								"newinvs",
+								"{{newInvSize}}"
+							]
+						},
+						"description": ""
+					},
+					"response": []
+				},
+				{
+					"name": "Send inv",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"id": "6dc0f555-7d32-4824-85be-5bc9d35f4874",
+								"type": "text/javascript",
+								"exec": [
+									"pm.test(\"Status code is 201\", function () {",
+									"    pm.response.to.have.status(201);",
+									"});",
+									"",
+									"if (pm.response.to.have.status(201)) {",
+									"    var jsonData = pm.response.json();",
+									"    pm.environment.set(\"inv\", jsonData.id)",
+									"} else {",
+									"    postman.setNextRequest(Teardown);",
+									"}",
+									""
+								]
+							}
+						}
+					],
+					"request": {
+						"method": "PUT",
+						"header": [],
+						"body": {},
+						"url": {
+							"raw": "http://localhost:8080/api/0/users/user@gmail.com/Postman/sendinv/newuser@gmail.com",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8080",
+							"path": [
+								"api",
+								"0",
+								"users",
+								"user@gmail.com",
+								"Postman",
+								"sendinv",
+								"newuser@gmail.com"
+							]
+						},
+						"description": ""
+					},
+					"response": []
+				},
+				{
+					"name": "Get inv",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"id": "9bc1e15d-c160-456b-aec0-4158dbb0bfde",
+								"type": "text/javascript",
+								"exec": [
+									"pm.test(\"Status code is 200\", function () {",
+									"    pm.response.to.have.status(200);",
+									"});",
+									"",
+									"if (!pm.response.to.have.status(200)) {",
+									"    postman.setNextRequest(Teardown);   ",
+									"}",
+									""
+								]
+							}
+						}
+					],
+					"request": {
+						"method": "GET",
+						"header": [],
+						"body": {},
+						"url": {
+							"raw": "http://localhost:8080/api/0/inv/{{inv}}",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8080",
+							"path": [
+								"api",
+								"0",
+								"inv",
+								"{{inv}}"
+							]
+						},
+						"description": ""
+					},
+					"response": []
+				},
+				{
+					"name": "Register new user",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"id": "964f5789-a5b6-48ef-96dd-47c074e36ea6",
+								"type": "text/javascript",
+								"exec": [
+									"pm.test(\"Status code is 201\", function () {",
+									"    pm.response.to.have.status(201);",
+									"});",
+									"",
+									"if (!pm.response.to.have.status(201)) {",
+									"    postman.setNextRequest(Teardown);   ",
+									"}"
+								]
+							}
+						}
+					],
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "Content-Type",
+								"value": "application/json"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n\t\"mail\": \"{{listUser}}\",\n\t\"password\": \"{{listUserPass}}\"\n}"
+						},
+						"url": {
+							"raw": "http://localhost:8080/api/0/users/register",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8080",
+							"path": [
+								"api",
+								"0",
+								"users",
+								"register"
+							]
+						},
+						"description": ""
+					},
+					"response": []
+				},
+				{
+					"name": "Apply to waitlist",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"id": "b50bc4a6-a9a4-4268-862f-c100c45d0766",
+								"type": "text/javascript",
+								"exec": [
+									"pm.test(\"Status code is 201\", function () {",
+									"    pm.response.to.have.status(201);",
+									"});",
+									"",
+									"if (!pm.response.to.have.status(201)) {",
+									"    postman.setNextRequest(Teardown);   ",
+									"}"
+								]
+							}
+						}
+					],
+					"request": {
+						"method": "PUT",
+						"header": [],
+						"body": {},
+						"url": {
+							"raw": "http://localhost:8080/api/0/apps/{{app}}/waitlist/{{listUser}}",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8080",
+							"path": [
+								"api",
+								"0",
+								"apps",
+								"{{app}}",
+								"waitlist",
+								"{{listUser}}"
+							]
+						},
+						"description": ""
+					},
+					"response": []
+				},
+				{
+					"name": "Get App Waitlist",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"id": "3fe71333-c36f-40a8-b9b6-d3779684974c",
+								"type": "text/javascript",
+								"exec": [
+									"pm.test(\"Status code is 200\", function () {",
+									"    pm.response.to.have.status(200);",
+									"});",
+									"",
+									"if (!pm.response.to.have.status(200)) {",
+									"    postman.setNextRequest(Teardown);   ",
+									"}",
+									""
+								]
+							}
+						}
+					],
+					"request": {
+						"method": "GET",
+						"header": [],
+						"body": {
+							"mode": "urlencoded",
+							"urlencoded": [
+								{
+									"description": "",
+									"key": "invs",
+									"type": "text",
+									"value": "\"5\""
+								}
+							]
+						},
+						"url": {
+							"raw": "http://localhost:8080/api/0/apps/{{app}}/waitlist/",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8080",
+							"path": [
+								"api",
+								"0",
+								"apps",
+								"{{app}}",
+								"waitlist",
+								""
+							]
+						},
+						"description": ""
+					},
+					"response": []
+				},
+				{
+					"name": "Accept inv",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"id": "66ba6b94-75b9-463b-b12c-51e61a6d94a2",
+								"type": "text/javascript",
+								"exec": [
+									"pm.test(\"Status code is 201\", function () {",
+									"    pm.response.to.have.status(201);",
+									"});",
+									"",
+									"if (!pm.response.to.have.status(201)) {",
+									"    postman.setNextRequest(Teardown);   ",
+									"}"
+								]
+							}
+						}
+					],
+					"request": {
+						"method": "PUT",
+						"header": [],
+						"body": {},
+						"url": {
+							"raw": "http://localhost:8080/api/0/inv/{{inv}}",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8080",
+							"path": [
+								"api",
+								"0",
+								"inv",
+								"{{inv}}"
+							]
+						},
+						"description": ""
+					},
+					"response": []
+				},
+				{
+					"name": "Get all users after accepted from list",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"id": "ce78c7d5-5ac0-42f9-9dd1-7a2c4636f64a",
+								"type": "text/javascript",
+								"exec": [
+									"pm.test(\"Status code is 200\", function () {",
+									"    pm.response.to.have.status(200);",
+									"});",
+									"",
+									"if (!pm.response.to.have.status(200)) {",
+									"    postman.setNextRequest(Teardown);   ",
+									"}"
+								]
+							}
+						}
+					],
+					"request": {
+						"method": "GET",
+						"header": [],
+						"body": {},
+						"url": {
+							"raw": "http://localhost:8080/api/0/apps/{{app}}/users",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8080",
+							"path": [
+								"api",
+								"0",
+								"apps",
+								"{{app}}",
+								"users"
+							]
+						},
+						"description": ""
+					},
+					"response": []
+				},
+				{
+					"name": "Teardown",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"id": "8e8131d0-8130-47ea-b09f-d262872272b5",
+								"type": "text/javascript",
+								"exec": [
+									""
+								]
+							}
+						}
+					],
+					"request": {
+						"method": "GET",
+						"header": [],
+						"body": {},
+						"url": {
+							"raw": "http://localhost:8080/api/0/",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8080",
+							"path": [
+								"api",
+								"0",
+								""
 							]
 						},
 						"description": ""

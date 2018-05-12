@@ -12,9 +12,10 @@ import AdminOverview from 'src/components/Dashboard/Views/AdminViews/Overview.vu
 import UserList from 'src/components/Dashboard/Views/AdminViews/UserList.vue'
 import Settings from 'src/components/Dashboard/Views/AdminViews/Settings.vue'
 import FirstApp from 'src/components/Dashboard/Views/AdminViews/FirstApp.vue'
+import AdminWaitlist from 'src/components/Dashboard/Views/AdminViews/Waitlist.vue'
 
 // User pages
-import Waitlist from 'src/components/Dashboard/Views/UserViews/Waitlist.vue'
+import UserWaitlist from 'src/components/Dashboard/Views/UserViews/Waitlist.vue'
 import UserOverview from 'src/components/Dashboard/Views/UserViews/Overview.vue'
 
 // Root page for redirecting
@@ -44,6 +45,11 @@ const routes = [
         path: 'settings',
         name: 'Settings',
         component: Settings
+      },
+      {
+        path: 'waitlist',
+        name: 'Waiting List',
+        component: AdminWaitlist
       }
     ]
   },
@@ -55,7 +61,7 @@ const routes = [
       {
         path: 'waitlists',
         name: 'Waiting Lists',
-        component: Waitlist
+        component: UserWaitlist
       },
       {
         path: 'overview',

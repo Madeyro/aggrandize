@@ -78,4 +78,20 @@ router.delete('/:id', async ctx => {
   }
 })
 
+// get invitation
+router.get('/:id', async ctx => {
+  try {
+    const res = await invQuery.getInv(ctx.params.id)
+
+    ctx.status = 200
+    ctx.body = res
+  } catch (err) {
+    ctx.status = 400
+    ctx.body = {
+      status: 'error',
+      message: err.message || 'Sorry, an error has occurred.'
+    }
+  }
+})
+
 module.exports = router

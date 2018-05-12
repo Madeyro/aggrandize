@@ -61,6 +61,32 @@ async function clearList (appId) {
   return res[0]
 }
 
+async function updateList (appId, acceptedUsers) {
+  var doc = await getList(appId)
+
+  var updatedUsers = doc.value.users
+
+  acceptedUsers.forEach(user => {
+    for (let i in updatedUsers) {
+      if (updatedUsers[i] === user) {
+        updatedUsers.splice(i, 1)
+      }
+    }
+  })
+
+  // create new clear waitlist
+  var newDoc = {
+    _id: doc.id,
+    _rev: doc.value.rev,
+    type: 'waitlist',
+    app: doc.key,
+    users: updatedUsers
+  }
+
+  const res = await db.insert(newDoc)
+  return res[0]
+}
+
 async function addList (jsonData) {
   const res = await db.insert(jsonData)
   return res[0]
@@ -100,6 +126,7 @@ module.exports = {
   getRev,
   getList,
   clearList,
+  updateList,
   getListDoc,
   getListSize,
   getListOccupation,
