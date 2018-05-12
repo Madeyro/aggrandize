@@ -350,7 +350,7 @@ router.put('/:app/waitlist/:mail', async ctx => {
   }
 })
 
-// Apply for waiting list
+// Cancel waiting list subscription
 router.delete('/:app/waitlist/:mail', async ctx => {
   try {
     var listDoc = await appQuery.getListDoc(ctx.params.app)
