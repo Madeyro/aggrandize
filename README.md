@@ -39,8 +39,11 @@ run server
 `npm start`  
 
 #### Database
-
-`./couchdb/bin/couchdb`
+1. Install CouchDB 2.1.1
+2. create new databse
+3. edit `server/src/db/auth.js` file accordingly
+4. set env variables `COUCHDB_USER` with db user login and `COUCHDB_PASS` with db admin password
+5. run CouchDB from where it is installed `./couchdb/bin/couchdb`
 
 ## Use Cases
 
