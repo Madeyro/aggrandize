@@ -90,7 +90,7 @@
     methods: {
       async fetchListOccupation () {
         try {
-          var url = 'users/' + this.currentUser + '/waitlists/'
+          var url = 'users/' + this.currentUser.mail + '/waitlists/'
 
           var res = await this.$http.get(url)
           this.table.data = res.data
@@ -104,7 +104,7 @@
 
           var endpoint = 'apps/'
           var urlTail = '/waitlist/'
-                        + encodeURIComponent(this.currentUser)
+                        + encodeURIComponent(this.currentUser.mail)
 
           var promises = []
           lists.forEach(list => {

@@ -123,7 +123,10 @@ router.get('/:user/waitlists', async ctx => {
 
     for (let i in occupiedView) {
       let listDoc = await appQuery.getListDoc(occupiedView[i].key)
+      console.log(listDoc)
+
       let listSize = await appQuery.getListSize(occupiedView[i].key)
+      console.log(listSize)
 
       let applied = 'No'
       listDoc.value.users.forEach(user => {

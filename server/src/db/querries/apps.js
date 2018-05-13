@@ -35,6 +35,8 @@ async function getListOccupation (appId) {
     }
   } else {
     const resMany = await db.view('views', 'waitlist_occupied')
+    console.log(resMany[0].rows)
+
     return resMany[0].rows
   }
 }
