@@ -36,7 +36,7 @@
       </div>
 
       <div class="row">
-        <div class="col-md-6">
+        <div class="col-xl-6">
           <card>
             <div slot="header" class="icon-info">
               <h4 class="title">
@@ -79,12 +79,6 @@
                   :pagination-options="{
                     enabled: true,
                     perPage: 5,
-                  }"
-                  :select-options="{
-                    enabled: true,
-                    selectionInfoClass: 'custom-class',
-                    selectionText: 'rows selected',
-                    clearSelectionText: 'clear',
                   }"
                   styleClass="vgt-table striped boxed">
                   <div slot="emptystate">
