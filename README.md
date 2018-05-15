@@ -28,7 +28,7 @@ or
 `npm install`  
 
 
-run server  
+run server (the databse server must be running before startin backend)  
 `npm start`  
 
 #### Database
