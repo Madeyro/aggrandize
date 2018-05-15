@@ -20,13 +20,6 @@ build for production with minification
 `npm run build`  
 
 
-run unit tests  
-`npm run unit`  
-
-
-run and watch unit tests  
-`npm run unit:watch`  
-
 ##### Backend (server)
 
 install dependencies  
@@ -44,6 +37,7 @@ run server
 3. edit `server/src/db/auth.js` file accordingly
 4. set env variables `COUCHDB_USER` with db user login and `COUCHDB_PASS` with db admin password
 5. run CouchDB from where it is installed `./couchdb/bin/couchdb`
+6. create new database and within create document containing `db_views.js`
 
 ## Use Cases
 
