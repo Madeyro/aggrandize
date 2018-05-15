@@ -1,6 +1,5 @@
 {
   "_id": "_design/views",
-  "_rev": "66-34f0e9c9546cfcb24b23eb1a85e5c226",
   "views": {
     "revisions": {
       "map": "function (doc) {\n  if(doc.type === \"app\") {\n    emit(doc._id, doc._rev)\n  }\n}\n\n"
