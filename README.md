@@ -2,6 +2,8 @@
 ### <center>Grow with control</center>
 *<center>Referral Platform</center>*
 
+## :heavy_exclamation_mark: Code base needs refactoring, but it will not be enough probably :heavy_exclamation_mark:
+
 ## Build Setup
 
 #### Frontend (client)
